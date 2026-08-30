@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Anders Ingemann">
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>k8s - NixOS Homelab</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../../css/brands.min.css" rel="stylesheet">
+        <link href="../../../css/solid.min.css" rel="stylesheet">
+        <link href="../../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../../css/extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">NixOS Homelab</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../../.." class="nav-link">NixOS Homelab</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Finance</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../finance/" class="dropdown-item">nixos-homelab-finance</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Options</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../../finance/options/actualbudget/" class="dropdown-item">actualbudget</a>
+</li>
+            
+<li>
+    <a href="../../../finance/options/ghostfolio/" class="dropdown-item">ghostfolio</a>
+</li>
+            
+<li>
+    <a href="../../../finance/options/homepage/" class="dropdown-item">homepage</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Media</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../media/" class="dropdown-item">nixos-homelab-media</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Lib</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../../media/lib/integration/" class="dropdown-item">integration</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Options</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../../media/options/flood/" class="dropdown-item">flood</a>
+</li>
+            
+<li>
+    <a href="../../../media/options/homepage/" class="dropdown-item">homepage</a>
+</li>
+            
+<li>
+    <a href="../../../media/options/plex/" class="dropdown-item">plex</a>
+</li>
+            
+<li>
+    <a href="../../../media/options/prowlarr/" class="dropdown-item">prowlarr</a>
+</li>
+            
+<li>
+    <a href="../../../media/options/radarr/" class="dropdown-item">radarr</a>
+</li>
+            
+<li>
+    <a href="../../../media/options/rtorrent/" class="dropdown-item">rtorrent</a>
+</li>
+            
+<li>
+    <a href="../../../media/options/sabnzbd/" class="dropdown-item">sabnzbd</a>
+</li>
+            
+<li>
+    <a href="../../../media/options/sonarr/" class="dropdown-item">sonarr</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Monitoring</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../monitoring/" class="dropdown-item">nixos-homelab-monitoring</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Options</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../../monitoring/options/alloy/" class="dropdown-item">alloy</a>
+</li>
+            
+<li>
+    <a href="../../../monitoring/options/grafana/" class="dropdown-item">grafana</a>
+</li>
+            
+<li>
+    <a href="../../../monitoring/options/homepage/" class="dropdown-item">homepage</a>
+</li>
+            
+<li>
+    <a href="../../../monitoring/options/metrics-server/" class="dropdown-item">metrics-server</a>
+</li>
+            
+<li>
+    <a href="../../../monitoring/options/mimir/" class="dropdown-item">mimir</a>
+</li>
+            
+<li>
+    <a href="../../../monitoring/options/node-exporter/" class="dropdown-item">node-exporter</a>
+</li>
+            
+<li>
+    <a href="../../../monitoring/options/smartctl-exporter/" class="dropdown-item">smartctl-exporter</a>
+</li>
+            
+<li>
+    <a href="../../../monitoring/options/zfs-exporter/" class="dropdown-item">zfs-exporter</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Networking</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../networking/" class="dropdown-item">nixos-homelab-networking</a>
+</li>
+                                    
+<li>
+    <a href="../../../networking/cilium/" class="dropdown-item">Cilium network policies</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Options</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../../networking/options/cilium/" class="dropdown-item">cilium</a>
+</li>
+            
+<li>
+    <a href="../../../networking/options/client-vpn/" class="dropdown-item">client-vpn</a>
+</li>
+            
+<li>
+    <a href="../../../networking/options/external-dns/" class="dropdown-item">external-dns</a>
+</li>
+            
+<li>
+    <a href="../../../networking/options/homepage/" class="dropdown-item">homepage</a>
+</li>
+            
+<li>
+    <a href="../../../networking/options/netutils/" class="dropdown-item">netutils</a>
+</li>
+            
+<li>
+    <a href="../../../networking/options/privacy-vpn/" class="dropdown-item">privacy-vpn</a>
+</li>
+            
+<li>
+    <a href="../../../networking/options/routed-ippool/" class="dropdown-item">routed-ippool</a>
+</li>
+            
+<li>
+    <a href="../../../networking/options/unifi/" class="dropdown-item">unifi</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Personal</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../personal/" class="dropdown-item">nixos-homelab-personal</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Options</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../../personal/options/homepage/" class="dropdown-item">homepage</a>
+</li>
+            
+<li>
+    <a href="../../../personal/options/imap-backup/" class="dropdown-item">imap-backup</a>
+</li>
+            
+<li>
+    <a href="../../../personal/options/immich/" class="dropdown-item">immich</a>
+</li>
+            
+<li>
+    <a href="../../../personal/options/syncthing/" class="dropdown-item">syncthing</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Shared</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../" class="dropdown-item">nixos-homelab-shared</a>
+</li>
+                                    
+<li>
+    <a href="../../workload-macros/" class="dropdown-item">Workload macros</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Lib</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../homepage/" class="dropdown-item">homepage</a>
+</li>
+            
+<li>
+    <a href="../ipv4/" class="dropdown-item">ipv4</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">k8s</a>
+</li>
+            
+<li>
+    <a href="../setup-secrets/" class="dropdown-item">setup-secrets</a>
+</li>
+            
+<li>
+    <a href="../workload-macros/" class="dropdown-item">workload-macros</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Options</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../options/cert-manager/" class="dropdown-item">cert-manager</a>
+</li>
+            
+<li>
+    <a href="../../options/cluster/" class="dropdown-item">cluster</a>
+</li>
+            
+<li>
+    <a href="../../options/homepage/" class="dropdown-item">homepage</a>
+</li>
+            
+<li>
+    <a href="../../options/k8sss/" class="dropdown-item">k8sss</a>
+</li>
+            
+<li>
+    <a href="../../options/nfs-provisioner/" class="dropdown-item">nfs-provisioner</a>
+</li>
+            
+<li>
+    <a href="../../options/postgresql/" class="dropdown-item">postgresql</a>
+</li>
+            
+<li>
+    <a href="../../options/redis/" class="dropdown-item">redis</a>
+</li>
+            
+<li>
+    <a href="../../options/smb/" class="dropdown-item">smb</a>
+</li>
+            
+<li>
+    <a href="../../options/workload-macros/" class="dropdown-item">workload-macros</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../ipv4/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../setup-secrets/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#k8s" class="nav-link">k8s</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#libk8screatenamespace" class="nav-link">lib.k8s.createNamespace</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#libk8sreplaceinvalidcharacters" class="nav-link">lib.k8s.replaceInvalidCharacters</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#libk8spathtomountname" class="nav-link">lib.k8s.pathToMountName</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#libk8sbuildkustomization" class="nav-link">lib.k8s.buildKustomization</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#libk8spatchmanifest" class="nav-link">lib.k8s.patchManifest</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="k8s">k8s</h1>
+<h2 id="libk8screatenamespace"><code>lib.k8s.createNamespace</code></h2>
+<p>Build a Kubernetes <code>Namespace</code> manifest for <code>namespace</code>.</p>
+<h3 id="arguments">Arguments</h3>
+<p><code>namespace</code> (<code>String</code>): The namespace's name</p>
+<h3 id="example">Example</h3>
+<pre><code class="language-nix">createNamespace { namespace = &quot;media&quot;; }
+=&gt; { apiVersion = &quot;v1&quot;; kind = &quot;Namespace&quot;; metadata.name = &quot;media&quot;; }
+</code></pre>
+<h2 id="libk8sreplaceinvalidcharacters"><code>lib.k8s.replaceInvalidCharacters</code></h2>
+<p>Replace every character in <code>string</code> that doesn't match <code>validCharsRE</code>
+with <code>replaceWith</code>.</p>
+<h3 id="arguments_1">Arguments</h3>
+<p><code>validCharsRE</code> (<code>String</code>): A regular expression matched against each
+character individually</p>
+<p><code>replaceWith</code> (<code>String</code>): The replacement for characters that don't
+match</p>
+<p><code>string</code> (<code>String</code>): The string to sanitize</p>
+<h3 id="example_1">Example</h3>
+<pre><code class="language-nix">replaceInvalidCharacters &quot;[a-z0-9-]&quot; &quot;-&quot; &quot;My_Path/To.File&quot;
+=&gt; &quot;-y--ath--o--ile&quot;
+</code></pre>
+<h2 id="libk8spathtomountname"><code>lib.k8s.pathToMountName</code></h2>
+<p>Turn a filesystem path into a name safe for use as a Kubernetes
+resource or volume mount name: strips the leading <code>/</code>, lowercases it,
+and replaces every character outside <code>[a-z0-9-]</code> with <code>-</code>. If the
+result is longer than 63 characters (the usual Kubernetes name length
+limit), it's truncated to 54 characters plus a <code>-</code> and an 8-character
+hash of the full cleaned name, to stay under the limit without losing
+uniqueness.</p>
+<h3 id="arguments_2">Arguments</h3>
+<p><code>path</code> (<code>String</code>): The path to convert</p>
+<h3 id="example_2">Example</h3>
+<pre><code class="language-nix">pathToMountName &quot;/data/media/downloads&quot;
+=&gt; &quot;data-media-downloads&quot;
+</code></pre>
+<h2 id="libk8sbuildkustomization"><code>lib.k8s.buildKustomization</code></h2>
+<p>Build a derivation that renders the kustomization at <code>path</code> inside
+<code>src</code> into a single Kubernetes manifest, via <code>kubectl kustomize</code>.</p>
+<p><code>extraFiles</code> are copied in before building -- useful for files the
+kustomization references that aren't already part of <code>src</code>. If
+<code>options</code> is given, it's serialized into a ConfigMap named <code>options</code>
+and written to <code>${path}/options.yaml</code>, marked with the
+<code>config.kubernetes.io/local-config</code> annotation so kustomize treats it
+as local, non-deployed configuration (for use with generators or
+replacements inside the kustomization).</p>
+<h3 id="arguments_3">Arguments</h3>
+<p><code>pkgs</code>: nixpkgs</p>
+<p><code>name</code> (<code>String</code>): Used only for the derivation's own name</p>
+<p><code>src</code>: Derivation or path containing the kustomization entrypoint and
+any relative bases it references</p>
+<p><code>path</code> (<code>String</code>): Path inside <code>src</code> to build (<em>optional</em>, defaults to
+<code>"."</code>)</p>
+<p><code>options</code>: Value to serialize into the <code>options</code> ConfigMap (<em>optional</em>)</p>
+<p><code>extraFiles</code> (<code>{ [DestPath] :: SrcPath }</code>): Additional files to copy in
+before building (<em>optional</em>)</p>
+<h3 id="example_3">Example</h3>
+<pre><code class="language-nix">k8s.buildKustomization { inherit pkgs; } {
+  name = &quot;media&quot;;
+  src = ./kustomize/media;
+}
+</code></pre>
+<h2 id="libk8spatchmanifest"><code>lib.k8s.patchManifest</code></h2>
+<p>Build a derivation that applies <code>patch</code> to the single manifest <code>src</code>
+via <code>kubectl kustomize</code>, and returns the patched manifest.</p>
+<h3 id="arguments_4">Arguments</h3>
+<p><code>pkgs</code>: nixpkgs</p>
+<p><code>src</code>: The manifest file to patch</p>
+<p><code>patch</code>: The kustomize patch file to apply</p>
+<h3 id="example_4">Example</h3>
+<pre><code class="language-nix">k8s.patchManifest { inherit pkgs; } ./deployment.yaml ./patches/replicas.yaml
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js"></script>
+        <script src="../../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
