@@ -445,7 +445,22 @@
 <tr>
 <td>firewall.enable</td>
 <td>boolean</td>
-<td>Whether to enable the Cilium host firewall (disables the NixOS firewall).</td>
+<td>Whether to enable the Cilium host firewall in place of the NixOS firewall. The ports in <code>networking.firewall</code> are open to the</td>
+</tr>
+<tr>
+<td><code>local-lan</code> CIDR group, those in <code>networking.firewall.interfaces.privacy-vpn</code> to any source, everything to the</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>cluster</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>.</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>lbIpBlock4.cidr</td>
