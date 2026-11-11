@@ -464,7 +464,8 @@ Gateway).</p>
   };
 };
 </code></pre>
-<p><code>CronJobMacro</code> and <code>JobMacro</code> default to <code>restartPolicy = "OnFailure"</code>:</p>
+<p><code>CronJobMacro</code> and <code>JobMacro</code> default to <code>restartPolicy = "Never"</code>, so a failed
+run keeps its pod and logs until the job history cleans it up:</p>
 <pre><code class="language-nix">kubetree.resources.imap-backup.cronJob = {
   apiVersion = &quot;cluster.local&quot;;
   kind = &quot;CronJobMacro&quot;;
