@@ -280,7 +280,7 @@
 </li>
                                     
 <li>
-    <a href="../shared/workload-macros/" class="dropdown-item">Workload macros</a>
+    <a href="../shared/kubenix/" class="dropdown-item">kubenix</a>
 </li>
                                     
   <li class="dropdown-submenu">
@@ -289,6 +289,14 @@
             
 <li>
     <a href="../shared/lib/checks/" class="dropdown-item">checks</a>
+</li>
+            
+<li>
+    <a href="../shared/lib/crd2types/" class="dropdown-item">crd2types</a>
+</li>
+            
+<li>
+    <a href="../shared/lib/crds/" class="dropdown-item">crds</a>
 </li>
             
 <li>
@@ -308,11 +316,11 @@
 </li>
             
 <li>
-    <a href="../shared/lib/setup-secrets/" class="dropdown-item">setup-secrets</a>
+    <a href="../shared/lib/pins/" class="dropdown-item">pins</a>
 </li>
             
 <li>
-    <a href="../shared/lib/workload-macros/" class="dropdown-item">workload-macros</a>
+    <a href="../shared/lib/setup-secrets/" class="dropdown-item">setup-secrets</a>
 </li>
     </ul>
   </li>
@@ -358,7 +366,7 @@
 </li>
             
 <li>
-    <a href="../shared/options/workload-macros/" class="dropdown-item">workload-macros</a>
+    <a href="../shared/options/workloads/" class="dropdown-item">workloads</a>
 </li>
     </ul>
   </li>
@@ -420,13 +428,13 @@
 <h1 id="nixos-homelab-networking">nixos-homelab-networking</h1>
 <p>The networking base that ties the rest of the homelab together. Every
 workload across every <code>nixos-homelab-*</code> repo declares <code>allowIngress</code>/
-<code>allowEgress</code> on its <a href="https://nixos-homelab.github.io/shared/workload-macros/">workload
-macros</a>
+<code>allowEgress</code> on its <a href="https://nixos-homelab.github.io/shared/kubenix/">kubenix
+workload</a>
 -- this repo's <code>cilium</code> module is what actually enforces them as network
 policy; without it they're just labels. It also provides the CNI itself,
 inbound and outbound VPNs, routable IP pools, and DNS management.</p>
-<p>See the <a href="https://nixos-homelab.github.io/networking/cilium/">Cilium network policies docs</a> for the custom
-resource kinds this repo's <code>kubetree.cilium</code> module adds, and
+<p>See the <a href="https://nixos-homelab.github.io/networking/cilium/">Cilium network policies docs</a> for the
+policies this repo's <code>cilium</code> module gives kubenix pods and <code>lib.toPorts</code>, and
 <a href="https://nixos-homelab.github.io/networking/options/">the options reference</a> for the full list of module options.</p>
 <h2 id="setup">Setup</h2>
 <pre><code class="language-nix">{
@@ -450,7 +458,7 @@ resource kinds this repo's <code>kubetree.cilium</code> module adds, and
 <ul>
 <li><strong>cilium</strong>: the <a href="https://cilium.io">Cilium</a> CNI, plus the LoadBalancer
   IP pool it hands out from -- see <a href="https://nixos-homelab.github.io/networking/cilium/">the Cilium network policies docs</a> for
-  the <code>NetpolMacro</code>/<code>toPortsFlattened</code> resource kinds it also adds.</li>
+  the policies it gives the pods of kubenix submodules.</li>
 <li><strong>routed-ippool</strong>: a routable IPv4 pool for LoadBalancer services,
   routed to the cluster from the LAN.</li>
 <li><strong>client-vpn</strong>: the inbound WireGuard gateway -- named access groups,

@@ -280,7 +280,7 @@
 </li>
                                     
 <li>
-    <a href="../../workload-macros/" class="dropdown-item">Workload macros</a>
+    <a href="../../kubenix/" class="dropdown-item">kubenix</a>
 </li>
                                     
   <li class="dropdown-submenu">
@@ -289,6 +289,14 @@
             
 <li>
     <a href="../../lib/checks/" class="dropdown-item">checks</a>
+</li>
+            
+<li>
+    <a href="../../lib/crd2types/" class="dropdown-item">crd2types</a>
+</li>
+            
+<li>
+    <a href="../../lib/crds/" class="dropdown-item">crds</a>
 </li>
             
 <li>
@@ -308,11 +316,11 @@
 </li>
             
 <li>
-    <a href="../../lib/setup-secrets/" class="dropdown-item">setup-secrets</a>
+    <a href="../../lib/pins/" class="dropdown-item">pins</a>
 </li>
             
 <li>
-    <a href="../../lib/workload-macros/" class="dropdown-item">workload-macros</a>
+    <a href="../../lib/setup-secrets/" class="dropdown-item">setup-secrets</a>
 </li>
     </ul>
   </li>
@@ -358,7 +366,7 @@
 </li>
             
 <li>
-    <a href="../workload-macros/" class="dropdown-item">workload-macros</a>
+    <a href="../workloads/" class="dropdown-item">workloads</a>
 </li>
     </ul>
   </li>
@@ -425,11 +433,6 @@
 </thead>
 <tbody>
 <tr>
-<td>acmeProvider</td>
-<td>string</td>
-<td>The ACME provider that Ingresses should use for obtaining TLS certs</td>
-</tr>
-<tr>
 <td>backup.hostPaths</td>
 <td>list of string</td>
 <td>List of paths on the host that <em>should</em> be backed up, this option does not configure a backup, it is only meant for aggregation</td>
@@ -448,11 +451,6 @@
 <td>debugTools</td>
 <td>list of package</td>
 <td>Tools to embed in container images when debugging is enabled</td>
-</tr>
-<tr>
-<td>domain</td>
-<td>string</td>
-<td>Domain name of the cluster</td>
 </tr>
 <tr>
 <td>enable</td>
@@ -475,6 +473,11 @@
 <td>The image refs each lock file of <code>lib.images.locked</code> and <code>lib.images.chart</code> pins, by its path, for <code>lock-images</code> to re-lock them when what names them changes</td>
 </tr>
 <tr>
+<td>payload</td>
+<td>package (read-only))</td>
+<td>A directory of the manifests k3s gets, as it finds them in its manifests directory; build <code>nixosConfigurations.&lt;host&gt;.config.homelab.cluster.payload</code> to look at them</td>
+</tr>
+<tr>
 <td>podCidr4</td>
 <td>string</td>
 <td>IPv4 CIDR for the pods</td>
@@ -483,6 +486,11 @@
 <td>podCidr6</td>
 <td>string</td>
 <td>IPv6 CIDR for the pods</td>
+</tr>
+<tr>
+<td>sourceLocks</td>
+<td>attribute set of attribute set of package</td>
+<td>The fetches each lock file of <code>lib.pins.locked</code> pins, by its path and their key, without their hash, for <code>lock-images</code> to lock them when a pin changes</td>
 </tr>
 <tr>
 <td>svcCidr4</td>

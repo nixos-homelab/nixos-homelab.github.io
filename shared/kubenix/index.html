@@ -8,7 +8,7 @@
         <meta name="author" content="Anders Ingemann">
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Workload macros - NixOS Homelab</title>
+        <title>kubenix - NixOS Homelab</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -280,7 +280,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Workload macros</a>
+    <a href="./" class="dropdown-item active" aria-current="page">kubenix</a>
 </li>
                                     
   <li class="dropdown-submenu">
@@ -289,6 +289,14 @@
             
 <li>
     <a href="../lib/checks/" class="dropdown-item">checks</a>
+</li>
+            
+<li>
+    <a href="../lib/crd2types/" class="dropdown-item">crd2types</a>
+</li>
+            
+<li>
+    <a href="../lib/crds/" class="dropdown-item">crds</a>
 </li>
             
 <li>
@@ -308,11 +316,11 @@
 </li>
             
 <li>
-    <a href="../lib/setup-secrets/" class="dropdown-item">setup-secrets</a>
+    <a href="../lib/pins/" class="dropdown-item">pins</a>
 </li>
             
 <li>
-    <a href="../lib/workload-macros/" class="dropdown-item">workload-macros</a>
+    <a href="../lib/setup-secrets/" class="dropdown-item">setup-secrets</a>
 </li>
     </ul>
   </li>
@@ -358,7 +366,7 @@
 </li>
             
 <li>
-    <a href="../options/workload-macros/" class="dropdown-item">workload-macros</a>
+    <a href="../options/workloads/" class="dropdown-item">workloads</a>
 </li>
     </ul>
   </li>
@@ -400,29 +408,25 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#workload-macros" class="nav-link">Workload macros</a>
+            <li class="nav-item" data-bs-level="1"><a href="#kubenix" class="nav-link">kubenix</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#workloadmacro" class="nav-link">WorkloadMacro</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#deploymentmacro-daemonsetmacro-cronjobmacro-jobmacro" class="nav-link">DeploymentMacro / DaemonSetMacro / CronJobMacro / JobMacro</a>
+            <li class="nav-item" data-bs-level="2"><a href="#custom-resources" class="nav-link">Custom resources</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#podspecmacro" class="nav-link">podSpecMacro</a>
+            <li class="nav-item" data-bs-level="2"><a href="#workload" class="nav-link">workload</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#servicemacro" class="nav-link">ServiceMacro</a>
+            <li class="nav-item" data-bs-level="2"><a href="#deployment-daemonset-job-cronjob-script" class="nav-link">deployment, daemonset, job, cronjob, script</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#gatewaymacro" class="nav-link">GatewayMacro</a>
+            <li class="nav-item" data-bs-level="2"><a href="#service" class="nav-link">service</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#scriptmacro" class="nav-link">ScriptMacro</a>
+            <li class="nav-item" data-bs-level="2"><a href="#manifest" class="nav-link">manifest</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -433,143 +437,176 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="workload-macros">Workload macros</h1>
-<p><code>kubetree.resources</code> accepts custom resource kinds
-(<code>apiVersion = "cluster.local"</code>) that expand into the real Kubernetes and
-Gateway API resources a workload needs, so you don't hand-write a
-Deployment, Service, NetworkPolicy and Gateway for every service.</p>
-<p>Where a macro maps to one real resource (<code>DeploymentMacro</code> →
-<code>Deployment</code>, <code>CronJobMacro</code> → <code>CronJob</code>, <code>ServiceMacro</code> → <code>Service</code>,
-<code>podSpecMacro</code> → a Pod spec, etc.), it decorates rather than replaces:
-only <code>podSpecMacro</code>/<code>allowIngress</code>/<code>allowEgress</code> (plus
-<code>dataPath</code>/<code>ingressPort</code> on <code>WorkloadMacro</code>) are intercepted and lifted
-into place. Everything else in <code>spec</code> passes straight through untouched,
-as the real Kind's own field. <code>GatewayMacro</code> is the one exception -- see
-below.</p>
-<h2 id="workloadmacro">WorkloadMacro</h2>
-<p>The usual entry point. Expands into a <code>Namespace</code>, a <code>DeploymentMacro</code>
-carrying the pod spec, and -- depending on what's set -- a
-<code>PersistentVolumeClaim</code>, a <code>ServiceMacro</code> + <code>NetpolMacro</code>, and a
-<code>GatewayMacro</code>.</p>
-<pre><code class="language-nix">kubetree.resources.grafana.workload = {
-  apiVersion = &quot;cluster.local&quot;;
-  kind = &quot;WorkloadMacro&quot;;
-  metadata.name = &quot;grafana&quot;;
+<h1 id="kubenix">kubenix</h1>
+<p>The <code>workloads</code> module holds the settings every workload shares, in
+<code>homelab.workloads</code> (<code>domain</code>, <code>gatewayClassName</code>, <code>acmeProvider</code>,
+<code>containerUtils</code>, <code>securityContext</code>), and the submodules below.
+<code>homelab.kubernetes</code> takes <a href="https://github.com/hall/kubenix">kubenix</a>
+configuration of the cluster: typed Kubernetes resources, so a misspelled
+field fails at evaluation and names where it was set. Each submodule
+instance goes to k3s as a manifest of its own, named after the instance;
+the other objects go to the manifest <code>kubenix</code>.</p>
+<h2 id="custom-resources">Custom resources</h2>
+<p>The custom resources are typed too, from the CRDs:
+<a href="https://nixos-homelab.github.io/shared/lib/"><code>lib.crd2types.customTypes</code></a> turns a
+CustomResourceDefinition into kubenix <code>customTypes</code>, at evaluation, so a
+bump of a CRD retypes its resources. This module types Gateway API's
+experimental channel, the <code>cluster</code> module Cilium's and
+ClusterNetworkPolicy, as pinned in <code>lib.crds.pinned</code>; the cert-manager
+module adds those of its chart. Every submodule gets them. Their attribute names are kubenix's: the plural cased
+like the kind (<code>gateways</code>, <code>hTTPRoutes</code>, <code>ciliumNetworkPolicies</code>,
+<code>certificates</code>, <code>clusterIssuers</code>). Optional fields default to null and are
+left out; value validations (patterns, bounds, CEL rules) stay with the
+API server. A list the CRD merges by one key takes an attribute set by
+that key, like the lists kubenix keys in its core types: Gateway
+listeners by <code>name</code>, so an instance changes one listener of its Gateway
+(<code>mkForce</code> where the workload sets the field already):</p>
+<pre><code class="language-nix">homelab.kubernetes.submodules.instances.grafana.config.kubernetes.resources.gateways.grafana.spec.listeners.grafana.port =
+  lib.mkForce 8443;
+</code></pre>
+<p>A list still works there; its items keep their order, ahead of those
+given by key. A CRD that starts using a schema construct crd2types doesn't
+know fails evaluation, naming where.</p>
+<pre><code class="language-nix">homelab.kubernetes.kubernetes.resources.certificates.plex = {
+  metadata.namespace = &quot;plex&quot;;
   spec = {
+    secretName = &quot;plex-tls&quot;;
+    dnsNames = [ &quot;plex.example.org&quot; ];
+    issuerRef = { kind = &quot;ClusterIssuer&quot;; name = &quot;letsencrypt-production&quot;; };
+  };
+};
+</code></pre>
+<p>A module adds the types of a CRD it installs to
+<code>homelab.kubernetes.kubernetes.customTypes</code>. Cluster-scoped resources
+need <code>metadata.namespace = null</code>.</p>
+<h2 id="workload">workload</h2>
+<p>A long-running workload: a Namespace and a Deployment named after the
+instance, and depending on the args a PersistentVolumeClaim, a Service and
+a Gateway with its HTTPRoutes.</p>
+<pre><code class="language-nix">homelab.kubernetes.submodules.instances.grafana = {
+  submodule = &quot;workload&quot;;
+  args = {
     allowEgress = [ &quot;internet&quot; &quot;mimir&quot; &quot;postgresql&quot; ];
-    allowIngress = [ &quot;gateway&quot; ];
     dataPath = &quot;/var/lib/grafana&quot;;
-    podSpecMacro.mainContainer = {
+    ingressPort = 3000;
+    ports.web = 3000;
+    container = {
       image = &quot;grafana:latest&quot;;
-      portsByName.web = 3000;
+      env = [ { name = &quot;GF_PATHS_DATA&quot;; value = &quot;/var/lib/grafana&quot;; } ];
     };
   };
 };
 </code></pre>
 <ul>
-<li><code>dataPath</code>: provisions a 1Gi <code>PersistentVolumeClaim</code>, mounted here in
-  the main container.</li>
-<li><code>ingressPort</code>: exposes the workload via <code>GatewayMacro</code> on this port, and
-  adds <code>"gateway"</code> to <code>allowIngress</code>.</li>
+<li><code>container</code>: the main container, named after the instance, as kubenix's
+  Container type. It's locked down by default
+  (<code>allowPrivilegeEscalation = false</code>, read-only root filesystem, all
+  capabilities dropped, <code>NET_BIND_SERVICE</code> added when it has ports); set
+  <code>securityContext.capabilities.add</code> for more.</li>
+<li><code>ports</code>: the container ports by name, a port number or
+  <code>{ containerPort; protocol; }</code>. They also make the Service, with the
+  same names.</li>
+<li><code>dataPath</code>: a 1Gi PersistentVolumeClaim named after the workload,
+  mounted here in the main container.</li>
+<li><code>ingressPort</code>: a Gateway at <code>&lt;gateway.subdomain&gt;.&lt;gateway.domain&gt;</code>
+  (the bare domain when <code>gateway.subdomain = null</code>) routing to this
+  Service port, with a redirect from HTTP; allows ingress from <code>gateway</code>.
+  <code>httpRouteRules</code> go ahead of the catch-all rule.</li>
+<li><code>policyPorts</code>: the names of the <code>ports</code> other pods may reach, all of
+  them by default; see below.</li>
+<li><code>allowIngress</code>/<code>allowEgress</code>: the pod labels
+  <code>cluster.local/&lt;workload&gt;-ingress</code>/<code>-egress: allow</code>, for the label
+  selectors of the network policies.</li>
 </ul>
-<p>Container ports declared under <code>podSpecMacro.mainContainer.portsByName</code>
-also get a <code>ServiceMacro</code> and a <code>NetpolMacro</code> automatically -- the latter
-implemented in <a href="https://github.com/nixos-homelab/networking/blob/main/docs/cilium.md">homelab-networking's Cilium
-module</a>.</p>
-<h2 id="deploymentmacro-daemonsetmacro-cronjobmacro-jobmacro">DeploymentMacro / DaemonSetMacro / CronJobMacro / JobMacro</h2>
-<p>What <code>WorkloadMacro</code> expands into internally. Use these directly for a
-DaemonSet/CronJob/Job, or to skip <code>WorkloadMacro</code>'s extras (PVC, Service,
-Gateway).</p>
-<pre><code class="language-nix">kubetree.resources.zfs-exporter.daemonset = {
-  apiVersion = &quot;cluster.local&quot;;
-  kind = &quot;DaemonSetMacro&quot;;
-  metadata.name = &quot;zfs-exporter&quot;;
-  spec.podSpecMacro = {
-    name = &quot;zfs-exporter&quot;;
-    mainContainer = {
-      image = &quot;zfs-exporter:latest&quot;;
-      addCapabilities = [ &quot;SYS_RAWIO&quot; ];
-      portsByName.metrics = 9134;
-      volumeMountsByPath.&quot;/dev&quot; = &quot;dev&quot;;
+<p>The workload holds no network policies of its own. The module of the CNI
+adds them to every instance that runs pods through <code>submodules.defaults</code>:
+<a href="https://github.com/nixos-homelab/networking/blob/main/nix/modules/cilium/README.md">networking's
+cilium</a>
+lets pods labeled <code>cluster.local/&lt;workload&gt;-egress: allow</code> reach the
+<code>policyPorts</code>. The manifests check, which has no CNI, expands the same
+intent into a NetworkPolicy and a ClusterNetworkPolicy.
+- <code>securityContext</code>: <code>runAsUser</code>, <code>runAsGroup</code> (also the <code>fsGroup</code>) and
+  <code>supplementalGroups</code> of the pod. They default to
+  <code>homelab.workloads.securityContext</code>, as <code>gateway.domain</code>,
+  <code>gateway.className</code> and <code>gateway.issuer</code> default to the <code>domain</code>,
+  <code>gatewayClassName</code> and <code>acmeProvider</code> there.</p>
+<p>Anything else goes on the instance <code>config</code>, where the objects are
+kubenix resources. Lists kubenix keys by name (containers, volumes, ports)
+take attribute sets:</p>
+<pre><code class="language-nix">homelab.kubernetes.submodules.instances.unifi.config.kubernetes.resources = {
+  services.unifi.spec.type = &quot;LoadBalancer&quot;;
+  deployments.unifi.spec.template.spec.volumes.config.hostPath.path = &quot;/srv/unifi&quot;;
+};
+</code></pre>
+<p><code>pod-spec.nix</code> holds the main container and the pod security context for
+every submodule that runs pods; <code>submodules.defaults</code> with
+<code>features = [ "pod-spec" ]</code> reaches all of them.</p>
+<h2 id="deployment-daemonset-job-cronjob-script">deployment, daemonset, job, cronjob, script</h2>
+<p>The pod alone, in the resource that runs it, named after the instance:
+<code>container</code>, <code>ports</code>, <code>policyPorts</code>, <code>allowIngress</code>, <code>allowEgress</code> and
+<code>securityContext</code> as in the workload, with no Namespace or Service. A Deployment
+is recreated on change; the pod of a Job or CronJob isn't restarted
+unless the instance sets <code>restartPolicy</code>. <code>cronjob</code> takes the <code>schedule</code>.</p>
+<p><code>script</code> runs a bash <code>script</code> once: a ConfigMap and a Job, the script
+mounted at a path hashed from it, so a changed script changes the pod
+template of the Job, k3s replaces the Job and it runs again. It runs in
+<code>image</code>, the container-utils of the cluster unless set.</p>
+<pre><code class="language-nix">homelab.kubernetes.submodules.instances.backup-grafana-db = {
+  submodule = &quot;cronjob&quot;;
+  args = {
+    schedule = &quot;10 3 * * *&quot;;
+    allowEgress = [ &quot;postgresql&quot; ];
+    container = {
+      image = &quot;postgresql:latest&quot;;
+      command = [ &quot;pg_dump&quot; &quot;--file=/dumps/grafana.pgdump&quot; ];
+      volumeMounts.&quot;/dumps&quot;.name = &quot;dumps&quot;;
     };
-    volumesByName.dev.hostPath = { path = &quot;/dev&quot;; type = &quot;Directory&quot;; };
+  };
+  config.kubernetes.resources.cronJobs.backup-grafana-db.spec.jobTemplate.spec.template.spec.volumes.dumps.persistentVolumeClaim.claimName =
+    &quot;database-dumps&quot;;
+};
+</code></pre>
+<h2 id="service">service</h2>
+<p>A Service named after the instance, selecting the pods named so. <code>ports</code>
+by name: a port number, or the fields of a ServicePort.</p>
+<pre><code class="language-nix">homelab.kubernetes.submodules.instances.alloy = {
+  submodule = &quot;service&quot;;
+  args.ports.web = 3000;
+};
+</code></pre>
+<h2 id="manifest">manifest</h2>
+<p>Objects that go to k3s together: the resources on the instance <code>config</code>
+and the instances nested in it. Every top-level instance is one k3s
+manifest, and k3s deletes what a manifest stops holding. An object that
+moves to another manifest is deleted when k3s applies the old manifest
+first, and a Namespace or a PersistentVolumeClaim takes what it holds
+with it. So objects that went to k3s together stay in one <code>manifest</code>,
+under the old name.</p>
+<pre><code class="language-nix">homelab.kubernetes.submodules.instances.cert-manager = {
+  submodule = &quot;manifest&quot;;
+  config = {
+    kubernetes.resources.namespaces.cert-manager.metadata.namespace = null;
+    submodules.instances = {
+      webhook = {
+        name = &quot;cert-manager-webhook-libdns&quot;;
+        submodule = &quot;deployment&quot;;
+        args.container.image = &quot;cert-manager-webhook-libdns:latest&quot;;
+      };
+      webhook-service = {
+        name = &quot;cert-manager-webhook-libdns&quot;;
+        submodule = &quot;service&quot;;
+        args.ports.https = { port = 443; targetPort = 8443; };
+      };
+    };
   };
 };
 </code></pre>
-<p><code>CronJobMacro</code> and <code>JobMacro</code> default to <code>restartPolicy = "Never"</code>, so a failed
-run keeps its pod and logs until the job history cleans it up:</p>
-<pre><code class="language-nix">kubetree.resources.imap-backup.cronJob = {
-  apiVersion = &quot;cluster.local&quot;;
-  kind = &quot;CronJobMacro&quot;;
-  metadata.name = &quot;imap-backup&quot;;
-  spec = {
-    schedule = &quot;0 3 * * *&quot;;
-    allowEgress = [ &quot;internet&quot; ];
-    podSpecMacro.mainContainer.image = &quot;imap-backup:latest&quot;;
-  };
-};
-</code></pre>
-<h2 id="podspecmacro">podSpecMacro</h2>
-<p>The shorthand pod spec embedded in the workload macros above.
-<code>mainContainer</code> becomes the container named after the workload, locked
-down by default (<code>allowPrivilegeEscalation = false</code>, read-only root
-filesystem, all capabilities dropped except <code>addCapabilities</code>, plus
-<code>NET_BIND_SERVICE</code> if any ports are declared). <code>securityContext</code>
-(<code>runAsUser</code>/<code>runAsGroup</code>/<code>fsGroup</code>/<code>supplementalGroups</code>) comes from
-<code>kubetree.workload-macros.securityContext</code> unless overridden.</p>
-<p><code>initContainersByName</code> and <code>volumesByName</code> work the same as on a real pod
-spec (see <a href="https://github.com/andsens/nix-kubetree/blob/main/docs/transformers/kubernetes.md">kubetree's Kubernetes primitives
-docs</a>).</p>
-<p><code>allowIngress</code>/<code>allowEgress</code> become
-<code>cluster.local/&lt;workload&gt;-ingress</code>/<code>-egress: allow</code> pod labels, for
-Cilium label-selector network policies.</p>
-<h2 id="servicemacro">ServiceMacro</h2>
-<p>Expands into a <code>v1 Service</code> selecting the workload by name. Everything
-else (<code>spec.portsByName</code>, etc.) passes through.</p>
-<pre><code class="language-nix">kubetree.resources.node-exporter.service = {
-  apiVersion = &quot;cluster.local&quot;;
-  kind = &quot;ServiceMacro&quot;;
-  metadata.name = &quot;node-exporter&quot;;
-  spec.portsByName.metrics = 9100;
-};
-</code></pre>
-<h2 id="gatewaymacro">GatewayMacro</h2>
-<p>Exposes <code>spec.port</code> externally at
-<code>&lt;subdomain-or-name&gt;.&lt;kubetree.workload-macros.domain&gt;</code> (or just the bare
-domain if <code>spec.subdomain = null;</code>). Expands into a <code>Gateway</code> (HTTPS with
-TLS terminated via <code>kubetree.workload-macros.acmeProvider</code>, plus a
-cleartext HTTP listener) and two <code>HTTPRoute</code>s: one forwarding HTTPS
-traffic to <code>spec.port</code>, and one redirecting the cleartext listener to
-HTTPS. Only the fields listed here are accepted -- unlike the other
-macros, nothing else passes through.</p>
-<pre><code class="language-nix">kubetree.resources.grafana.gateway = {
-  apiVersion = &quot;cluster.local&quot;;
-  kind = &quot;GatewayMacro&quot;;
-  metadata.name = &quot;grafana&quot;;
-  spec.port = 3000;
-  spec.requestHeaderModifier.add = [
-    { name = &quot;X-WEBAUTH-USER&quot;; value = &quot;admin&quot;; }
-  ];
-};
-</code></pre>
-<p><code>spec.requestHeaderModifier</code> is optional and gets attached to the HTTPS
-route as a <code>RequestHeaderModifier</code> filter.</p>
-<h2 id="scriptmacro">ScriptMacro</h2>
-<p>Runs <code>spec.script</code> as a one-off Kubernetes Job. Expands into a <code>ConfigMap</code>
-holding the script and a <code>JobMacro</code> that mounts and runs it with
-<code>kubetree.workload-macros.containerUtils</code>; the mount path is derived from a
-hash of the script's content, so the Job re-runs whenever the script
-changes.</p>
-<pre><code class="language-nix">kubetree.resources.prowlarr.&quot;sonarr-integration&quot; = {
-  apiVersion = &quot;cluster.local&quot;;
-  kind = &quot;ScriptMacro&quot;;
-  metadata.namespace = &quot;prowlarr&quot;;
-  metadata.name = &quot;integrate-sonarr&quot;;
-  spec.script = ''
-    curl -sfX POST &quot;$PROWLARR_URL/api/v1/applications&quot; -d '{&quot;name&quot;:&quot;Sonarr&quot;}'
-  '';
-};
-</code></pre></div>
+<p>All submodules, <code>workload</code> and <code>manifest</code> included, put their objects in the namespace of
+the instance they're nested in, or the one named after the instance at the
+top; set <code>config.kubernetes.namespace</code> for another. Two nested instances
+whose objects share a name, like a Deployment and the Service in
+front of it, take keys
+of their own and the object name as <code>name</code>.</p></div>
             </div>
         </div>
 

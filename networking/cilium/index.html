@@ -280,7 +280,7 @@
 </li>
                                     
 <li>
-    <a href="../../shared/workload-macros/" class="dropdown-item">Workload macros</a>
+    <a href="../../shared/kubenix/" class="dropdown-item">kubenix</a>
 </li>
                                     
   <li class="dropdown-submenu">
@@ -289,6 +289,14 @@
             
 <li>
     <a href="../../shared/lib/checks/" class="dropdown-item">checks</a>
+</li>
+            
+<li>
+    <a href="../../shared/lib/crd2types/" class="dropdown-item">crd2types</a>
+</li>
+            
+<li>
+    <a href="../../shared/lib/crds/" class="dropdown-item">crds</a>
 </li>
             
 <li>
@@ -308,11 +316,11 @@
 </li>
             
 <li>
-    <a href="../../shared/lib/setup-secrets/" class="dropdown-item">setup-secrets</a>
+    <a href="../../shared/lib/pins/" class="dropdown-item">pins</a>
 </li>
             
 <li>
-    <a href="../../shared/lib/workload-macros/" class="dropdown-item">workload-macros</a>
+    <a href="../../shared/lib/setup-secrets/" class="dropdown-item">setup-secrets</a>
 </li>
     </ul>
   </li>
@@ -358,7 +366,7 @@
 </li>
             
 <li>
-    <a href="../../shared/options/workload-macros/" class="dropdown-item">workload-macros</a>
+    <a href="../../shared/options/workloads/" class="dropdown-item">workloads</a>
 </li>
     </ul>
   </li>
@@ -402,11 +410,11 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#cilium-network-policies" class="nav-link">Cilium network policies</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#netpolmacro" class="nav-link">NetpolMacro</a>
+            <li class="nav-item" data-bs-level="2"><a href="#kubenix-pods" class="nav-link">kubenix pods</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#toportsflattened" class="nav-link">toPortsFlattened</a>
+            <li class="nav-item" data-bs-level="2"><a href="#libtoports" class="nav-link">lib.toPorts</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -418,56 +426,32 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="cilium-network-policies">Cilium network policies</h1>
-<p>Custom <code>kubetree.resources</code> machinery for Cilium network policies, wired
-up by <code>kubetree.cilium.enable</code>.</p>
-<h2 id="netpolmacro">NetpolMacro</h2>
-<p>Expands into the pair of Cilium policies enforcing the
-<code>allowIngress</code>/<code>allowEgress</code> labels <a href="https://github.com/nixos-homelab/shared/blob/main/docs/workload-macros.md">workload
-macros</a>
-put on pods: a <code>CiliumClusterwideNetworkPolicy</code> letting anything labeled
-<code>cluster.local/&lt;name&gt;-egress: allow</code> reach the workload named <code>&lt;name&gt;</code> on
-<code>spec.ports</code>, and a <code>CiliumNetworkPolicy</code> on the workload allowing ingress
-from anything carrying that same label, across namespaces.</p>
-<p><code>WorkloadMacro</code> creates one of these automatically for any workload with
-container ports. Can also be used directly:</p>
-<pre><code class="language-nix">kubetree.resources.node-exporter.netpol = {
-  apiVersion = &quot;cluster.local&quot;;
-  kind = &quot;NetpolMacro&quot;;
-  metadata.name = &quot;node-exporter&quot;;
-  spec.ports = [ 9100 ];
-};
-</code></pre>
-<h2 id="toportsflattened"><code>toPortsFlattened</code></h2>
-<p>A shorthand for <code>spec.ingress[]</code>/<code>spec.egress[]</code> on any real
-<code>CiliumNetworkPolicy</code> or <code>CiliumClusterwideNetworkPolicy</code> (not just ones
-<code>NetpolMacro</code> produces): a plain list of ports -- bare numbers or
-<code>{ port; protocol; }</code> attrsets -- instead of Cilium's native nested
-<code>toPorts = [ { ports = [...]; } ];</code> shape. Port numbers are stringified.</p>
-<pre><code class="language-nix">spec.egress = [
+<p>The policies of kubenix pods and <code>lib.toPorts</code>.</p>
+<h2 id="kubenix-pods">kubenix pods</h2>
+<p>The same pair of policies for every instance of a
+<a href="https://github.com/nixos-homelab/shared/blob/main/nix/modules/workloads/README.md">submodule that runs pods</a>
+(<code>workload</code>, <code>deployment</code>, <code>daemonset</code>, <code>job</code>, <code>cronjob</code>), on its
+<code>policyPorts</code>, all of its <code>ports</code> unless set; added through kubenix
+<code>submodules.defaults</code> when <code>homelab.cilium.enable</code> is set. They go in the
+manifest of the instance; change them through its <code>config</code>, as
+<code>kubernetes.resources.ciliumClusterwideNetworkPolicies.pod-to-&lt;name&gt;</code>
+and <code>kubernetes.resources.ciliumNetworkPolicies.&lt;name&gt;-from-pod</code>.</p>
+<h2 id="libtoports"><code>lib.toPorts</code></h2>
+<p>Cilium's <code>toPorts</code> from a flat list of ports as a NetworkPolicy writes
+them, for policies written by hand: port numbers, or <code>{ port; protocol; }</code>
+(and <code>endPort</code>). Cilium wants the port as a string. No ports give
+null, which leaves the field out.</p>
+<pre><code class="language-nix">homelab.kubernetes.kubernetes.resources.ciliumNetworkPolicies.dns.spec.egress = [
   {
     toEntities = [ &quot;world&quot; ];
-    toPortsFlattened = [
+    toPorts = inputs.homelab-networking.lib.toPorts [
       { port = 53; protocol = &quot;UDP&quot;; }
       443
     ];
   }
 ];
 </code></pre>
-<p>turns into</p>
-<pre><code class="language-nix">spec.egress = [
-  {
-    toEntities = [ &quot;world&quot; ];
-    toPorts = [
-      {
-        ports = [
-          { port = &quot;53&quot;; protocol = &quot;UDP&quot;; }
-          { port = &quot;443&quot;; }
-        ];
-      }
-    ];
-  }
-];
-</code></pre></div>
+<p>gives <code>toPorts = [ { ports = [ { port = "53"; protocol = "UDP"; } { port = "443"; } ]; } ]</code>.</p></div>
             </div>
         </div>
 

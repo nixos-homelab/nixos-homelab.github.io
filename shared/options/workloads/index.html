@@ -8,7 +8,7 @@
         <meta name="author" content="Anders Ingemann">
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>workload-macros - NixOS Homelab</title>
+        <title>workloads - NixOS Homelab</title>
         <link href="../../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../../css/brands.min.css" rel="stylesheet">
@@ -280,7 +280,7 @@
 </li>
                                     
 <li>
-    <a href="../../workload-macros/" class="dropdown-item">Workload macros</a>
+    <a href="../../kubenix/" class="dropdown-item">kubenix</a>
 </li>
                                     
   <li class="dropdown-submenu">
@@ -288,31 +288,39 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../checks/" class="dropdown-item">checks</a>
+    <a href="../../lib/checks/" class="dropdown-item">checks</a>
 </li>
             
 <li>
-    <a href="../homepage/" class="dropdown-item">homepage</a>
+    <a href="../../lib/crd2types/" class="dropdown-item">crd2types</a>
 </li>
             
 <li>
-    <a href="../images/" class="dropdown-item">images</a>
+    <a href="../../lib/crds/" class="dropdown-item">crds</a>
 </li>
             
 <li>
-    <a href="../ipv4/" class="dropdown-item">ipv4</a>
+    <a href="../../lib/homepage/" class="dropdown-item">homepage</a>
 </li>
             
 <li>
-    <a href="../k8s/" class="dropdown-item">k8s</a>
+    <a href="../../lib/images/" class="dropdown-item">images</a>
 </li>
             
 <li>
-    <a href="../setup-secrets/" class="dropdown-item">setup-secrets</a>
+    <a href="../../lib/ipv4/" class="dropdown-item">ipv4</a>
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">workload-macros</a>
+    <a href="../../lib/k8s/" class="dropdown-item">k8s</a>
+</li>
+            
+<li>
+    <a href="../../lib/pins/" class="dropdown-item">pins</a>
+</li>
+            
+<li>
+    <a href="../../lib/setup-secrets/" class="dropdown-item">setup-secrets</a>
 </li>
     </ul>
   </li>
@@ -322,43 +330,43 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../../options/" class="dropdown-item">Options</a>
+    <a href="../" class="dropdown-item">Options</a>
 </li>
             
 <li>
-    <a href="../../options/cert-manager/" class="dropdown-item">cert-manager</a>
+    <a href="../cert-manager/" class="dropdown-item">cert-manager</a>
 </li>
             
 <li>
-    <a href="../../options/cluster/" class="dropdown-item">cluster</a>
+    <a href="../cluster/" class="dropdown-item">cluster</a>
 </li>
             
 <li>
-    <a href="../../options/homepage/" class="dropdown-item">homepage</a>
+    <a href="../homepage/" class="dropdown-item">homepage</a>
 </li>
             
 <li>
-    <a href="../../options/k8sss/" class="dropdown-item">k8sss</a>
+    <a href="../k8sss/" class="dropdown-item">k8sss</a>
 </li>
             
 <li>
-    <a href="../../options/nfs-provisioner/" class="dropdown-item">nfs-provisioner</a>
+    <a href="../nfs-provisioner/" class="dropdown-item">nfs-provisioner</a>
 </li>
             
 <li>
-    <a href="../../options/postgresql/" class="dropdown-item">postgresql</a>
+    <a href="../postgresql/" class="dropdown-item">postgresql</a>
 </li>
             
 <li>
-    <a href="../../options/redis/" class="dropdown-item">redis</a>
+    <a href="../redis/" class="dropdown-item">redis</a>
 </li>
             
 <li>
-    <a href="../../options/smb/" class="dropdown-item">smb</a>
+    <a href="../smb/" class="dropdown-item">smb</a>
 </li>
             
 <li>
-    <a href="../../options/workload-macros/" class="dropdown-item">workload-macros</a>
+    <a href="./" class="dropdown-item active" aria-current="page">workloads</a>
 </li>
     </ul>
   </li>
@@ -373,12 +381,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../setup-secrets/" class="nav-link">
+                                <a rel="prev" href="../smb/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../options/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -400,13 +408,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#workload-macros" class="nav-link">workload-macros</a>
+            <li class="nav-item" data-bs-level="1"><a href="#workloads" class="nav-link">workloads</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#libworkload-macrosworkloadservicehostport" class="nav-link">lib.workload-macros.workloadServiceHostPort</a>
+            <li class="nav-item" data-bs-level="2"><a href="#homelabworkloads" class="nav-link">homelab.workloads</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#libworkload-macrosworkloadserviceurl" class="nav-link">lib.workload-macros.workloadServiceUrl</a>
+            <li class="nav-item" data-bs-level="2"><a href="#homelabkubernetes" class="nav-link">homelab.kubernetes</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -417,37 +425,71 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="workload-macros">workload-macros</h1>
-<h2 id="libworkload-macrosworkloadservicehostport"><code>lib.workload-macros.workloadServiceHostPort</code></h2>
-<p>Get the in-cluster hostname and port for a <code>WorkloadMacro</code> resource's
-Kubernetes Service, as <code>{ host; port; }</code>. The host is the
-<code>&lt;name&gt;.&lt;namespace&gt;</code> short form that's resolvable cluster-internally
-without the full <code>.svc.cluster.local</code> suffix; <code>namespace</code> falls back to
-<code>metadata.name</code> if <code>metadata.namespace</code> isn't set.</p>
-<h3 id="arguments">Arguments</h3>
-<p><code>workload</code>: A resource with <code>metadata.name</code> and <code>spec.ingressPort</code> (an
-<code>apiVersion = "cluster.local"; kind = "WorkloadMacro";</code> resource, as
-found at <code>config.kubetree.resources.&lt;name&gt;.&lt;item&gt;</code>)</p>
-<h3 id="example">Example</h3>
-<pre><code class="language-nix">workloadServiceHostPort {
-  metadata = { name = &quot;sonarr&quot;; namespace = &quot;media&quot;; };
-  spec.ingressPort = 8989;
-}
-=&gt; { host = &quot;sonarr.media&quot;; port = &quot;8989&quot;; }
-</code></pre>
-<h2 id="libworkload-macrosworkloadserviceurl"><code>lib.workload-macros.workloadServiceUrl</code></h2>
-<p>Get the in-cluster <code>http://</code> URL for a <code>WorkloadMacro</code> resource's
-Kubernetes Service.</p>
-<h3 id="arguments_1">Arguments</h3>
-<p><code>workload</code>: A resource with <code>metadata.name</code> and <code>spec.ingressPort</code> (see
-<a href="#libworkload-macrosworkloadservicehostport"><code>workloadServiceHostPort</code></a>)</p>
-<h3 id="example_1">Example</h3>
-<pre><code class="language-nix">workloadServiceUrl {
-  metadata = { name = &quot;sonarr&quot;; namespace = &quot;media&quot;; };
-  spec.ingressPort = 8989;
-}
-=&gt; &quot;http://sonarr.media:8989&quot;
-</code></pre></div>
+<h1 id="workloads">workloads</h1>
+<h2 id="homelabworkloads">homelab.workloads</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>acmeProvider</td>
+<td>string</td>
+<td>The ClusterIssuer that Gateways and Certificates get their TLS certificates from</td>
+</tr>
+<tr>
+<td>containerUtils</td>
+<td>string</td>
+<td>Image ref for container-utils</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>Domain name to suffix hostnames with</td>
+</tr>
+<tr>
+<td>gatewayClassName</td>
+<td>string</td>
+<td>Gateway class of the Gateways of workloads</td>
+</tr>
+<tr>
+<td>securityContext.runAsGroup</td>
+<td>signed integer</td>
+<td>GID for pods to run with, also sets securityContext.fsGroup</td>
+</tr>
+<tr>
+<td>securityContext.runAsUser</td>
+<td>signed integer</td>
+<td>UID for pods to run as</td>
+</tr>
+<tr>
+<td>securityContext.supplementalGroups</td>
+<td>list of signed integer</td>
+<td>Additional GIDs to apply to the pods</td>
+</tr>
+</tbody>
+</table>
+<h2 id="homelabkubernetes">homelab.kubernetes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>module</td>
+<td>kubenix configuration of the cluster, with the submodules of this module and the Gateway API types. The runner sets <code>kubernetes.version</code>.</td>
+</tr>
+</tbody>
+</table></div>
             </div>
         </div>
 

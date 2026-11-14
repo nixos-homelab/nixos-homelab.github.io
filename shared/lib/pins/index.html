@@ -8,7 +8,7 @@
         <meta name="author" content="Anders Ingemann">
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>workload-macros - NixOS Homelab</title>
+        <title>pins - NixOS Homelab</title>
         <link href="../../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../../css/brands.min.css" rel="stylesheet">
@@ -280,7 +280,7 @@
 </li>
                                     
 <li>
-    <a href="../../workload-macros/" class="dropdown-item">Workload macros</a>
+    <a href="../../kubenix/" class="dropdown-item">kubenix</a>
 </li>
                                     
   <li class="dropdown-submenu">
@@ -288,31 +288,39 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../../lib/checks/" class="dropdown-item">checks</a>
+    <a href="../checks/" class="dropdown-item">checks</a>
 </li>
             
 <li>
-    <a href="../../lib/homepage/" class="dropdown-item">homepage</a>
+    <a href="../crd2types/" class="dropdown-item">crd2types</a>
 </li>
             
 <li>
-    <a href="../../lib/images/" class="dropdown-item">images</a>
+    <a href="../crds/" class="dropdown-item">crds</a>
 </li>
             
 <li>
-    <a href="../../lib/ipv4/" class="dropdown-item">ipv4</a>
+    <a href="../homepage/" class="dropdown-item">homepage</a>
 </li>
             
 <li>
-    <a href="../../lib/k8s/" class="dropdown-item">k8s</a>
+    <a href="../images/" class="dropdown-item">images</a>
 </li>
             
 <li>
-    <a href="../../lib/setup-secrets/" class="dropdown-item">setup-secrets</a>
+    <a href="../ipv4/" class="dropdown-item">ipv4</a>
 </li>
             
 <li>
-    <a href="../../lib/workload-macros/" class="dropdown-item">workload-macros</a>
+    <a href="../k8s/" class="dropdown-item">k8s</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">pins</a>
+</li>
+            
+<li>
+    <a href="../setup-secrets/" class="dropdown-item">setup-secrets</a>
 </li>
     </ul>
   </li>
@@ -322,43 +330,43 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../" class="dropdown-item">Options</a>
+    <a href="../../options/" class="dropdown-item">Options</a>
 </li>
             
 <li>
-    <a href="../cert-manager/" class="dropdown-item">cert-manager</a>
+    <a href="../../options/cert-manager/" class="dropdown-item">cert-manager</a>
 </li>
             
 <li>
-    <a href="../cluster/" class="dropdown-item">cluster</a>
+    <a href="../../options/cluster/" class="dropdown-item">cluster</a>
 </li>
             
 <li>
-    <a href="../homepage/" class="dropdown-item">homepage</a>
+    <a href="../../options/homepage/" class="dropdown-item">homepage</a>
 </li>
             
 <li>
-    <a href="../k8sss/" class="dropdown-item">k8sss</a>
+    <a href="../../options/k8sss/" class="dropdown-item">k8sss</a>
 </li>
             
 <li>
-    <a href="../nfs-provisioner/" class="dropdown-item">nfs-provisioner</a>
+    <a href="../../options/nfs-provisioner/" class="dropdown-item">nfs-provisioner</a>
 </li>
             
 <li>
-    <a href="../postgresql/" class="dropdown-item">postgresql</a>
+    <a href="../../options/postgresql/" class="dropdown-item">postgresql</a>
 </li>
             
 <li>
-    <a href="../redis/" class="dropdown-item">redis</a>
+    <a href="../../options/redis/" class="dropdown-item">redis</a>
 </li>
             
 <li>
-    <a href="../smb/" class="dropdown-item">smb</a>
+    <a href="../../options/smb/" class="dropdown-item">smb</a>
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">workload-macros</a>
+    <a href="../../options/workloads/" class="dropdown-item">workloads</a>
 </li>
     </ul>
   </li>
@@ -373,12 +381,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../smb/" class="nav-link">
+                                <a rel="prev" href="../k8s/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../setup-secrets/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -400,9 +408,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#workload-macros" class="nav-link">workload-macros</a>
+            <li class="nav-item" data-bs-level="1"><a href="#pins" class="nav-link">pins</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#kubetreeworkload-macros" class="nav-link">kubetree.workload-macros</a>
+            <li class="nav-item" data-bs-level="2"><a href="#libpinsrefs" class="nav-link">lib.pins.refs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#libpinslocked" class="nav-link">lib.pins.locked</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -413,59 +425,24 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="workload-macros">workload-macros</h1>
-<h2 id="kubetreeworkload-macros">kubetree.workload-macros</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>acmeProvider</td>
-<td>string</td>
-<td>The ACME provider that Ingresses should use for obtaining TLS certs</td>
-</tr>
-<tr>
-<td>containerUtils</td>
-<td>string</td>
-<td>Image ref for container-utils</td>
-</tr>
-<tr>
-<td>domain</td>
-<td>string</td>
-<td>Domain name to suffix hostnames with</td>
-</tr>
-<tr>
-<td>enable</td>
-<td>boolean</td>
-<td>Whether to enable service macro transformers.</td>
-</tr>
-<tr>
-<td>gatewayClassName</td>
-<td>string</td>
-<td>Name of the Gateway class that should set on all gateways generated through the "GatewayMacro" macro</td>
-</tr>
-<tr>
-<td>securityContext.runAsGroup</td>
-<td>signed integer</td>
-<td>GID for pods to run with, also sets securityContext.fsGroup</td>
-</tr>
-<tr>
-<td>securityContext.runAsUser</td>
-<td>signed integer</td>
-<td>UID for pods to run as</td>
-</tr>
-<tr>
-<td>securityContext.supplementalGroups</td>
-<td>list of signed integer</td>
-<td>Additional GIDs to apply to the pods</td>
-</tr>
-</tbody>
-</table></div>
+<h1 id="pins">pins</h1>
+<h2 id="libpinsrefs"><code>lib.pins.refs</code></h2>
+<p>The refs pinned in a workflow that never runs, as <code>{ "owner/repo" = ref; }</code>:
+its <code>uses: owner/repo@ref</code> lines, which Dependabot's github-actions
+ecosystem bumps, whether or not the repository is an action. For sources
+that are neither images nor flake inputs, such as a release asset.</p>
+<h3 id="arguments">Arguments</h3>
+<p><code>file</code> (<code>Path</code>): the workflow, <code>.github/workflows/pins.yaml</code></p>
+<h2 id="libpinslocked"><code>lib.pins.locked</code></h2>
+<p>A fixed-output fetch whose hash is in <code>lockFile</code> under <code>name@ref</code>, which
+<code>lock-images</code> writes. Returns <code>src</code>, the fetch, and for
+<code>homelab.cluster.sourceLocks</code>, <code>key</code> and <code>unlocked</code>: the fetch with an
+empty hash, whose mismatch error names the hash.</p>
+<h3 id="arguments_1">Arguments</h3>
+<p><code>lockFile</code> (<code>Path</code>): JSON of <code>name@ref</code> to hash</p>
+<p><code>name</code> (<code>String</code>): what is fetched, with anything besides the ref that changes it</p>
+<p><code>ref</code> (<code>String</code>): the pinned ref</p>
+<p><code>fetch</code> (<code>String -&gt; Derivation</code>): the fetch, given its hash</p></div>
             </div>
         </div>
 
