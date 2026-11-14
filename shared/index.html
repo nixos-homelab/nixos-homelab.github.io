@@ -346,6 +346,10 @@
 </li>
             
 <li>
+    <a href="options/k3s/" class="dropdown-item">k3s</a>
+</li>
+            
+<li>
     <a href="options/k8sss/" class="dropdown-item">k8sss</a>
 </li>
             
@@ -426,8 +430,9 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="nixos-homelab-shared">nixos-homelab-shared</h1>
-<p>Every other <code>nixos-homelab-*</code> repo takes this one as an input and
-requires its <code>cluster</code> module -- which bootstraps k3s -- enabled. It also
+<p>Every other <code>nixos-homelab-*</code> repo takes this one as an input and builds
+on its <code>cluster</code> module, the facts of the cluster, with a runner that
+runs it: the <code>k3s</code> module, enabled. It also
 provides shared services used across those repos: a database, a
 dashboard, TLS, and storage.</p>
 <p>See <a href="https://nixos-homelab.github.io/shared/kubenix/">the kubenix docs</a>
@@ -448,22 +453,27 @@ for the typed resources and submodules of <code>homelab.kubernetes</code>, and
 <pre><code class="language-nix">{ inputs, ... }:
 {
   imports = [
-    inputs.homelab-shared.nixosModules.cluster
+    inputs.homelab-shared.nixosModules.k3s
     inputs.homelab-shared.nixosModules.postgresql
   ];
-  config.homelab.cluster.enable = true;
+  config.homelab.k3s.enable = true;
 }
 </code></pre>
 <h2 id="modules">Modules</h2>
 <ul>
-<li><strong>cluster</strong>: bootstraps k3s, and provides the shared
-  <code>homelab.cluster.*</code> options (pod/service CIDRs, debug tools, backup
-  aggregation) every other module in this ecosystem builds on.</li>
+<li><strong>cluster</strong>: the shared <code>homelab.cluster.*</code> options every other module
+  in this ecosystem builds on, whichever runner runs the cluster: IP
+  families, pod/service CIDRs, debug tools, backup aggregation, the
+  images to preload and the manifests to apply, and the facts the runner
+  sets (kubeconfig, unit, Kubernetes version).</li>
+<li><strong>k3s</strong>: runs the cluster on <a href="https://k3s.io">k3s</a> (<code>homelab.k3s</code>): it
+  imports <code>cluster</code>, preloads its images, applies its manifests, and
+  drains the node at shutdown.</li>
 <li><strong>workloads</strong>: the settings every workload shares (<code>homelab.workloads</code>:
   domain, gateway class, ACME issuer, pod user and group) and kubenix
   configuration in <code>homelab.kubernetes</code>, with the <code>workload</code> submodule --
   see <a href="https://nixos-homelab.github.io/shared/kubenix/">the kubenix docs</a>.
-  <code>cluster</code> imports it and sends what it holds to k3s.</li>
+  <code>cluster</code> imports it and hands what it holds to the runner.</li>
 <li><strong>homepage</strong>: the <a href="https://gethomepage.dev">homepage</a> dashboard, with a
   per-service <code>integrations</code> allow-list.</li>
 <li><strong>cert-manager</strong>: cert-manager plus a LibDNS ACME webhook, for

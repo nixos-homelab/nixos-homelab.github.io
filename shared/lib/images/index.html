@@ -346,6 +346,10 @@
 </li>
             
 <li>
+    <a href="../../options/k3s/" class="dropdown-item">k3s</a>
+</li>
+            
+<li>
     <a href="../../options/k8sss/" class="dropdown-item">k8sss</a>
 </li>
             
@@ -432,7 +436,7 @@
 <h1 id="images">images</h1>
 <h2 id="libimagespinned"><code>lib.images.pinned</code></h2>
 <p>The upstream images pinned in a Dockerfile, as image archives for
-<code>services.k3s.images</code>. Dependabot bumps the <code>FROM name:tag@digest</code>
+<code>homelab.cluster.images</code>. Dependabot bumps the <code>FROM name:tag@digest</code>
 lines; their Nix hashes are in <code>images.lock</code> next to the Dockerfile,
 which <code>nix run github:nixos-homelab/shared#lock-images</code> updates. The
 tag gets the digest's first 12 hex digits, so a bump changes the pod
@@ -445,7 +449,7 @@ spec and rolls the workload. Each archive's <code>ref</code> is its <code>name:t
   redis = (images.pinned pkgs ./Dockerfile).redis;
 in
 {
-  services.k3s.images = [ redis ];
+  homelab.cluster.images = [ redis ];
   # ...
   image = redis.ref;
   imagePullPolicy = &quot;Never&quot;;
@@ -455,7 +459,7 @@ in
 <p>Image archives for refs that something upstream names (a chart, another
 module), locked to a digest and hash in <code>lockFile</code>, which
 <code>lock-images --lock FILE REF...</code> writes. Returns the archives for
-<code>services.k3s.images</code> and <code>refFor</code>, which maps each ref to its archive's
+<code>homelab.cluster.images</code> and <code>refFor</code>, which maps each ref to its archive's
 <code>name:tag</code> (the tag suffixed with the digest's first 12 hex digits).</p>
 <h3 id="arguments_1">Arguments</h3>
 <p><code>pkgs</code>: nixpkgs</p>

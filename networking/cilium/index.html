@@ -346,6 +346,10 @@
 </li>
             
 <li>
+    <a href="../../shared/options/k3s/" class="dropdown-item">k3s</a>
+</li>
+            
+<li>
     <a href="../../shared/options/k8sss/" class="dropdown-item">k8sss</a>
 </li>
             
@@ -414,6 +418,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#cilium-types" class="nav-link">Cilium types</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-bs-level="2"><a href="#libtoports" class="nav-link">lib.toPorts</a>
               <ul class="nav flex-column">
               </ul>
@@ -426,16 +434,31 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="cilium-network-policies">Cilium network policies</h1>
-<p>The policies of kubenix pods and <code>lib.toPorts</code>.</p>
+<p>The policies of kubenix pods, the Cilium types and <code>lib.toPorts</code>.</p>
 <h2 id="kubenix-pods">kubenix pods</h2>
-<p>The same pair of policies for every instance of a
-<a href="https://github.com/nixos-homelab/shared/blob/main/nix/modules/workloads/README.md">submodule that runs pods</a>
-(<code>workload</code>, <code>deployment</code>, <code>daemonset</code>, <code>job</code>, <code>cronjob</code>), on its
-<code>policyPorts</code>, all of its <code>ports</code> unless set; added through kubenix
-<code>submodules.defaults</code> when <code>homelab.cilium.enable</code> is set. They go in the
-manifest of the instance; change them through its <code>config</code>, as
-<code>kubernetes.resources.ciliumClusterwideNetworkPolicies.pod-to-&lt;name&gt;</code>
-and <code>kubernetes.resources.ciliumNetworkPolicies.&lt;name&gt;-from-pod</code>.</p>
+<p>The policies of the CNI-neutral intent of every instance of a
+<a href="https://github.com/nixos-homelab/shared/blob/main/nix/modules/workloads/README.md">submodule that runs pods, or of <code>pods</code></a>
+(the feature <code>pod-policy</code>), added through kubenix <code>submodules.defaults</code>
+when <code>homelab.cilium.enable</code> is set. They select the pods by
+<code>app.kubernetes.io/name</code> of the instance, or the <code>selector</code> of <code>pods</code>:</p>
+<ul>
+<li><code>policyPorts</code>, all of <code>ports</code> unless set: pods labeled
+  <code>cluster.local/&lt;name&gt;-egress: allow</code> in any namespace may reach them,
+  through the CiliumClusterwideNetworkPolicy <code>pod-to-&lt;name&gt;</code> and the
+  CiliumNetworkPolicy <code>&lt;name&gt;-from-pod</code>.</li>
+<li><code>apiServerPorts</code>: the API server may reach them, <code>&lt;name&gt;-from-apiserver</code>.</li>
+<li><code>worldPorts</code>: the world outside the cluster may reach them,
+  <code>&lt;name&gt;-from-world</code>.</li>
+</ul>
+<p>They go in the manifest of the instance; change them through its
+<code>config</code>, as <code>kubernetes.resources.ciliumNetworkPolicies.&lt;name&gt;-from-pod</code>.</p>
+<h2 id="cilium-types">Cilium types</h2>
+<p><code>nixosModules.cilium-crds</code> (which <code>cilium</code> imports) adds the kubenix
+types of the Cilium CRDs, of the version of the chart <code>cilium</code> installs,
+and hands the CRDs to the manifests check through
+<code>homelab.cluster.runtimeCRDs</code>, as Cilium's operator creates them at
+runtime. It deploys nothing: a module that writes Cilium policies by
+hand imports it, so it evaluates with Cilium off too.</p>
 <h2 id="libtoports"><code>lib.toPorts</code></h2>
 <p>Cilium's <code>toPorts</code> from a flat list of ports as a NetworkPolicy writes
 them, for policies written by hand: port numbers, or <code>{ port; protocol; }</code>

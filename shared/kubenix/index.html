@@ -346,6 +346,10 @@
 </li>
             
 <li>
+    <a href="../options/k3s/" class="dropdown-item">k3s</a>
+</li>
+            
+<li>
     <a href="../options/k8sss/" class="dropdown-item">k8sss</a>
 </li>
             
@@ -426,6 +430,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#pods" class="nav-link">pods</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-bs-level="2"><a href="#manifest" class="nav-link">manifest</a>
               <ul class="nav flex-column">
               </ul>
@@ -444,16 +452,17 @@
 <code>homelab.kubernetes</code> takes <a href="https://github.com/hall/kubenix">kubenix</a>
 configuration of the cluster: typed Kubernetes resources, so a misspelled
 field fails at evaluation and names where it was set. Each submodule
-instance goes to k3s as a manifest of its own, named after the instance;
+instance goes to the runner as a manifest of its own, named after the
+instance;
 the other objects go to the manifest <code>kubenix</code>.</p>
 <h2 id="custom-resources">Custom resources</h2>
 <p>The custom resources are typed too, from the CRDs:
 <a href="https://nixos-homelab.github.io/shared/lib/"><code>lib.crd2types.customTypes</code></a> turns a
 CustomResourceDefinition into kubenix <code>customTypes</code>, at evaluation, so a
 bump of a CRD retypes its resources. This module types Gateway API's
-experimental channel, the <code>cluster</code> module Cilium's and
-ClusterNetworkPolicy, as pinned in <code>lib.crds.pinned</code>; the cert-manager
-module adds those of its chart. Every submodule gets them. Their attribute names are kubenix's: the plural cased
+experimental channel, as pinned in <code>lib.crds.pinned</code>; the cert-manager
+module adds those of its chart, and the module of the CNI its own
+(networking's <code>cilium-crds</code>). Every submodule gets them. Their attribute names are kubenix's: the plural cased
 like the kind (<code>gateways</code>, <code>hTTPRoutes</code>, <code>ciliumNetworkPolicies</code>,
 <code>certificates</code>, <code>clusterIssuers</code>). Optional fields default to null and are
 left out; value validations (patterns, bounds, CEL rules) stay with the
@@ -514,17 +523,19 @@ a Gateway with its HTTPRoutes.</p>
   <code>httpRouteRules</code> go ahead of the catch-all rule.</li>
 <li><code>policyPorts</code>: the names of the <code>ports</code> other pods may reach, all of
   them by default; see below.</li>
+<li><code>apiServerPorts</code>, <code>worldPorts</code>: the names of the <code>ports</code> the API server
+  and the world outside the cluster may reach, none by default.</li>
 <li><code>allowIngress</code>/<code>allowEgress</code>: the pod labels
   <code>cluster.local/&lt;workload&gt;-ingress</code>/<code>-egress: allow</code>, for the label
   selectors of the network policies.</li>
 </ul>
-<p>The workload holds no network policies of its own. The module of the CNI
-adds them to every instance that runs pods through <code>submodules.defaults</code>:
+<p>The workload holds no network policies of its own, only this intent
+(<code>policy.nix</code>). The module of the CNI turns it into policies for every
+instance with the feature <code>pod-policy</code> through <code>submodules.defaults</code>:
 <a href="https://github.com/nixos-homelab/networking/blob/main/nix/modules/cilium/README.md">networking's
 cilium</a>
 lets pods labeled <code>cluster.local/&lt;workload&gt;-egress: allow</code> reach the
-<code>policyPorts</code>. The manifests check, which has no CNI, expands the same
-intent into a NetworkPolicy and a ClusterNetworkPolicy.
+<code>policyPorts</code>, and so on. Without a CNI module there are none.
 - <code>securityContext</code>: <code>runAsUser</code>, <code>runAsGroup</code> (also the <code>fsGroup</code>) and
   <code>supplementalGroups</code> of the pod. They default to
   <code>homelab.workloads.securityContext</code>, as <code>gateway.domain</code>,
@@ -543,13 +554,13 @@ every submodule that runs pods; <code>submodules.defaults</code> with
 <code>features = [ "pod-spec" ]</code> reaches all of them.</p>
 <h2 id="deployment-daemonset-job-cronjob-script">deployment, daemonset, job, cronjob, script</h2>
 <p>The pod alone, in the resource that runs it, named after the instance:
-<code>container</code>, <code>ports</code>, <code>policyPorts</code>, <code>allowIngress</code>, <code>allowEgress</code> and
-<code>securityContext</code> as in the workload, with no Namespace or Service. A Deployment
+<code>container</code>, <code>ports</code>, <code>policyPorts</code>, <code>apiServerPorts</code>, <code>worldPorts</code>,
+<code>allowIngress</code>, <code>allowEgress</code> and <code>securityContext</code> as in the workload, with no Namespace or Service. A Deployment
 is recreated on change; the pod of a Job or CronJob isn't restarted
 unless the instance sets <code>restartPolicy</code>. <code>cronjob</code> takes the <code>schedule</code>.</p>
 <p><code>script</code> runs a bash <code>script</code> once: a ConfigMap and a Job, the script
 mounted at a path hashed from it, so a changed script changes the pod
-template of the Job, k3s replaces the Job and it runs again. It runs in
+template of the Job, the runner replaces the Job and it runs again. It runs in
 <code>image</code>, the container-utils of the cluster unless set.</p>
 <pre><code class="language-nix">homelab.kubernetes.submodules.instances.backup-grafana-db = {
   submodule = &quot;cronjob&quot;;
@@ -574,14 +585,34 @@ by name: a port number, or the fields of a ServicePort.</p>
   args.ports.web = 3000;
 };
 </code></pre>
+<h2 id="pods">pods</h2>
+<p>The policy intent of pods something else runs (a release, a static
+manifest, another module): <code>ports</code>, <code>policyPorts</code>, <code>apiServerPorts</code> and
+<code>worldPorts</code> as in the workload, for the pods with the labels <code>selector</code>
+in the namespace of the instance, <code>app.kubernetes.io/name</code> of the
+instance name unless set. It writes no objects; the CNI module adds the
+policies as for any pod.</p>
+<pre><code class="language-nix">homelab.kubernetes.submodules.instances.cert-manager.config.submodules.instances.webhook = {
+  name = &quot;cert-manager-webhook&quot;;
+  submodule = &quot;pods&quot;;
+  args = {
+    selector = {
+      &quot;app.kubernetes.io/name&quot; = &quot;webhook&quot;;
+      &quot;app.kubernetes.io/instance&quot; = &quot;cert-manager&quot;;
+    };
+    ports.https = 10250;
+    apiServerPorts = [ &quot;https&quot; ];
+  };
+};
+</code></pre>
 <h2 id="manifest">manifest</h2>
-<p>Objects that go to k3s together: the resources on the instance <code>config</code>
-and the instances nested in it. Every top-level instance is one k3s
-manifest, and k3s deletes what a manifest stops holding. An object that
-moves to another manifest is deleted when k3s applies the old manifest
-first, and a Namespace or a PersistentVolumeClaim takes what it holds
-with it. So objects that went to k3s together stay in one <code>manifest</code>,
-under the old name.</p>
+<p>Objects that go to the runner together: the resources on the instance
+<code>config</code> and the instances nested in it. Every top-level instance is one
+manifest, and the runner deletes what a manifest stops holding. An object
+that moves to another manifest is deleted when the runner applies the old
+manifest first, and a Namespace or a PersistentVolumeClaim takes what it
+holds with it. So objects that went to the runner together stay in one
+<code>manifest</code>, under the old name.</p>
 <pre><code class="language-nix">homelab.kubernetes.submodules.instances.cert-manager = {
   submodule = &quot;manifest&quot;;
   config = {

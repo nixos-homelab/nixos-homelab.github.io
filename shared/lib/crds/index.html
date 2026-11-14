@@ -346,6 +346,10 @@
 </li>
             
 <li>
+    <a href="../../options/k3s/" class="dropdown-item">k3s</a>
+</li>
+            
+<li>
     <a href="../../options/k8sss/" class="dropdown-item">k8sss</a>
 </li>
             
@@ -425,10 +429,10 @@
 <h2 id="libcrdspinned"><code>lib.crds.pinned</code></h2>
 <p>The CRDs pinned in <code>.github/workflows/pins.yaml</code> that no manifest of
 ours carries: Gateway API's experimental channel, which a CNI module
-installs (networking's cilium does), Cilium's, which its operator
-creates at runtime, and ClusterNetworkPolicy, which the manifests check
-emits. Each is the <code>src</code>, <code>key</code> and <code>unlocked</code> of <code>lib.pins.locked</code>,
-and <code>crds</code>, the CustomResourceDefinitions read at evaluation.</p>
+installs (networking's cilium does) and the <code>workload</code> submodule writes
+resources of. Each is the <code>src</code>, <code>key</code> and <code>unlocked</code> of
+<code>lib.pins.locked</code>, and <code>crds</code>, the CustomResourceDefinitions read at
+evaluation.</p>
 <h3 id="arguments">Arguments</h3>
 <p><code>pkgs</code>: nixpkgs</p></div>
             </div>
