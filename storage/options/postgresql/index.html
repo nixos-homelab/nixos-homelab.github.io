@@ -8,7 +8,7 @@
         <meta name="author" content="Anders Ingemann">
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>redis - NixOS Homelab</title>
+        <title>postgresql - NixOS Homelab</title>
         <link href="../../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../../css/brands.min.css" rel="stylesheet">
@@ -272,15 +272,15 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Shared</a>
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Shared</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../" class="dropdown-item">nixos-homelab-shared</a>
+    <a href="../../../shared/" class="dropdown-item">nixos-homelab-shared</a>
 </li>
                                     
 <li>
-    <a href="../../kubenix/" class="dropdown-item">kubenix</a>
+    <a href="../../../shared/kubenix/" class="dropdown-item">kubenix</a>
 </li>
                                     
   <li class="dropdown-submenu">
@@ -288,42 +288,85 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../../lib/checks/" class="dropdown-item">checks</a>
+    <a href="../../../shared/lib/checks/" class="dropdown-item">checks</a>
 </li>
             
 <li>
-    <a href="../../lib/crd2types/" class="dropdown-item">crd2types</a>
+    <a href="../../../shared/lib/crd2types/" class="dropdown-item">crd2types</a>
 </li>
             
 <li>
-    <a href="../../lib/crds/" class="dropdown-item">crds</a>
+    <a href="../../../shared/lib/crds/" class="dropdown-item">crds</a>
 </li>
             
 <li>
-    <a href="../../lib/homepage/" class="dropdown-item">homepage</a>
+    <a href="../../../shared/lib/homepage/" class="dropdown-item">homepage</a>
 </li>
             
 <li>
-    <a href="../../lib/images/" class="dropdown-item">images</a>
+    <a href="../../../shared/lib/images/" class="dropdown-item">images</a>
 </li>
             
 <li>
-    <a href="../../lib/ipv4/" class="dropdown-item">ipv4</a>
+    <a href="../../../shared/lib/ipv4/" class="dropdown-item">ipv4</a>
 </li>
             
 <li>
-    <a href="../../lib/k8s/" class="dropdown-item">k8s</a>
+    <a href="../../../shared/lib/k8s/" class="dropdown-item">k8s</a>
 </li>
             
 <li>
-    <a href="../../lib/pins/" class="dropdown-item">pins</a>
+    <a href="../../../shared/lib/pins/" class="dropdown-item">pins</a>
 </li>
             
 <li>
-    <a href="../../lib/setup-secrets/" class="dropdown-item">setup-secrets</a>
+    <a href="../../../shared/lib/setup-secrets/" class="dropdown-item">setup-secrets</a>
 </li>
     </ul>
   </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Options</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../../shared/options/" class="dropdown-item">Options</a>
+</li>
+            
+<li>
+    <a href="../../../shared/options/cert-manager/" class="dropdown-item">cert-manager</a>
+</li>
+            
+<li>
+    <a href="../../../shared/options/cluster/" class="dropdown-item">cluster</a>
+</li>
+            
+<li>
+    <a href="../../../shared/options/homepage/" class="dropdown-item">homepage</a>
+</li>
+            
+<li>
+    <a href="../../../shared/options/k3s/" class="dropdown-item">k3s</a>
+</li>
+            
+<li>
+    <a href="../../../shared/options/k8sss/" class="dropdown-item">k8sss</a>
+</li>
+            
+<li>
+    <a href="../../../shared/options/workloads/" class="dropdown-item">workloads</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Storage</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../" class="dropdown-item">nixos-homelab-storage</a>
+</li>
                                     
   <li class="dropdown-submenu">
     <a href="#" class="dropdown-item">Options</a>
@@ -334,43 +377,19 @@
 </li>
             
 <li>
-    <a href="../cert-manager/" class="dropdown-item">cert-manager</a>
-</li>
-            
-<li>
-    <a href="../cluster/" class="dropdown-item">cluster</a>
-</li>
-            
-<li>
-    <a href="../homepage/" class="dropdown-item">homepage</a>
-</li>
-            
-<li>
-    <a href="../k3s/" class="dropdown-item">k3s</a>
-</li>
-            
-<li>
-    <a href="../k8sss/" class="dropdown-item">k8sss</a>
-</li>
-            
-<li>
     <a href="../nfs-provisioner/" class="dropdown-item">nfs-provisioner</a>
 </li>
             
 <li>
-    <a href="../postgresql/" class="dropdown-item">postgresql</a>
+    <a href="./" class="dropdown-item active" aria-current="page">postgresql</a>
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">redis</a>
+    <a href="../redis/" class="dropdown-item">redis</a>
 </li>
             
 <li>
     <a href="../smb/" class="dropdown-item">smb</a>
-</li>
-            
-<li>
-    <a href="../workloads/" class="dropdown-item">workloads</a>
 </li>
     </ul>
   </li>
@@ -385,12 +404,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../postgresql/" class="nav-link">
+                                <a rel="prev" href="../nfs-provisioner/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../smb/" class="nav-link">
+                                <a rel="next" href="../redis/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -412,9 +431,9 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#redis" class="nav-link">redis</a>
+            <li class="nav-item" data-bs-level="1"><a href="#postgresql" class="nav-link">postgresql</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#homelabredis" class="nav-link">homelab.redis</a>
+            <li class="nav-item" data-bs-level="2"><a href="#homelabpostgresql" class="nav-link">homelab.postgresql</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -425,8 +444,8 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="redis">redis</h1>
-<h2 id="homelabredis">homelab.redis</h2>
+<h1 id="postgresql">postgresql</h1>
+<h2 id="homelabpostgresql">homelab.postgresql</h2>
 <table>
 <thead>
 <tr>
@@ -438,13 +457,68 @@
 <tbody>
 <tr>
 <td>databases</td>
-<td>attribute set of string</td>
-<td>A map of symbolic names to redis db indices. Overlaps will cause an assertion failure.</td>
+<td>attribute set of (submodule)</td>
+<td>Databases to create and backup, indexed by serviceName</td>
+</tr>
+<tr>
+<td>databases.<name>.backup.enable</td>
+<td>boolean</td>
+<td>Whether to enable backup of the database.</td>
+</tr>
+<tr>
+<td>databases.<name>.backup.schedule</td>
+<td>null or string</td>
+<td>Cronjob notation of when the database should be dumped</td>
+</tr>
+<tr>
+<td>databases.<name>.dbName</td>
+<td>null or string</td>
+<td>Name of the database</td>
+</tr>
+<tr>
+<td>databases.<name>.setupCommands</td>
+<td>list of string</td>
+<td>Commands to run as a superuser in the database right after it has been created</td>
+</tr>
+<tr>
+<td>databases.<name>.username</td>
+<td>null or string</td>
+<td>Database username</td>
+</tr>
+<tr>
+<td>debug</td>
+<td>boolean</td>
+<td>Whether to enable debug mode.</td>
+</tr>
+<tr>
+<td>dumpsVolume</td>
+<td>attribute set of anything</td>
+<td>Volume source (as specificed on the pod spec) to place database dumps in</td>
 </tr>
 <tr>
 <td>enable</td>
 <td>boolean</td>
-<td>Whether to enable Redis.</td>
+<td>Whether to enable PostgreSQL.</td>
+</tr>
+<tr>
+<td>extraSettings</td>
+<td>strings concatenated with "\n"</td>
+<td>Additional postgresql.conf settings</td>
+</tr>
+<tr>
+<td>image.entrypoint</td>
+<td>package</td>
+<td>The docker-entrypoint to install</td>
+</tr>
+<tr>
+<td>image.extensions</td>
+<td>list of string</td>
+<td>List of postgresql extensions to include in the image</td>
+</tr>
+<tr>
+<td>image.package</td>
+<td>package</td>
+<td>The postgresql_18 package to use.</td>
 </tr>
 </tbody>
 </table></div>
