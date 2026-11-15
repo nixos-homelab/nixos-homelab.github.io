@@ -16,7 +16,7 @@
         <link rel="prev" href="..">
       
       
-        <link rel="next" href="options/">
+        <link rel="next" href="options/forgejo/">
       
       
         
@@ -664,14 +664,42 @@
   
   
     <li class="md-nav__item">
-      <a href="options/" class="md-nav__link">
+      <a href="options/forgejo/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Options
+    forgejo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="options/homepage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    homepage
   
 
     
@@ -831,34 +859,6 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../finance/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -1178,34 +1178,6 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../media/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -1585,34 +1557,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../monitoring/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../monitoring/options/alloy/" class="md-nav__link">
         
   
@@ -1677,6 +1621,34 @@
     
   
     homepage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring/options/kube-state-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    kube-state-metrics
   
 
     
@@ -1976,34 +1948,6 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../networking/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -2375,34 +2319,6 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../personal/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -3010,34 +2926,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../shared/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../shared/options/cert-manager/" class="md-nav__link">
         
   
@@ -3353,34 +3241,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../storage/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../storage/options/nfs-provisioner/" class="md-nav__link">
         
   
@@ -3570,7 +3430,7 @@
 <p>Software development on top of <a href="https://github.com/nixos-homelab/shared">nixos-homelab</a>:
 a private Forgejo with its Actions runner in the cluster, and Renovate
 keeping the dependencies of its repositories up to date.</p>
-<p>For the full list of module options, see <a href="https://nixos-homelab.github.io/development/options/">the options reference</a>.</p>
+<p>For the full list of module options, see <a href="https://nixos-homelab.github.io/development/">the documentation</a>, under Options.</p>
 <h2 id="setup">Setup</h2>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="ss">inputs</span> <span class="o">=</span> <span class="p">{</span>
@@ -3584,7 +3444,14 @@ keeping the dependencies of its repositories up to date.</p>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="modules">Modules</h2>
-<p>None yet.</p>
+<ul>
+<li><strong>forgejo</strong>: Forgejo with its database in the <code>postgresql</code> module of
+  <code>homelab-storage</code>, local accounts only and registration closed. The web UI
+  and SSH share the address of its Gateway: HTTPS on 443, git over SSH on
+  port 22 to Forgejo's built-in SSH server. An admin user is created at
+  start, with a password <code>setup-secrets</code> generates into the Secret
+  <code>forgejo-secrets</code> (<code>ADMIN_PASSWORD</code>).</li>
+</ul>
 
 
 

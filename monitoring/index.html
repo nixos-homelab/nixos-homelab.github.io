@@ -16,7 +16,7 @@
         <link rel="prev" href="../media/options/sonarr/">
       
       
-        <link rel="next" href="options/">
+        <link rel="next" href="options/alloy/">
       
       
         
@@ -587,14 +587,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../development/options/" class="md-nav__link">
+      <a href="../development/options/forgejo/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Options
+    forgejo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/options/homepage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    homepage
   
 
     
@@ -754,34 +782,6 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../finance/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -1101,34 +1101,6 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../media/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -1585,34 +1557,6 @@
   
   
     <li class="md-nav__item">
-      <a href="options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="options/alloy/" class="md-nav__link">
         
   
@@ -1677,6 +1621,34 @@
     
   
     homepage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="options/kube-state-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    kube-state-metrics
   
 
     
@@ -1976,34 +1948,6 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../networking/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -2375,34 +2319,6 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../personal/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -3010,34 +2926,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../shared/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../shared/options/cert-manager/" class="md-nav__link">
         
   
@@ -3353,34 +3241,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../storage/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../storage/options/nfs-provisioner/" class="md-nav__link">
         
   
@@ -3570,7 +3430,7 @@
 <p>Observability stack on top of <a href="https://github.com/nixos-homelab/shared">nixos-homelab</a>:
 Grafana, long-term metrics storage, and the exporters/collectors that
 feed it, for both cluster and host-level monitoring.</p>
-<p>For the full list of module options, see <a href="https://nixos-homelab.github.io/monitoring/options/">the options reference</a>.</p>
+<p>For the full list of module options, see <a href="https://nixos-homelab.github.io/monitoring/">the documentation</a>, under Options.</p>
 <h2 id="setup">Setup</h2>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="ss">inputs</span> <span class="o">=</span> <span class="p">{</span>
@@ -3602,9 +3462,11 @@ feed it, for both cluster and host-level monitoring.</p>
 <li><strong>alloy</strong>: the <a href="https://grafana.com/docs/alloy/">Grafana Alloy</a> agent
   that scrapes and forwards metrics/logs, with a per-service
   <code>integrations</code> allow-list like <code>homepage</code>'s.</li>
+<li><strong>kube-state-metrics</strong>: metrics about the cluster's objects (Deployments,
+  pods, nodes, ...), Secrets excepted.</li>
 <li><strong>node-exporter</strong>: host-level metrics (CPU, memory, disk, network).</li>
-<li><strong>smartctl-exporter</strong>: disk S.M.A.R.T. health metrics.</li>
-<li><strong>zfs-exporter</strong>: ZFS pool metrics.</li>
+<li><strong>smartctl-exporter</strong>: disk S.M.A.R.T. health metrics, from a NixOS service on each host.</li>
+<li><strong>zfs-exporter</strong>: ZFS pool and dataset metrics, from a NixOS service on each host.</li>
 </ul>
 
 

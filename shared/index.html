@@ -587,14 +587,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../development/options/" class="md-nav__link">
+      <a href="../development/options/forgejo/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Options
+    forgejo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/options/homepage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    homepage
   
 
     
@@ -754,34 +782,6 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../finance/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -1101,34 +1101,6 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../media/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -1508,34 +1480,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../monitoring/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../monitoring/options/alloy/" class="md-nav__link">
         
   
@@ -1600,6 +1544,34 @@
     
   
     homepage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring/options/kube-state-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    kube-state-metrics
   
 
     
@@ -1899,34 +1871,6 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../networking/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -2298,34 +2242,6 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../personal/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -3013,34 +2929,6 @@
   
   
     <li class="md-nav__item">
-      <a href="options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="options/cert-manager/" class="md-nav__link">
         
   
@@ -3356,34 +3244,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../storage/options/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Options
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../storage/options/nfs-provisioner/" class="md-nav__link">
         
   
@@ -3578,7 +3438,7 @@ SSH-key access to the cluster. Databases and storage are in
 <a href="https://github.com/nixos-homelab/storage">nixos-homelab-storage</a>.</p>
 <p>See <a href="https://nixos-homelab.github.io/shared/kubenix/">the kubenix docs</a>
 for the typed resources and submodules of <code>homelab.kubernetes</code>, and
-<a href="https://nixos-homelab.github.io/shared/options/">the options reference</a> for the full list of module options.</p>
+<a href="https://nixos-homelab.github.io/shared/">the documentation</a>, under Options, for the full list of module options.</p>
 <h2 id="setup">Setup</h2>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="ss">inputs</span> <span class="o">=</span> <span class="p">{</span>
@@ -3605,8 +3465,10 @@ for the typed resources and submodules of <code>homelab.kubernetes</code>, and
   images to preload and the manifests to apply, and the facts the runner
   sets (kubeconfig, unit, Kubernetes version).</li>
 <li><strong>k3s</strong>: runs the cluster on <a href="https://k3s.io">k3s</a> (<code>homelab.k3s</code>): it
-  imports <code>cluster</code>, preloads its images, applies its manifests, and
-  drains the node at shutdown.</li>
+  imports <code>cluster</code>, preloads its images (each once, so a boot or deploy
+  imports only the images that changed), applies its manifests, removes
+  the manifests a deploy dropped along with their objects, and drains the
+  node at shutdown.</li>
 <li><strong>workloads</strong>: the settings every workload shares (<code>homelab.workloads</code>:
   domain, gateway class, ACME issuer, pod user and group) and kubenix
   configuration in <code>homelab.kubernetes</code>, with the <code>workload</code> submodule --

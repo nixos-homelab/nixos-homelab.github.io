@@ -9,15 +9,15 @@
          <lastmod>2026-11-15</lastmod>
     </url>
     <url>
-         <loc>https://nixos-homelab.github.io/development/options/</loc>
+         <loc>https://nixos-homelab.github.io/development/options/forgejo/</loc>
+         <lastmod>2026-11-15</lastmod>
+    </url>
+    <url>
+         <loc>https://nixos-homelab.github.io/development/options/homepage/</loc>
          <lastmod>2026-11-15</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/finance/</loc>
-         <lastmod>2026-11-15</lastmod>
-    </url>
-    <url>
-         <loc>https://nixos-homelab.github.io/finance/options/</loc>
          <lastmod>2026-11-15</lastmod>
     </url>
     <url>
@@ -38,10 +38,6 @@
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/media/lib/integration/</loc>
-         <lastmod>2026-11-15</lastmod>
-    </url>
-    <url>
-         <loc>https://nixos-homelab.github.io/media/options/</loc>
          <lastmod>2026-11-15</lastmod>
     </url>
     <url>
@@ -81,10 +77,6 @@
          <lastmod>2026-11-15</lastmod>
     </url>
     <url>
-         <loc>https://nixos-homelab.github.io/monitoring/options/</loc>
-         <lastmod>2026-11-15</lastmod>
-    </url>
-    <url>
          <loc>https://nixos-homelab.github.io/monitoring/options/alloy/</loc>
          <lastmod>2026-11-15</lastmod>
     </url>
@@ -94,6 +86,10 @@
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/monitoring/options/homepage/</loc>
+         <lastmod>2026-11-15</lastmod>
+    </url>
+    <url>
+         <loc>https://nixos-homelab.github.io/monitoring/options/kube-state-metrics/</loc>
          <lastmod>2026-11-15</lastmod>
     </url>
     <url>
@@ -118,10 +114,6 @@
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/networking/cilium/</loc>
-         <lastmod>2026-11-15</lastmod>
-    </url>
-    <url>
-         <loc>https://nixos-homelab.github.io/networking/options/</loc>
          <lastmod>2026-11-15</lastmod>
     </url>
     <url>
@@ -158,10 +150,6 @@
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/personal/</loc>
-         <lastmod>2026-11-15</lastmod>
-    </url>
-    <url>
-         <loc>https://nixos-homelab.github.io/personal/options/</loc>
          <lastmod>2026-11-15</lastmod>
     </url>
     <url>
@@ -225,10 +213,6 @@
          <lastmod>2026-11-15</lastmod>
     </url>
     <url>
-         <loc>https://nixos-homelab.github.io/shared/options/</loc>
-         <lastmod>2026-11-15</lastmod>
-    </url>
-    <url>
          <loc>https://nixos-homelab.github.io/shared/options/cert-manager/</loc>
          <lastmod>2026-11-15</lastmod>
     </url>
@@ -254,10 +238,6 @@
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/storage/</loc>
-         <lastmod>2026-11-15</lastmod>
-    </url>
-    <url>
-         <loc>https://nixos-homelab.github.io/storage/options/</loc>
          <lastmod>2026-11-15</lastmod>
     </url>
     <url>
