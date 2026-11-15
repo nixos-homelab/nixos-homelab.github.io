@@ -1,483 +1,3661 @@
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
         <meta name="author" content="Anders Ingemann">
+      
+      
+        <link rel="canonical" href="https://nixos-homelab.github.io/shared/kubenix/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../lib/checks/">
+      
+      
         
-        <link rel="shortcut icon" href="../../img/favicon.ico">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
         <title>kubenix - NixOS Homelab</title>
-        <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../css/fontawesome.min.css" rel="stylesheet">
-        <link href="../../css/brands.min.css" rel="stylesheet">
-        <link href="../../css/solid.min.css" rel="stylesheet">
-        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
-        <link href="../../css/base.css" rel="stylesheet">
-        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
-        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
-        <link href="../../css/extra.css" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script> 
-    </head>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
 
-    <body>
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-            <div class="container">
-                <a class="navbar-brand" href="../..">NixOS Homelab</a>
-                <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Expanded navigation -->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li class="nav-item">
-                                <a href="../.." class="nav-link">NixOS Homelab</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Development</a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../../development/" class="dropdown-item">nixos-homelab-development</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#" class="dropdown-item">Options</a>
-    <ul class="dropdown-menu">
-            
-<li>
-    <a href="../../development/options/" class="dropdown-item">Options</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Finance</a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../../finance/" class="dropdown-item">nixos-homelab-finance</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#" class="dropdown-item">Options</a>
-    <ul class="dropdown-menu">
-            
-<li>
-    <a href="../../finance/options/" class="dropdown-item">Options</a>
-</li>
-            
-<li>
-    <a href="../../finance/options/actualbudget/" class="dropdown-item">actualbudget</a>
-</li>
-            
-<li>
-    <a href="../../finance/options/ghostfolio/" class="dropdown-item">ghostfolio</a>
-</li>
-            
-<li>
-    <a href="../../finance/options/homepage/" class="dropdown-item">homepage</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Media</a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../../media/" class="dropdown-item">nixos-homelab-media</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#" class="dropdown-item">Lib</a>
-    <ul class="dropdown-menu">
-            
-<li>
-    <a href="../../media/lib/integration/" class="dropdown-item">integration</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#" class="dropdown-item">Options</a>
-    <ul class="dropdown-menu">
-            
-<li>
-    <a href="../../media/options/" class="dropdown-item">Options</a>
-</li>
-            
-<li>
-    <a href="../../media/options/flood/" class="dropdown-item">flood</a>
-</li>
-            
-<li>
-    <a href="../../media/options/homepage/" class="dropdown-item">homepage</a>
-</li>
-            
-<li>
-    <a href="../../media/options/plex/" class="dropdown-item">plex</a>
-</li>
-            
-<li>
-    <a href="../../media/options/prowlarr/" class="dropdown-item">prowlarr</a>
-</li>
-            
-<li>
-    <a href="../../media/options/radarr/" class="dropdown-item">radarr</a>
-</li>
-            
-<li>
-    <a href="../../media/options/rtorrent/" class="dropdown-item">rtorrent</a>
-</li>
-            
-<li>
-    <a href="../../media/options/sabnzbd/" class="dropdown-item">sabnzbd</a>
-</li>
-            
-<li>
-    <a href="../../media/options/sonarr/" class="dropdown-item">sonarr</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Monitoring</a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../../monitoring/" class="dropdown-item">nixos-homelab-monitoring</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#" class="dropdown-item">Options</a>
-    <ul class="dropdown-menu">
-            
-<li>
-    <a href="../../monitoring/options/" class="dropdown-item">Options</a>
-</li>
-            
-<li>
-    <a href="../../monitoring/options/alloy/" class="dropdown-item">alloy</a>
-</li>
-            
-<li>
-    <a href="../../monitoring/options/grafana/" class="dropdown-item">grafana</a>
-</li>
-            
-<li>
-    <a href="../../monitoring/options/homepage/" class="dropdown-item">homepage</a>
-</li>
-            
-<li>
-    <a href="../../monitoring/options/mimir/" class="dropdown-item">mimir</a>
-</li>
-            
-<li>
-    <a href="../../monitoring/options/node-exporter/" class="dropdown-item">node-exporter</a>
-</li>
-            
-<li>
-    <a href="../../monitoring/options/smartctl-exporter/" class="dropdown-item">smartctl-exporter</a>
-</li>
-            
-<li>
-    <a href="../../monitoring/options/zfs-exporter/" class="dropdown-item">zfs-exporter</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Networking</a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../../networking/" class="dropdown-item">nixos-homelab-networking</a>
-</li>
-                                    
-<li>
-    <a href="../../networking/cilium/" class="dropdown-item">Cilium network policies</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#" class="dropdown-item">Options</a>
-    <ul class="dropdown-menu">
-            
-<li>
-    <a href="../../networking/options/" class="dropdown-item">Options</a>
-</li>
-            
-<li>
-    <a href="../../networking/options/cilium/" class="dropdown-item">cilium</a>
-</li>
-            
-<li>
-    <a href="../../networking/options/client-vpn/" class="dropdown-item">client-vpn</a>
-</li>
-            
-<li>
-    <a href="../../networking/options/external-dns/" class="dropdown-item">external-dns</a>
-</li>
-            
-<li>
-    <a href="../../networking/options/homepage/" class="dropdown-item">homepage</a>
-</li>
-            
-<li>
-    <a href="../../networking/options/netutils/" class="dropdown-item">netutils</a>
-</li>
-            
-<li>
-    <a href="../../networking/options/privacy-vpn/" class="dropdown-item">privacy-vpn</a>
-</li>
-            
-<li>
-    <a href="../../networking/options/routed-ippool/" class="dropdown-item">routed-ippool</a>
-</li>
-            
-<li>
-    <a href="../../networking/options/unifi/" class="dropdown-item">unifi</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Personal</a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../../personal/" class="dropdown-item">nixos-homelab-personal</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#" class="dropdown-item">Options</a>
-    <ul class="dropdown-menu">
-            
-<li>
-    <a href="../../personal/options/" class="dropdown-item">Options</a>
-</li>
-            
-<li>
-    <a href="../../personal/options/homepage/" class="dropdown-item">homepage</a>
-</li>
-            
-<li>
-    <a href="../../personal/options/imap-backup/" class="dropdown-item">imap-backup</a>
-</li>
-            
-<li>
-    <a href="../../personal/options/immich/" class="dropdown-item">immich</a>
-</li>
-            
-<li>
-    <a href="../../personal/options/syncthing/" class="dropdown-item">syncthing</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Shared</a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../" class="dropdown-item">nixos-homelab-shared</a>
-</li>
-                                    
-<li>
-    <a href="./" class="dropdown-item active" aria-current="page">kubenix</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#" class="dropdown-item">Lib</a>
-    <ul class="dropdown-menu">
-            
-<li>
-    <a href="../lib/checks/" class="dropdown-item">checks</a>
-</li>
-            
-<li>
-    <a href="../lib/crd2types/" class="dropdown-item">crd2types</a>
-</li>
-            
-<li>
-    <a href="../lib/crds/" class="dropdown-item">crds</a>
-</li>
-            
-<li>
-    <a href="../lib/homepage/" class="dropdown-item">homepage</a>
-</li>
-            
-<li>
-    <a href="../lib/images/" class="dropdown-item">images</a>
-</li>
-            
-<li>
-    <a href="../lib/ipv4/" class="dropdown-item">ipv4</a>
-</li>
-            
-<li>
-    <a href="../lib/k8s/" class="dropdown-item">k8s</a>
-</li>
-            
-<li>
-    <a href="../lib/pins/" class="dropdown-item">pins</a>
-</li>
-            
-<li>
-    <a href="../lib/setup-secrets/" class="dropdown-item">setup-secrets</a>
-</li>
-    </ul>
-  </li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#" class="dropdown-item">Options</a>
-    <ul class="dropdown-menu">
-            
-<li>
-    <a href="../options/" class="dropdown-item">Options</a>
-</li>
-            
-<li>
-    <a href="../options/cert-manager/" class="dropdown-item">cert-manager</a>
-</li>
-            
-<li>
-    <a href="../options/cluster/" class="dropdown-item">cluster</a>
-</li>
-            
-<li>
-    <a href="../options/homepage/" class="dropdown-item">homepage</a>
-</li>
-            
-<li>
-    <a href="../options/k3s/" class="dropdown-item">k3s</a>
-</li>
-            
-<li>
-    <a href="../options/k8sss/" class="dropdown-item">k8sss</a>
-</li>
-            
-<li>
-    <a href="../options/workloads/" class="dropdown-item">workloads</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Storage</a>
-                                <ul class="dropdown-menu">
-                                    
-<li>
-    <a href="../../storage/" class="dropdown-item">nixos-homelab-storage</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#" class="dropdown-item">Options</a>
-    <ul class="dropdown-menu">
-            
-<li>
-    <a href="../../storage/options/" class="dropdown-item">Options</a>
-</li>
-            
-<li>
-    <a href="../../storage/options/nfs-provisioner/" class="dropdown-item">nfs-provisioner</a>
-</li>
-            
-<li>
-    <a href="../../storage/options/postgresql/" class="dropdown-item">postgresql</a>
-</li>
-            
-<li>
-    <a href="../../storage/options/redis/" class="dropdown-item">redis</a>
-</li>
-            
-<li>
-    <a href="../../storage/options/smb/" class="dropdown-item">smb</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    <ul class="nav navbar-nav ms-md-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../" class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../lib/checks/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
-        </button>
-    </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
-        <ul class="nav flex-column">
-            
-            <li class="nav-item" data-bs-level="1"><a href="#kubenix" class="nav-link">kubenix</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#custom-resources" class="nav-link">Custom resources</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#workload" class="nav-link">workload</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#deployment-daemonset-job-cronjob-script" class="nav-link">deployment, daemonset, job, cronjob, script</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#service" class="nav-link">service</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#pods" class="nav-link">pods</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#manifest" class="nav-link">manifest</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-        </ul>
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../nix-docs/options.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kubenix" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
-</div></div>
-                    <div class="col-md-9" role="main">
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="NixOS Homelab" class="md-header__button md-logo" aria-label="NixOS Homelab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NixOS Homelab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              kubenix
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  NixOS Homelab
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../development/" class="md-tabs__link">
+          
+  
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../finance/" class="md-tabs__link">
+          
+  
+  
+  Finance
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../media/" class="md-tabs__link">
+          
+  
+  
+  Media
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../monitoring/" class="md-tabs__link">
+          
+  
+  
+  Monitoring
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../networking/" class="md-tabs__link">
+          
+  
+  
+  Networking
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../personal/" class="md-tabs__link">
+          
+  
+  
+  Personal
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Shared
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../storage/" class="md-tabs__link">
+          
+  
+  
+  Storage
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="NixOS Homelab" class="md-nav__button md-logo" aria-label="NixOS Homelab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    NixOS Homelab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NixOS Homelab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    nixos-homelab-development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Options
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Finance
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    nixos-homelab-finance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Options
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finance/options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finance/options/actualbudget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    actualbudget
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finance/options/ghostfolio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ghostfolio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finance/options/homepage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    homepage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Media
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Media
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    nixos-homelab-media
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lib
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lib
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../media/lib/integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Options
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../media/options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../media/options/flood/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    flood
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../media/options/homepage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    homepage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../media/options/plex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    plex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../media/options/prowlarr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    prowlarr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../media/options/radarr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    radarr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../media/options/rtorrent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    rtorrent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../media/options/sabnzbd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sabnzbd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../media/options/sonarr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sonarr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoring
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    nixos-homelab-monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Options
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/options/alloy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    alloy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/options/grafana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    grafana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/options/homepage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    homepage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/options/mimir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    mimir
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/options/node-exporter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    node-exporter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/options/smartctl-exporter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    smartctl-exporter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/options/zfs-exporter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    zfs-exporter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Networking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    nixos-homelab-networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/cilium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cilium network policies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Options
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/options/cilium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cilium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/options/client-vpn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    client-vpn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/options/external-dns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    external-dns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/options/homepage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    homepage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/options/netutils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    netutils
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/options/privacy-vpn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    privacy-vpn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/options/routed-ippool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    routed-ippool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/options/unifi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    unifi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Personal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Personal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../personal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    nixos-homelab-personal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Options
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../personal/options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../personal/options/homepage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    homepage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../personal/options/imap-backup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    imap-backup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../personal/options/immich/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    immich
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../personal/options/syncthing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    syncthing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shared
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    nixos-homelab-shared
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    kubenix
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    kubenix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#custom-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        workload
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-daemonset-job-cronjob-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        deployment, daemonset, job, cronjob, script
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        manifest
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lib
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lib
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lib/checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lib/crd2types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    crd2types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lib/crds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    crds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lib/homepage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    homepage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lib/images/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    images
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lib/ipv4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ipv4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lib/k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    k8s
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lib/pins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    pins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lib/setup-secrets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    setup-secrets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Options
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../options/cert-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cert-manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../options/cluster/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cluster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../options/homepage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    homepage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../options/k3s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    k3s
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../options/k8sss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    k8sss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../options/workloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    workloads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Storage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    nixos-homelab-storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Options
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/options/nfs-provisioner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    nfs-provisioner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/options/postgresql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    postgresql
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/options/redis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    redis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/options/smb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    smb
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#custom-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        workload
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-daemonset-job-cronjob-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        deployment, daemonset, job, cronjob, script
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        manifest
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
 
 <h1 id="kubenix">kubenix</h1>
 <p>The <code>workloads</code> module holds the settings every workload shares, in
@@ -504,21 +3682,21 @@ API server. A list the CRD merges by one key takes an attribute set by
 that key, like the lists kubenix keys in its core types: Gateway
 listeners by <code>name</code>, so an instance changes one listener of its Gateway
 (<code>mkForce</code> where the workload sets the field already):</p>
-<pre><code class="language-nix">homelab.kubernetes.submodules.instances.grafana.config.kubernetes.resources.gateways.grafana.spec.listeners.grafana.port =
-  lib.mkForce 8443;
-</code></pre>
+<div class="highlight"><pre><span></span><code>homelab<span class="o">.</span>kubernetes<span class="o">.</span>submodules<span class="o">.</span>instances<span class="o">.</span>grafana<span class="o">.</span>config<span class="o">.</span>kubernetes<span class="o">.</span>resources<span class="o">.</span>gateways<span class="o">.</span>grafana<span class="o">.</span>spec<span class="o">.</span>listeners<span class="o">.</span>grafana<span class="o">.</span><span class="ss">port</span> <span class="o">=</span>
+  lib<span class="o">.</span>mkForce <span class="mi">8443</span><span class="p">;</span>
+</code></pre></div>
 <p>A list still works there; its items keep their order, ahead of those
 given by key. A CRD that starts using a schema construct crd2types doesn't
 know fails evaluation, naming where.</p>
-<pre><code class="language-nix">homelab.kubernetes.kubernetes.resources.certificates.plex = {
-  metadata.namespace = &quot;plex&quot;;
-  spec = {
-    secretName = &quot;plex-tls&quot;;
-    dnsNames = [ &quot;plex.example.org&quot; ];
-    issuerRef = { kind = &quot;ClusterIssuer&quot;; name = &quot;letsencrypt-production&quot;; };
-  };
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code>homelab<span class="o">.</span>kubernetes<span class="o">.</span>kubernetes<span class="o">.</span>resources<span class="o">.</span>certificates<span class="o">.</span><span class="ss">plex</span> <span class="o">=</span> <span class="p">{</span>
+  metadata<span class="o">.</span><span class="ss">namespace</span> <span class="o">=</span> <span class="s2">&quot;plex&quot;</span><span class="p">;</span>
+  <span class="ss">spec</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">secretName</span> <span class="o">=</span> <span class="s2">&quot;plex-tls&quot;</span><span class="p">;</span>
+    <span class="ss">dnsNames</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;plex.example.org&quot;</span> <span class="p">];</span>
+    <span class="ss">issuerRef</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">kind</span> <span class="o">=</span> <span class="s2">&quot;ClusterIssuer&quot;</span><span class="p">;</span> <span class="ss">name</span> <span class="o">=</span> <span class="s2">&quot;letsencrypt-production&quot;</span><span class="p">;</span> <span class="p">};</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>A module adds the types of a CRD it installs to
 <code>homelab.kubernetes.kubernetes.customTypes</code>. Cluster-scoped resources
 need <code>metadata.namespace = null</code>.</p>
@@ -526,20 +3704,20 @@ need <code>metadata.namespace = null</code>.</p>
 <p>A long-running workload: a Namespace and a Deployment named after the
 instance, and depending on the args a PersistentVolumeClaim, a Service and
 a Gateway with its HTTPRoutes.</p>
-<pre><code class="language-nix">homelab.kubernetes.submodules.instances.grafana = {
-  submodule = &quot;workload&quot;;
-  args = {
-    allowEgress = [ &quot;internet&quot; &quot;mimir&quot; &quot;postgresql&quot; ];
-    dataPath = &quot;/var/lib/grafana&quot;;
-    ingressPort = 3000;
-    ports.web = 3000;
-    container = {
-      image = &quot;grafana:latest&quot;;
-      env = [ { name = &quot;GF_PATHS_DATA&quot;; value = &quot;/var/lib/grafana&quot;; } ];
-    };
-  };
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code>homelab<span class="o">.</span>kubernetes<span class="o">.</span>submodules<span class="o">.</span>instances<span class="o">.</span><span class="ss">grafana</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">submodule</span> <span class="o">=</span> <span class="s2">&quot;workload&quot;</span><span class="p">;</span>
+  <span class="ss">args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">allowEgress</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;internet&quot;</span> <span class="s2">&quot;mimir&quot;</span> <span class="s2">&quot;postgresql&quot;</span> <span class="p">];</span>
+    <span class="ss">dataPath</span> <span class="o">=</span> <span class="s2">&quot;/var/lib/grafana&quot;</span><span class="p">;</span>
+    <span class="ss">ingressPort</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+    ports<span class="o">.</span><span class="ss">web</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+    <span class="ss">container</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="ss">image</span> <span class="o">=</span> <span class="s2">&quot;grafana:latest&quot;</span><span class="p">;</span>
+      <span class="ss">env</span> <span class="o">=</span> <span class="p">[</span> <span class="p">{</span> <span class="ss">name</span> <span class="o">=</span> <span class="s2">&quot;GF_PATHS_DATA&quot;</span><span class="p">;</span> <span class="ss">value</span> <span class="o">=</span> <span class="s2">&quot;/var/lib/grafana&quot;</span><span class="p">;</span> <span class="p">}</span> <span class="p">];</span>
+    <span class="p">};</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
 <ul>
 <li><code>container</code>: the main container, named after the instance, as kubenix's
   Container type. It's locked down by default
@@ -578,11 +3756,11 @@ lets pods labeled <code>cluster.local/&lt;workload&gt;-egress: allow</code> reac
 <p>Anything else goes on the instance <code>config</code>, where the objects are
 kubenix resources. Lists kubenix keys by name (containers, volumes, ports)
 take attribute sets:</p>
-<pre><code class="language-nix">homelab.kubernetes.submodules.instances.unifi.config.kubernetes.resources = {
-  services.unifi.spec.type = &quot;LoadBalancer&quot;;
-  deployments.unifi.spec.template.spec.volumes.config.hostPath.path = &quot;/srv/unifi&quot;;
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code>homelab<span class="o">.</span>kubernetes<span class="o">.</span>submodules<span class="o">.</span>instances<span class="o">.</span>unifi<span class="o">.</span>config<span class="o">.</span>kubernetes<span class="o">.</span><span class="ss">resources</span> <span class="o">=</span> <span class="p">{</span>
+  services<span class="o">.</span>unifi<span class="o">.</span>spec<span class="o">.</span><span class="ss">type</span> <span class="o">=</span> <span class="s2">&quot;LoadBalancer&quot;</span><span class="p">;</span>
+  deployments<span class="o">.</span>unifi<span class="o">.</span>spec<span class="o">.</span>template<span class="o">.</span>spec<span class="o">.</span>volumes<span class="o">.</span>config<span class="o">.</span>hostPath<span class="o">.</span><span class="ss">path</span> <span class="o">=</span> <span class="s2">&quot;/srv/unifi&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
 <p><code>pod-spec.nix</code> holds the main container and the pod security context for
 every submodule that runs pods; <code>submodules.defaults</code> with
 <code>features = [ "pod-spec" ]</code> reaches all of them.</p>
@@ -596,29 +3774,29 @@ unless the instance sets <code>restartPolicy</code>. <code>cronjob</code> takes 
 mounted at a path hashed from it, so a changed script changes the pod
 template of the Job, the runner replaces the Job and it runs again. It runs in
 <code>image</code>, the container-utils of the cluster unless set.</p>
-<pre><code class="language-nix">homelab.kubernetes.submodules.instances.backup-grafana-db = {
-  submodule = &quot;cronjob&quot;;
-  args = {
-    schedule = &quot;10 3 * * *&quot;;
-    allowEgress = [ &quot;postgresql&quot; ];
-    container = {
-      image = &quot;postgresql:latest&quot;;
-      command = [ &quot;pg_dump&quot; &quot;--file=/dumps/grafana.pgdump&quot; ];
-      volumeMounts.&quot;/dumps&quot;.name = &quot;dumps&quot;;
-    };
-  };
-  config.kubernetes.resources.cronJobs.backup-grafana-db.spec.jobTemplate.spec.template.spec.volumes.dumps.persistentVolumeClaim.claimName =
-    &quot;database-dumps&quot;;
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code>homelab<span class="o">.</span>kubernetes<span class="o">.</span>submodules<span class="o">.</span>instances<span class="o">.</span><span class="ss">backup-grafana-db</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">submodule</span> <span class="o">=</span> <span class="s2">&quot;cronjob&quot;</span><span class="p">;</span>
+  <span class="ss">args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">schedule</span> <span class="o">=</span> <span class="s2">&quot;10 3 * * *&quot;</span><span class="p">;</span>
+    <span class="ss">allowEgress</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;postgresql&quot;</span> <span class="p">];</span>
+    <span class="ss">container</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="ss">image</span> <span class="o">=</span> <span class="s2">&quot;postgresql:latest&quot;</span><span class="p">;</span>
+      <span class="ss">command</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;pg_dump&quot;</span> <span class="s2">&quot;--file=/dumps/grafana.pgdump&quot;</span> <span class="p">];</span>
+      volumeMounts<span class="o">.</span><span class="s2">&quot;/dumps&quot;</span><span class="o">.</span><span class="ss">name</span> <span class="o">=</span> <span class="s2">&quot;dumps&quot;</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">};</span>
+  config<span class="o">.</span>kubernetes<span class="o">.</span>resources<span class="o">.</span>cronJobs<span class="o">.</span>backup-grafana-db<span class="o">.</span>spec<span class="o">.</span>jobTemplate<span class="o">.</span>spec<span class="o">.</span>template<span class="o">.</span>spec<span class="o">.</span>volumes<span class="o">.</span>dumps<span class="o">.</span>persistentVolumeClaim<span class="o">.</span><span class="ss">claimName</span> <span class="o">=</span>
+    <span class="s2">&quot;database-dumps&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
 <h2 id="service">service</h2>
 <p>A Service named after the instance, selecting the pods named so. <code>ports</code>
 by name: a port number, or the fields of a ServicePort.</p>
-<pre><code class="language-nix">homelab.kubernetes.submodules.instances.alloy = {
-  submodule = &quot;service&quot;;
-  args.ports.web = 3000;
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code>homelab<span class="o">.</span>kubernetes<span class="o">.</span>submodules<span class="o">.</span>instances<span class="o">.</span><span class="ss">alloy</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">submodule</span> <span class="o">=</span> <span class="s2">&quot;service&quot;</span><span class="p">;</span>
+  args<span class="o">.</span>ports<span class="o">.</span><span class="ss">web</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
 <h2 id="pods">pods</h2>
 <p>The policy intent of pods something else runs (a release, a static
 manifest, another module): <code>ports</code>, <code>policyPorts</code>, <code>apiServerPorts</code> and
@@ -626,19 +3804,19 @@ manifest, another module): <code>ports</code>, <code>policyPorts</code>, <code>a
 in the namespace of the instance, <code>app.kubernetes.io/name</code> of the
 instance name unless set. It writes no objects; the CNI module adds the
 policies as for any pod.</p>
-<pre><code class="language-nix">homelab.kubernetes.submodules.instances.cert-manager.config.submodules.instances.webhook = {
-  name = &quot;cert-manager-webhook&quot;;
-  submodule = &quot;pods&quot;;
-  args = {
-    selector = {
-      &quot;app.kubernetes.io/name&quot; = &quot;webhook&quot;;
-      &quot;app.kubernetes.io/instance&quot; = &quot;cert-manager&quot;;
-    };
-    ports.https = 10250;
-    apiServerPorts = [ &quot;https&quot; ];
-  };
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code>homelab<span class="o">.</span>kubernetes<span class="o">.</span>submodules<span class="o">.</span>instances<span class="o">.</span>cert-manager<span class="o">.</span>config<span class="o">.</span>submodules<span class="o">.</span>instances<span class="o">.</span><span class="ss">webhook</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">name</span> <span class="o">=</span> <span class="s2">&quot;cert-manager-webhook&quot;</span><span class="p">;</span>
+  <span class="ss">submodule</span> <span class="o">=</span> <span class="s2">&quot;pods&quot;</span><span class="p">;</span>
+  <span class="ss">args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">selector</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s2">&quot;app.kubernetes.io/name&quot;</span> <span class="o">=</span> <span class="s2">&quot;webhook&quot;</span><span class="p">;</span>
+      <span class="s2">&quot;app.kubernetes.io/instance&quot;</span> <span class="o">=</span> <span class="s2">&quot;cert-manager&quot;</span><span class="p">;</span>
+    <span class="p">};</span>
+    ports<span class="o">.</span><span class="ss">https</span> <span class="o">=</span> <span class="mi">10250</span><span class="p">;</span>
+    <span class="ss">apiServerPorts</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;https&quot;</span> <span class="p">];</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
 <h2 id="manifest">manifest</h2>
 <p>Objects that go to the runner together: the resources on the instance
 <code>config</code> and the instances nested in it. Every top-level instance is one
@@ -647,106 +3825,87 @@ that moves to another manifest is deleted when the runner applies the old
 manifest first, and a Namespace or a PersistentVolumeClaim takes what it
 holds with it. So objects that went to the runner together stay in one
 <code>manifest</code>, under the old name.</p>
-<pre><code class="language-nix">homelab.kubernetes.submodules.instances.cert-manager = {
-  submodule = &quot;manifest&quot;;
-  config = {
-    kubernetes.resources.namespaces.cert-manager.metadata.namespace = null;
-    submodules.instances = {
-      webhook = {
-        name = &quot;cert-manager-webhook-libdns&quot;;
-        submodule = &quot;deployment&quot;;
-        args.container.image = &quot;cert-manager-webhook-libdns:latest&quot;;
-      };
-      webhook-service = {
-        name = &quot;cert-manager-webhook-libdns&quot;;
-        submodule = &quot;service&quot;;
-        args.ports.https = { port = 443; targetPort = 8443; };
-      };
-    };
-  };
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code>homelab<span class="o">.</span>kubernetes<span class="o">.</span>submodules<span class="o">.</span>instances<span class="o">.</span><span class="ss">cert-manager</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">submodule</span> <span class="o">=</span> <span class="s2">&quot;manifest&quot;</span><span class="p">;</span>
+  <span class="ss">config</span> <span class="o">=</span> <span class="p">{</span>
+    kubernetes<span class="o">.</span>resources<span class="o">.</span>namespaces<span class="o">.</span>cert-manager<span class="o">.</span>metadata<span class="o">.</span><span class="ss">namespace</span> <span class="o">=</span> <span class="no">null</span><span class="p">;</span>
+    submodules<span class="o">.</span><span class="ss">instances</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="ss">webhook</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="ss">name</span> <span class="o">=</span> <span class="s2">&quot;cert-manager-webhook-libdns&quot;</span><span class="p">;</span>
+        <span class="ss">submodule</span> <span class="o">=</span> <span class="s2">&quot;deployment&quot;</span><span class="p">;</span>
+        args<span class="o">.</span>container<span class="o">.</span><span class="ss">image</span> <span class="o">=</span> <span class="s2">&quot;cert-manager-webhook-libdns:latest&quot;</span><span class="p">;</span>
+      <span class="p">};</span>
+      <span class="ss">webhook-service</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="ss">name</span> <span class="o">=</span> <span class="s2">&quot;cert-manager-webhook-libdns&quot;</span><span class="p">;</span>
+        <span class="ss">submodule</span> <span class="o">=</span> <span class="s2">&quot;service&quot;</span><span class="p">;</span>
+        args<span class="o">.</span>ports<span class="o">.</span><span class="ss">https</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">port</span> <span class="o">=</span> <span class="mi">443</span><span class="p">;</span> <span class="ss">targetPort</span> <span class="o">=</span> <span class="mi">8443</span><span class="p">;</span> <span class="p">};</span>
+      <span class="p">};</span>
+    <span class="p">};</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>All submodules, <code>workload</code> and <code>manifest</code> included, put their objects in the namespace of
 the instance they're nested in, or the one named after the instance at the
 top; set <code>config.kubernetes.namespace</code> for another. Two nested instances
 whose objects share a name, like a Deployment and the Service in
 front of it, take keys
-of their own and the object name as <code>name</code>.</p></div>
-            </div>
-        </div>
+of their own and the object name as <code>name</code>.</p>
 
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script src="../../js/bootstrap.bundle.min.js"></script>
-        <script>
-            var base_url = "../..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="../../js/base.js"></script>
-        <script src="../../search/main.js"></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-            <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
-                    <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
 </div>
-
-    </body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.sections", "content.code.copy", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../nix-docs/options.js"></script>
+      
+    
+  </body>
 </html>
