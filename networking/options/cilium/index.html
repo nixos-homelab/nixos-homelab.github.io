@@ -3708,7 +3708,7 @@
 <tr aria-expanded="false" class="nd-option" id="homelab.cilium.extraConfig" tabindex="0">
 <td><a class="nd-name" href="#homelab.cilium.extraConfig"><code>extraConfig</code></a></td>
 <td>attribute set of anything</td>
-<td><code>{ }</code></td>
+<td><code>{ }<wbr></code></td>
 <td>Additional Cilium helm configuration values to apply</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
@@ -3725,7 +3725,7 @@
 <td><a class="nd-name" href="#homelab.cilium.firewall.enable"><code>firewall.<wbr>enable</code></a></td>
 <td>boolean</td>
 <td><code>false</code></td>
-<td>Whether to enable the Cilium host firewall in place of the NixOS firewall. The ports in <code>networking.firewall</code> are open to the <code>local-lan</code> CIDR group, those in <code>networking.firewall.interfaces.privacy-vpn</code> to any source, everything to the cluster .</td>
+<td>Whether to enable the Cilium host firewall in place of the NixOS …</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
@@ -3746,7 +3746,7 @@ cluster
 <tr aria-expanded="false" class="nd-option" id="homelab.cilium.lbIpBlock4.cidr" tabindex="0">
 <td><a class="nd-name" href="#homelab.cilium.lbIpBlock4.cidr"><code>lbIpBlock4.<wbr>cidr</code></a></td>
 <td>null or string</td>
-<td><code>&quot;10.44.0.0/16&quot;</code></td>
+<td><code>&quot;10.<wbr>44.<wbr>0.<wbr>0/<wbr>16&quot;</code></td>
 <td>IPv4 CIDR for the load balancers</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
@@ -3762,7 +3762,7 @@ cluster
 <tr aria-expanded="false" class="nd-option" id="homelab.cilium.lbIpBlock4.start" tabindex="0">
 <td><a class="nd-name" href="#homelab.cilium.lbIpBlock4.start"><code>lbIpBlock4.<wbr>start</code></a></td>
 <td>string</td>
-<td><code>&quot;10.44.0.2&quot;</code></td>
+<td><code>&quot;10.<wbr>44.<wbr>0.<wbr>2&quot;</code></td>
 <td>IP Pool range start for the load balancers</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
@@ -3778,7 +3778,7 @@ cluster
 <tr aria-expanded="false" class="nd-option" id="homelab.cilium.lbIpBlock4.stop" tabindex="0">
 <td><a class="nd-name" href="#homelab.cilium.lbIpBlock4.stop"><code>lbIpBlock4.<wbr>stop</code></a></td>
 <td>string</td>
-<td><code>&quot;10.44.0.254&quot;</code></td>
+<td><code>&quot;10.<wbr>44.<wbr>0.<wbr>254&quot;</code></td>
 <td>IP Pool range end for the load balancers</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
@@ -3842,8 +3842,8 @@ cluster
 <tr aria-expanded="false" class="nd-option" id="homelab.cilium.masquerade.enable" tabindex="0">
 <td><a class="nd-name" href="#homelab.cilium.masquerade.enable"><code>masquerade.<wbr>enable</code></a></td>
 <td>boolean</td>
-<td><code>config.homelab.privacy-vpn.enable</code></td>
-<td>Whether to turn on masquerading (automatically turned on if ${config.homelab.privacy-vpn.enable} is on)</td>
+<td><code>config.<wbr>homelab.<wbr>privacy-<wbr>…</code></td>
+<td>Whether to turn on masquerading (automatically turned on if …</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">

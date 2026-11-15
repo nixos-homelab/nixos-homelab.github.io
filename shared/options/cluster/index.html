@@ -3565,7 +3565,7 @@
 <td><a class="nd-name" href="#homelab.cluster.backup.hostPaths"><code>backup.<wbr>hostPaths</code></a></td>
 <td>list of string</td>
 <td><code>[ ]</code></td>
-<td>List of paths on the host that <em>should</em> be backed up, this option does not configure a backup, it is only meant for aggregation</td>
+<td>List of paths on the host that <em>should</em> be backed up, this option does …</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
@@ -3580,8 +3580,8 @@
 <tr aria-expanded="false" class="nd-option" id="homelab.cluster.backup.volumes" tabindex="0">
 <td><a class="nd-name" href="#homelab.cluster.backup.volumes"><code>backup.<wbr>volumes</code></a></td>
 <td>attribute set of attribute set of list of string</td>
-<td><code>{ }</code></td>
-<td>A map of namespace -&gt; PV claim name -&gt; paths that <em>should</em> be backed up, this option does not configure a backup, it is only meant for aggregation</td>
+<td><code>{ }<wbr></code></td>
+<td>A map of namespace -&gt; PV claim name -&gt; paths that <em>should</em> be backed up, …</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
@@ -3596,7 +3596,7 @@
 <tr aria-expanded="false" class="nd-option" id="homelab.cluster.debugTools" tabindex="0">
 <td><a class="nd-name" href="#homelab.cluster.debugTools"><code>debugTools</code></a></td>
 <td>list of package</td>
-<td><code>&quot;bash, coreutils, netcat, curl, jq, dig, …</code></td>
+<td><code>&quot;bash, coreutils,…</code></td>
 <td>Tools to embed in container images when debugging is enabled</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
@@ -3647,8 +3647,8 @@
 <tr aria-expanded="false" class="nd-option" id="homelab.cluster.imageLocks" tabindex="0">
 <td><a class="nd-name" href="#homelab.cluster.imageLocks"><code>imageLocks</code></a></td>
 <td>attribute set of list of string</td>
-<td><code>{ }</code></td>
-<td>The image refs each lock file of <code>lib.images.locked</code> and <code>lib.images.chart</code> pins, by its path, for <code>lock-images</code> to re-lock them when what names them changes</td>
+<td><code>{ }<wbr></code></td>
+<td>The image refs each lock file of <code>lib.images.locked</code> and …</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
@@ -3664,7 +3664,7 @@
 <td><a class="nd-name" href="#homelab.cluster.images"><code>images</code></a></td>
 <td>list of package</td>
 <td><code>[ ]</code></td>
-<td>Container images to preload on the node, so that nothing is pulled at runtime</td>
+<td>Container images to preload on the node, so that nothing is pulled at …</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
@@ -3680,7 +3680,7 @@
 <td><a class="nd-name" href="#homelab.cluster.kubeconfig"><code>kubeconfig</code></a></td>
 <td>string</td>
 <td>—</td>
-<td>Path of a kubeconfig with admin rights on the node, as the runner writes it. Set by the runner.</td>
+<td>Path of a kubeconfig with admin rights on the node, as the runner writes …</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
@@ -3693,7 +3693,7 @@
 <td><a class="nd-name" href="#homelab.cluster.kubernetesVersion"><code>kubernetesVersion</code></a></td>
 <td>string</td>
 <td>—</td>
-<td>The Kubernetes version the cluster runs (<code>1.35.8</code>). Set by the runner.</td>
+<td>The Kubernetes version the cluster runs (<code>1.35.8</code>).</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
@@ -3705,8 +3705,8 @@
 <tr aria-expanded="false" class="nd-option" id="homelab.cluster.manifests" tabindex="0">
 <td><a class="nd-name" href="#homelab.cluster.manifests"><code>manifests</code></a></td>
 <td>attribute set of (submodule)</td>
-<td><code>{ }</code></td>
-<td>Manifests for the runner to apply, by name. The runner deletes what a manifest stops holding, so an object stays in the manifest it was in.</td>
+<td><code>{ }<wbr></code></td>
+<td>Manifests for the runner to apply, by name.</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
@@ -3767,7 +3767,7 @@
 <td><a class="nd-name" href="#homelab.cluster.payload"><code>payload</code></a></td>
 <td>package</td>
 <td>—</td>
-<td>A directory of the manifests as the runner applies them; build <code>nixosConfigurations.&lt;host&gt;.config.homelab.cluster.payload</code> to look at them. Set by the runner.</td>
+<td>A directory of the manifests as the runner applies them; build …</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
@@ -3779,7 +3779,7 @@
 <tr aria-expanded="false" class="nd-option" id="homelab.cluster.podCidr4" tabindex="0">
 <td><a class="nd-name" href="#homelab.cluster.podCidr4"><code>podCidr4</code></a></td>
 <td>string</td>
-<td><code>&quot;10.42.0.0/16&quot;</code></td>
+<td><code>&quot;10.<wbr>42.<wbr>0.<wbr>0/<wbr>16&quot;</code></td>
 <td>IPv4 CIDR for the pods</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
@@ -3809,7 +3809,7 @@
 <td><a class="nd-name" href="#homelab.cluster.providedComponents"><code>providedComponents</code></a></td>
 <td>list of (one of &quot;ingress&quot;, &quot;load-balancer&quot;, &quot;metrics-server&quot;)</td>
 <td><code>[ ]</code></td>
-<td>Cluster components a module deploys itself, so the runner leaves out the one it may bundle</td>
+<td>Cluster components a module deploys itself, so the runner leaves out the …</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
@@ -3825,7 +3825,7 @@
 <td><a class="nd-name" href="#homelab.cluster.runtimeCRDs"><code>runtimeCRDs</code></a></td>
 <td>list of absolute path</td>
 <td><code>[ ]</code></td>
-<td>CustomResourceDefinition files of resources whose CRDs no manifest carries, as an operator creates them at runtime (a CNI's), for the manifests check to validate those resources against</td>
+<td>CustomResourceDefinition files of resources whose CRDs no manifest …</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
@@ -3840,8 +3840,8 @@
 <tr aria-expanded="false" class="nd-option" id="homelab.cluster.sourceLocks" tabindex="0">
 <td><a class="nd-name" href="#homelab.cluster.sourceLocks"><code>sourceLocks</code></a></td>
 <td>attribute set of attribute set of package</td>
-<td><code>{ }</code></td>
-<td>The fetches each lock file of <code>lib.pins.locked</code> pins, by its path and their key, without their hash, for <code>lock-images</code> to lock them when a pin changes</td>
+<td><code>{ }<wbr></code></td>
+<td>The fetches each lock file of <code>lib.pins.locked</code> pins, by its path and …</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
@@ -3856,7 +3856,7 @@
 <tr aria-expanded="false" class="nd-option" id="homelab.cluster.svcCidr4" tabindex="0">
 <td><a class="nd-name" href="#homelab.cluster.svcCidr4"><code>svcCidr4</code></a></td>
 <td>string</td>
-<td><code>&quot;10.43.0.0/16&quot;</code></td>
+<td><code>&quot;10.<wbr>43.<wbr>0.<wbr>0/<wbr>16&quot;</code></td>
 <td>IPv4 CIDR for the services</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
@@ -3886,7 +3886,7 @@
 <td><a class="nd-name" href="#homelab.cluster.unit"><code>unit</code></a></td>
 <td>string</td>
 <td>—</td>
-<td>The systemd unit that runs the cluster, for units that need the API to order after. Set by the runner.</td>
+<td>The systemd unit that runs the cluster, for units that need the API to …</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
