@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://nixos-homelab.github.io/monitoring/options/mimir/">
       
       
-        <link rel="prev" href="../kube-state-metrics/">
+        <link rel="prev" href="../loki/">
       
       
         <link rel="next" href="../node-exporter/">
@@ -1599,6 +1599,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../loki/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    loki
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1724,6 +1752,34 @@
     
   
     smartctl-exporter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systemd-exporter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    systemd-exporter
   
 
     
@@ -3435,6 +3491,22 @@
 <div class="highlight"><pre><span></span><code><span class="no">true</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/mimir/default.nix"><code>nix/modules/mimir/default.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.mimir.metrics.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.mimir.metrics.enable"><code>metrics.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>alloy.<wbr>enable</code></td>
+<td>Whether Alloy scrapes Mimir's own metrics.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.mimir.metrics.enable</code></p>
+<p>Whether Alloy scrapes Mimir's own metrics.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/mimir/metrics.nix"><code>nix/modules/mimir/metrics.nix</code></a></p>
 </td>
 </tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.mimir.retention" tabindex="0">

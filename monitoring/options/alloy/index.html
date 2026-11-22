@@ -1660,6 +1660,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../loki/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    loki
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../mimir/" class="md-nav__link">
         
   
@@ -1724,6 +1752,34 @@
     
   
     smartctl-exporter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systemd-exporter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    systemd-exporter
   
 
     
@@ -3448,6 +3504,744 @@
 <div class="highlight"><pre><span></span><code><span class="no">false</span>
 </code></pre></div>
 <p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">true</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/default.nix"><code>nix/modules/alloy/default.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.defaultLevel" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.defaultLevel"><code>logs.<wbr>defaultLevel</code></a></td>
+<td>string</td>
+<td><code>&quot;info&quot;</code></td>
+<td>The level of a record that has none of its own: no level in the line …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.defaultLevel</code></p>
+<p>The level of a record that has none of its own: no level in the line and, on the journal, no priority. One of
+the names in <code>levels</code>.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;info&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.enable"><code>logs.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>Whether to enable shipping the pods' and the journal's logs to Loki; the …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.enable</code></p>
+<p>Whether to enable shipping the pods' and the journal's logs to Loki; the Loki module turns it on.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">false</span>
+</code></pre></div>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">true</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.fields" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.fields"><code>logs.<wbr>fields</code></a></td>
+<td>attribute set of list of string</td>
+<td><code>{ caller = [ &quot;caller&quot;…</code></td>
+<td>The canonical field names and the raw names formats find them under.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.fields</code></p>
+<p>The canonical field names and the raw names formats find them under. These, and only these, become structured
+metadata (Alloy seeds an entry's labels into the extracted map, so no catch-all can tell fields from labels);
+<code>keepRaw</code> keeps the rest.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="ss">caller</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;caller&quot;</span>
+    <span class="s2">&quot;file&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">component</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;component&quot;</span>
+    <span class="s2">&quot;logger&quot;</span>
+    <span class="s2">&quot;module&quot;</span>
+    <span class="s2">&quot;name&quot;</span>
+    <span class="s2">&quot;context&quot;</span>
+    <span class="s2">&quot;log.pkg&quot;</span>
+    <span class="s2">&quot;target&quot;</span>
+    <span class="s2">&quot;subsys&quot;</span>
+    <span class="s2">&quot;subsystem&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">duration</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;duration&quot;</span>
+    <span class="s2">&quot;elapsed&quot;</span>
+    <span class="s2">&quot;took&quot;</span>
+    <span class="s2">&quot;responseTime&quot;</span>
+    <span class="s2">&quot;duration_ms&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">error</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;error&quot;</span>
+    <span class="s2">&quot;err&quot;</span>
+    <span class="s2">&quot;exception&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">method</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;method&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">path</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;path&quot;</span>
+    <span class="s2">&quot;url&quot;</span>
+    <span class="s2">&quot;uri&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">pid</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;pid&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">remote_addr</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;remote_addr&quot;</span>
+    <span class="s2">&quot;remote-address&quot;</span>
+    <span class="s2">&quot;remoteAddress&quot;</span>
+    <span class="s2">&quot;client_ip&quot;</span>
+    <span class="s2">&quot;remote&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">request_id</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;request_id&quot;</span>
+    <span class="s2">&quot;requestId&quot;</span>
+    <span class="s2">&quot;request-id&quot;</span>
+    <span class="s2">&quot;reqId&quot;</span>
+    <span class="s2">&quot;req_id&quot;</span>
+    <span class="s2">&quot;traceID&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">status</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;status&quot;</span>
+    <span class="s2">&quot;status_code&quot;</span>
+    <span class="s2">&quot;statusCode&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">thread</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;thread&quot;</span>
+    <span class="s2">&quot;tid&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">trace_id</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;trace_id&quot;</span>
+    <span class="s2">&quot;traceId&quot;</span>
+    <span class="s2">&quot;trace-id&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">user</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;user&quot;</span>
+    <span class="s2">&quot;user_id&quot;</span>
+    <span class="s2">&quot;userId&quot;</span>
+    <span class="s2">&quot;username&quot;</span>
+  <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.formats" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.formats"><code>logs.<wbr>formats</code></a></td>
+<td>attribute set of (submodule)</td>
+<td><code>{ }<wbr></code></td>
+<td>Parsers by name.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.formats</code></p>
+<p>Parsers by name. This module has the generic ones (logfmt, json, klog, go, golog, plain); a module adds the
+dialects of its apps next to them.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.formats.&lt;name&gt;.decolorize" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.formats.&lt;name&gt;.decolorize"><code>logs.<wbr>formats.<wbr>&lt;name&gt;.<wbr>decolorize</code></a></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>Whether to strip ANSI colour codes before parsing.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.formats.&lt;name&gt;.decolorize</code></p>
+<p>Whether to strip ANSI colour codes before parsing.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">false</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.formats.&lt;name&gt;.fields" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.formats.&lt;name&gt;.fields"><code>logs.<wbr>formats.<wbr>&lt;name&gt;.<wbr>fields</code></a></td>
+<td>null or (submodule)</td>
+<td><code>null</code></td>
+<td>How a source's own <code>fields</code> are read from a record of this format: as …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.formats.&lt;name&gt;.fields</code></p>
+<p>How a source's own <code>fields</code> are read from a record of this format: as logfmt or JSON, from the line (source
+null) or an extracted value. Null where the format reads no key-value pairs.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.formats.&lt;name&gt;.fields.kind" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.formats.&lt;name&gt;.fields.kind"><code>logs.<wbr>formats.<wbr>&lt;name&gt;.<wbr>fields.<wbr>kind</code></a></td>
+<td>one of &quot;logfmt&quot;, &quot;json&quot;</td>
+<td>—</td>
+<td>How the key-value pairs are written.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.formats.&lt;name&gt;.fields.kind</code></p>
+<p>How the key-value pairs are written.</p>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.formats.&lt;name&gt;.fields.source" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.formats.&lt;name&gt;.fields.source"><code>logs.<wbr>formats.<wbr>&lt;name&gt;.<wbr>fields.<wbr>source</code></a></td>
+<td>null or string</td>
+<td><code>null</code></td>
+<td>The extracted value that holds them, or null for the whole line.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.formats.&lt;name&gt;.fields.source</code></p>
+<p>The extracted value that holds them, or null for the whole line.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.formats.&lt;name&gt;.firstline" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.formats.&lt;name&gt;.firstline"><code>logs.<wbr>formats.<wbr>&lt;name&gt;.<wbr>firstline</code></a></td>
+<td>null or string</td>
+<td><code>null</code></td>
+<td>An RE2 regular expression matching the first line of a record.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.formats.&lt;name&gt;.firstline</code></p>
+<p>An RE2 regular expression matching the first line of a record. Lines that don't match belong to the record
+before them (a stack trace, a pretty-printed object), up to 500 lines. Null for one record per line.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.formats.&lt;name&gt;.levels" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.formats.&lt;name&gt;.levels"><code>logs.<wbr>formats.<wbr>&lt;name&gt;.<wbr>levels</code></a></td>
+<td>attribute set of list of string</td>
+<td><code>{ }<wbr></code></td>
+<td>Raw levels of this format and the canonical level each means, over …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.formats.&lt;name&gt;.levels</code></p>
+<p>Raw levels of this format and the canonical level each means, over <code>homelab.alloy.logs.levels</code>, compared
+lowercased.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="ss">verbose</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;-&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">warning</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;#&quot;</span>
+  <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.formats.&lt;name&gt;.stages" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.formats.&lt;name&gt;.stages"><code>logs.<wbr>formats.<wbr>&lt;name&gt;.<wbr>stages</code></a></td>
+<td>strings concatenated with &quot;\n&quot;</td>
+<td>—</td>
+<td><code>loki.process</code> stages that parse a record.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.formats.&lt;name&gt;.stages</code></p>
+<p><code>loki.process</code> stages that parse a record. They leave <code>message</code> in the extracted map (the line otherwise
+stays whole), <code>level</code> with the raw level, and other fields either under their canonical names
+(<code>homelab.alloy.logs.fields</code>) or under <code>f.&lt;raw name&gt;</code>. A <code>program</code> sets the label of that name, for
+containers that run several programs. Match the message with <code>(?s)</code> so it keeps the lines of a multiline
+record.</p>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.journal" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.journal"><code>logs.<wbr>journal</code></a></td>
+<td>attribute set of (submodule)</td>
+<td><code>{ }<wbr></code></td>
+<td>Programs in the journal (<code>SYSLOG_IDENTIFIER</code>, else the command) and the …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.journal</code></p>
+<p>Programs in the journal (<code>SYSLOG_IDENTIFIER</code>, else the command) and the format of their messages. The others
+get a generic format by the look of each message, and the level of their priority.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.journal.&lt;name&gt;.examples" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.journal.&lt;name&gt;.examples"><code>logs.<wbr>journal.<wbr>&lt;name&gt;.<wbr>examples</code></a></td>
+<td>list of (submodule)</td>
+<td><code>[ ]</code></td>
+<td>Lines and the records they must become, run by <code>lib.logs.check</code>.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.journal.&lt;name&gt;.examples</code></p>
+<p>Lines and the records they must become, run by <code>lib.logs.check</code>.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span> <span class="p">]</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.journal.&lt;name&gt;.examples.*.expect" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.journal.&lt;name&gt;.examples.*.expect"><code>logs.<wbr>journal.<wbr>&lt;name&gt;.<wbr>examples.<wbr>*.<wbr>expect</code></a></td>
+<td>list of attribute set of anything</td>
+<td><code>[ ]</code></td>
+<td>The records Loki must hold afterwards, in order: <code>message</code>, <code>level</code>, and …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.journal.&lt;name&gt;.examples.*.expect</code></p>
+<p>The records Loki must hold afterwards, in order: <code>message</code>, <code>level</code>, and optionally <code>program</code>,
+<code>service_name</code> and <code>fields</code> (structured metadata that must be present with these values).</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span> <span class="p">]</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.journal.&lt;name&gt;.examples.*.labels" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.journal.&lt;name&gt;.examples.*.labels"><code>logs.<wbr>journal.<wbr>&lt;name&gt;.<wbr>examples.<wbr>*.<wbr>labels</code></a></td>
+<td>attribute set of string</td>
+<td><code>{ }<wbr></code></td>
+<td>Labels the lines come with, over those of the source (a <code>namespace</code> and …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.journal.&lt;name&gt;.examples.*.labels</code></p>
+<p>Labels the lines come with, over those of the source (a <code>namespace</code> and <code>container</code> for a source that matches several).</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.journal.&lt;name&gt;.examples.*.lines" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.journal.&lt;name&gt;.examples.*.lines"><code>logs.<wbr>journal.<wbr>&lt;name&gt;.<wbr>examples.<wbr>*.<wbr>lines</code></a></td>
+<td>list of string</td>
+<td><code>[ ]</code></td>
+<td>Lines as the source writes them, in order.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.journal.&lt;name&gt;.examples.*.lines</code></p>
+<p>Lines as the source writes them, in order.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span> <span class="p">]</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.journal.&lt;name&gt;.fields" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.journal.&lt;name&gt;.fields"><code>logs.<wbr>journal.<wbr>&lt;name&gt;.<wbr>fields</code></a></td>
+<td>attribute set of string</td>
+<td><code>{ }<wbr></code></td>
+<td>More fields of this source: raw name to canonical name.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.journal.&lt;name&gt;.fields</code></p>
+<p>More fields of this source: raw name to canonical name. The canonical name joins the structured metadata only if
+<code>homelab.alloy.logs.fields</code> has it.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.journal.&lt;name&gt;.format" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.journal.&lt;name&gt;.format"><code>logs.<wbr>journal.<wbr>&lt;name&gt;.<wbr>format</code></a></td>
+<td>string</td>
+<td>—</td>
+<td>The name of the format in <code>homelab.alloy.logs.formats</code>.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.journal.&lt;name&gt;.format</code></p>
+<p>The name of the format in <code>homelab.alloy.logs.formats</code>.</p>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.journal.&lt;name&gt;.program" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.journal.&lt;name&gt;.program"><code>logs.<wbr>journal.<wbr>&lt;name&gt;.<wbr>program</code></a></td>
+<td>string</td>
+<td><code>name</code></td>
+<td>The <code>SYSLOG_IDENTIFIER</code>, or the command where a program sets none.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.journal.&lt;name&gt;.program</code></p>
+<p>The <code>SYSLOG_IDENTIFIER</code>, or the command where a program sets none.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>name
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.journal.&lt;name&gt;.service" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.journal.&lt;name&gt;.service"><code>logs.<wbr>journal.<wbr>&lt;name&gt;.<wbr>service</code></a></td>
+<td>null or string</td>
+<td><code>null</code></td>
+<td>The <code>service_name</code> label, null for the unit without <code>.service</code>, or the …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.journal.&lt;name&gt;.service</code></p>
+<p>The <code>service_name</code> label, null for the unit without <code>.service</code>, or the program.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.keepRaw" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.keepRaw"><code>logs.<wbr>keepRaw</code></a></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Whether a record keeps its original text as metadata <code>raw</code> when its …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.keepRaw</code></p>
+<p>Whether a record keeps its original text as metadata <code>raw</code> when its message is something else.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">true</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.levels" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.levels"><code>logs.<wbr>levels</code></a></td>
+<td>attribute set of list of string</td>
+<td><code>{ debug = [ &quot;dbg&quot;…</code></td>
+<td>The canonical levels and the raw levels each stands for, compared …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.levels</code></p>
+<p>The canonical levels and the raw levels each stands for, compared lowercased. A record's level is one of these
+names, <code>defaultLevel</code> for a record without a level, or <code>unknown</code> for a raw level the table lacks; a format adds
+raw levels of its own in its <code>levels</code>.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="ss">debug</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;dbg&quot;</span>
+    <span class="s2">&quot;dbug&quot;</span>
+    <span class="s2">&quot;d&quot;</span>
+    <span class="s2">&quot;trace&quot;</span>
+    <span class="s2">&quot;trc&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">error</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;err&quot;</span>
+    <span class="s2">&quot;eror&quot;</span>
+    <span class="s2">&quot;e&quot;</span>
+    <span class="s2">&quot;fatal&quot;</span>
+    <span class="s2">&quot;f&quot;</span>
+    <span class="s2">&quot;fatl&quot;</span>
+    <span class="s2">&quot;crit&quot;</span>
+    <span class="s2">&quot;critical&quot;</span>
+    <span class="s2">&quot;alert&quot;</span>
+    <span class="s2">&quot;emerg&quot;</span>
+    <span class="s2">&quot;emergency&quot;</span>
+    <span class="s2">&quot;panic&quot;</span>
+    <span class="s2">&quot;severe&quot;</span>
+    <span class="s2">&quot;ftl&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">info</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;inf&quot;</span>
+    <span class="s2">&quot;i&quot;</span>
+    <span class="s2">&quot;information&quot;</span>
+    <span class="s2">&quot;informational&quot;</span>
+    <span class="s2">&quot;notice&quot;</span>
+    <span class="s2">&quot;log&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">verbose</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;verb&quot;</span>
+    <span class="s2">&quot;vrb&quot;</span>
+  <span class="p">];</span>
+  <span class="ss">warning</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;warn&quot;</span>
+    <span class="s2">&quot;wrn&quot;</span>
+    <span class="s2">&quot;w&quot;</span>
+    <span class="s2">&quot;wa&quot;</span>
+  <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pipeline" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pipeline"><code>logs.<wbr>pipeline</code></a></td>
+<td>strings concatenated with &quot;\n&quot; (read-only)</td>
+<td>—</td>
+<td>The generated <code>loki.process</code> components, read-only: what …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pipeline</code></p>
+<p>The generated <code>loki.process</code> components, read-only: what <code>lib.logs.check</code> runs.</p>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods"><code>logs.<wbr>pods</code></a></td>
+<td>attribute set of (submodule)</td>
+<td><code>{ }<wbr></code></td>
+<td>Containers and the format of their lines, set by the module that runs …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods</code></p>
+<p>Containers and the format of their lines, set by the module that runs them. A container no entry names gets a
+generic format by the look of each line, and no multiline records.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.container" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.container"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>container</code></a></td>
+<td>string</td>
+<td><code>name</code></td>
+<td>The container's name.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods.&lt;name&gt;.container</code></p>
+<p>The container's name.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>name
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.containerPattern" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.containerPattern"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>containerPattern</code></a></td>
+<td>null or string</td>
+<td><code>null</code></td>
+<td>A regular expression (RE2) the container's name matches in full, in …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods.&lt;name&gt;.containerPattern</code></p>
+<p>A regular expression (RE2) the container's name matches in full, in place of <code>container</code>.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.examples" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.examples"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>examples</code></a></td>
+<td>list of (submodule)</td>
+<td><code>[ ]</code></td>
+<td>Lines and the records they must become, run by <code>lib.logs.check</code>.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods.&lt;name&gt;.examples</code></p>
+<p>Lines and the records they must become, run by <code>lib.logs.check</code>.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span> <span class="p">]</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.examples.*.expect" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.examples.*.expect"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>examples.<wbr>*.<wbr>expect</code></a></td>
+<td>list of attribute set of anything</td>
+<td><code>[ ]</code></td>
+<td>The records Loki must hold afterwards, in order: <code>message</code>, <code>level</code>, and …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods.&lt;name&gt;.examples.*.expect</code></p>
+<p>The records Loki must hold afterwards, in order: <code>message</code>, <code>level</code>, and optionally <code>program</code>,
+<code>service_name</code> and <code>fields</code> (structured metadata that must be present with these values).</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span> <span class="p">]</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.examples.*.labels" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.examples.*.labels"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>examples.<wbr>*.<wbr>labels</code></a></td>
+<td>attribute set of string</td>
+<td><code>{ }<wbr></code></td>
+<td>Labels the lines come with, over those of the source (a <code>namespace</code> and …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods.&lt;name&gt;.examples.*.labels</code></p>
+<p>Labels the lines come with, over those of the source (a <code>namespace</code> and <code>container</code> for a source that matches several).</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.examples.*.lines" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.examples.*.lines"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>examples.<wbr>*.<wbr>lines</code></a></td>
+<td>list of string</td>
+<td><code>[ ]</code></td>
+<td>Lines as the source writes them, in order.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods.&lt;name&gt;.examples.*.lines</code></p>
+<p>Lines as the source writes them, in order.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span> <span class="p">]</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.fields" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.fields"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>fields</code></a></td>
+<td>attribute set of string</td>
+<td><code>{ }<wbr></code></td>
+<td>More fields of this source: raw name to canonical name.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods.&lt;name&gt;.fields</code></p>
+<p>More fields of this source: raw name to canonical name. The canonical name joins the structured metadata only if
+<code>homelab.alloy.logs.fields</code> has it.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.format" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.format"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>format</code></a></td>
+<td>string</td>
+<td>—</td>
+<td>The name of the format in <code>homelab.alloy.logs.formats</code>.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods.&lt;name&gt;.format</code></p>
+<p>The name of the format in <code>homelab.alloy.logs.formats</code>.</p>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.namespace" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.namespace"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>namespace</code></a></td>
+<td>null or string</td>
+<td><code>name</code></td>
+<td>The pods' namespace, null for any.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods.&lt;name&gt;.namespace</code></p>
+<p>The pods' namespace, null for any.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>name
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.program" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.program"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>program</code></a></td>
+<td>null or string</td>
+<td><code>null</code></td>
+<td>The <code>program</code> label, null for the container's name or what the format …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods.&lt;name&gt;.program</code></p>
+<p>The <code>program</code> label, null for the container's name or what the format extracts.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.service" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.service"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>service</code></a></td>
+<td>null or string</td>
+<td><code>null</code></td>
+<td>The <code>service_name</code> label, null for the pod's <code>app.kubernetes.io/name</code> or …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods.&lt;name&gt;.service</code></p>
+<p>The <code>service_name</code> label, null for the pod's <code>app.kubernetes.io/name</code> or its container.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.sources" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.sources"><code>logs.<wbr>sources</code></a></td>
+<td>strings concatenated with &quot;\n&quot; (read-only)</td>
+<td>—</td>
+<td>The generated source components, read-only.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.sources</code></p>
+<p>The generated source components, read-only.</p>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.url" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.url"><code>logs.<wbr>url</code></a></td>
+<td>string</td>
+<td><code>&quot;http:/<wbr>/<wbr>loki.<wbr>loki:3100/<wbr>…</code></td>
+<td>Loki's push endpoint.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.url</code></p>
+<p>Loki's push endpoint.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;http://loki.loki:3100/loki/api/v1/push&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.metrics.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.metrics.enable"><code>metrics.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Whether Alloy scrapes its own metrics.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.metrics.enable</code></p>
+<p>Whether Alloy scrapes its own metrics.</p>
+<p><strong>Default</strong></p>
 <div class="highlight"><pre><span></span><code><span class="no">true</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/default.nix"><code>nix/modules/alloy/default.nix</code></a></p>

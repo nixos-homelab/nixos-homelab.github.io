@@ -16,7 +16,7 @@
         <link rel="prev" href="../homepage/">
       
       
-        <link rel="next" href="../mimir/">
+        <link rel="next" href="../loki/">
       
       
         
@@ -1660,6 +1660,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../loki/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    loki
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../mimir/" class="md-nav__link">
         
   
@@ -1724,6 +1752,34 @@
     
   
     smartctl-exporter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systemd-exporter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    systemd-exporter
   
 
     
@@ -3435,6 +3491,22 @@
 <div class="highlight"><pre><span></span><code><span class="no">true</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/kube-state-metrics/default.nix"><code>nix/modules/kube-state-metrics/default.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.kube-state-metrics.grafana.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.kube-state-metrics.grafana.enable"><code>grafana.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>kube-<wbr>…</code></td>
+<td>Whether the Services, Cluster and Workload dashboards have …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.kube-state-metrics.grafana.enable</code></p>
+<p>Whether the Services, Cluster and Workload dashboards have kube-state-metrics' panels.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>kube-state-metrics<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>grafana<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/kube-state-metrics/grafana.nix"><code>nix/modules/kube-state-metrics/grafana.nix</code></a></p>
 </td>
 </tr>
 </tbody>

@@ -1486,6 +1486,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dashboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboards
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dashboards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#screenshots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Screenshots
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1669,6 +1708,34 @@
   
   
     <li class="md-nav__item">
+      <a href="options/loki/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    loki
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="options/mimir/" class="md-nav__link">
         
   
@@ -1733,6 +1800,34 @@
     
   
     smartctl-exporter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="options/systemd-exporter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    systemd-exporter
   
 
     
@@ -3409,6 +3504,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dashboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboards
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dashboards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#screenshots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Screenshots
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3457,17 +3591,105 @@ feed it, for both cluster and host-level monitoring.</p>
 </code></pre></div>
 <h2 id="modules">Modules</h2>
 <ul>
-<li><strong>grafana</strong>: dashboards, provisioned with datasources for Mimir.</li>
+<li><strong>grafana</strong>: dashboards, provisioned with datasources for Mimir and Loki.
+  <code>homelab.grafana.dashboards.&lt;name&gt;</code> provisions a dashboard (read-only in
+  the UI), and <code>homelab.grafana.homeDashboard</code> makes one Grafana's home. The modules' tiles
+  (<code>homelab.grafana.home.tiles</code>) make a Home dashboard, which is the home by default.</li>
 <li><strong>mimir</strong>: long-term Prometheus-compatible metrics storage.</li>
-<li><strong>alloy</strong>: the <a href="https://grafana.com/docs/alloy/">Grafana Alloy</a> agent
-  that scrapes and forwards metrics/logs, with a per-service
-  <code>integrations</code> allow-list like <code>homepage</code>'s.</li>
+<li><strong>loki</strong>: log storage, one binary on its volume, with <code>homelab.loki.retention</code> (30 days by default). On, it has
+  Alloy ship the logs (see Logs below).</li>
+<li><strong>alloy</strong>: the <a href="https://grafana.com/docs/alloy/">Grafana Alloy</a> agent, a DaemonSet that scrapes the metrics of
+  <code>homelab.alloy.monitors</code> into Mimir and, with Loki on, ships the logs of the pods and the journal of its node.</li>
 <li><strong>kube-state-metrics</strong>: metrics about the cluster's objects (Deployments,
   pods, nodes, ...), Secrets excepted.</li>
 <li><strong>node-exporter</strong>: host-level metrics (CPU, memory, disk, network).</li>
 <li><strong>smartctl-exporter</strong>: disk S.M.A.R.T. health metrics, from a NixOS service on each host.</li>
+<li><strong>systemd-exporter</strong>: the state of each host's systemd units, failed ones included, from a NixOS service on each host.</li>
 <li><strong>zfs-exporter</strong>: ZFS pool and dataset metrics, from a NixOS service on each host.</li>
 </ul>
+<h2 id="logs">Logs</h2>
+<p>Alloy tails the containers of the pods on its node through the API server and the journal of the node through a
+read-only hostPath, and writes one Loki record per log record:</p>
+<ul>
+<li>the line is the message alone; a stack trace, a goroutine dump or a PostgreSQL ERROR with its DETAIL is one record;</li>
+<li>labels: <code>source</code> (<code>pod</code> or <code>journal</code>), <code>node</code>, <code>namespace</code> and <code>container</code> (pods) or <code>unit</code> (journal),
+  <code>service_name</code> (the application: the <code>app.kubernetes.io/name</code> of the pod, the unit), <code>program</code> (what wrote the line: the
+  container, a process a format picks out, the <code>SYSLOG_IDENTIFIER</code> in the journal) and <code>level</code>;</li>
+<li><code>level</code> is one of the names of <code>homelab.alloy.logs.levels</code> (error, warning, info, verbose, debug) or <code>unknown</code>,
+  mapped from whatever the program writes (<code>#</code> from Redis, <code>30</code> from pino, <code>W</code> from klog, the priority in the journal);</li>
+<li>fields under the names of <code>homelab.alloy.logs.fields</code> (<code>component</code>, <code>caller</code>, <code>error</code>, <code>request_id</code>, ...) as
+  structured metadata, with the pod and, where the message is something else, the original line as <code>raw</code>.</li>
+</ul>
+<p>A module says how its containers write: <code>homelab.alloy.logs.pods.&lt;name&gt;</code> names a format of
+<code>homelab.alloy.logs.formats</code> (logfmt, json, klog, go, golog, nest and plain from this repo, or a dialect the module adds) and
+gives example lines with the records they must become; <code>homelab.alloy.logs.journal.&lt;program&gt;</code> does the same for the
+journal. Containers no module describes get a format by the look of each line. <code>lib.logs.check</code> runs the pipeline on
+the examples with the pinned Alloy and Loki in a build:</p>
+<div class="highlight"><pre><span></span><code>checks<span class="o">.</span><span class="ss">logs</span> <span class="o">=</span> inputs<span class="o">.</span>homelab-monitoring<span class="o">.</span>lib<span class="o">.</span>logs<span class="o">.</span>check <span class="p">{</span>
+  <span class="k">inherit</span> pkgs<span class="p">;</span>
+  <span class="ss">modules</span> <span class="o">=</span> lib<span class="o">.</span>attrValues self<span class="o">.</span>nixosModules <span class="o">++</span> <span class="p">[</span> <span class="p">{</span> homelab<span class="o">.</span><span class="l">&lt;module&gt;</span><span class="o">.</span><span class="ss">enable</span> <span class="o">=</span> <span class="no">true</span><span class="p">;</span> <span class="p">}</span> <span class="p">];</span>
+<span class="p">};</span>
+</code></pre></div>
+<h2 id="dashboards">Dashboards</h2>
+<p><code>lib.grafana</code> builds dashboards in Grafana's v2 resource format, with the
+Mimir datasource set on every query. Panels go where they are shown, in
+the layout; <code>dashboard</code> numbers them.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> inputs<span class="p">,</span> <span class="o">...</span> <span class="p">}:</span>
+<span class="p">{</span>
+  homelab<span class="o">.</span>grafana<span class="o">.</span>dashboards<span class="o">.</span>nas<span class="o">.</span><span class="ss">dashboard</span> <span class="o">=</span>
+    <span class="k">with</span> inputs<span class="o">.</span>homelab-monitoring<span class="o">.</span>lib<span class="o">.</span>grafana<span class="p">;</span>
+    dashboard <span class="p">{</span>
+      <span class="ss">name</span> <span class="o">=</span> <span class="s2">&quot;nas&quot;</span><span class="p">;</span>
+      <span class="ss">title</span> <span class="o">=</span> <span class="s2">&quot;NAS&quot;</span><span class="p">;</span>
+      <span class="ss">layout</span> <span class="o">=</span> rows <span class="p">[</span>
+        <span class="p">(</span>row <span class="p">{</span> <span class="ss">title</span> <span class="o">=</span> <span class="s2">&quot;CPU&quot;</span><span class="p">;</span> <span class="p">}</span> <span class="p">(</span>autoGrid <span class="p">{</span> <span class="p">}</span> <span class="p">[</span>
+          <span class="p">(</span>timeseries <span class="p">{</span>
+            <span class="ss">title</span> <span class="o">=</span> <span class="s2">&quot;Busy&quot;</span><span class="p">;</span>
+            <span class="ss">unit</span> <span class="o">=</span> <span class="s2">&quot;percentunit&quot;</span><span class="p">;</span>
+            <span class="ss">queries</span> <span class="o">=</span> <span class="p">[</span>
+              <span class="p">(</span>prom <span class="s s-Multiline">&#39;&#39;1 - avg(rate(node_cpu_seconds_total{mode=&quot;idle&quot;}[$__rate_interval]))&#39;&#39;</span> <span class="p">{</span> <span class="p">})</span>
+            <span class="p">];</span>
+          <span class="p">})</span>
+        <span class="p">]))</span>
+      <span class="p">];</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Builders: <code>dashboard</code>; layouts <code>grid</code>, <code>autoGrid</code>, <code>rows</code>/<code>row</code>,
+<code>tabs</code>/<code>tab</code>; panels <code>timeseries</code>, <code>stat</code>, <code>gauge</code>, <code>bargauge</code>, <code>table</code>,
+<code>stateTimeline</code>, <code>text</code>, or <code>panel "&lt;plugin&gt;"</code> for any other; <code>prom</code> for a
+query, <code>queryVariable</code>, <code>link</code>, and <code>whenVariable</code> to show a row, tab or
+item only for a variable's value. A dashboard can also be a JSON file
+(<code>dashboards.&lt;name&gt;.dashboard = ./board.json;</code>).</p>
+<h3 id="screenshots">Screenshots</h3>
+<p><code>lib.screenshots</code> renders dashboards without a cluster: the pinned Grafana
+on a dashboard's JSON, its Mimir datasource pointed at a Prometheus that
+serves samples generated for the dashboard's queries, and headless Chromium
+taking the whole page as a PNG. Each dashboard is a derivation of its own,
+so a changed one renders again on its own, in seconds.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>nix<span class="w"> </span>build<span class="w"> </span>.#screenshots.nas<span class="w">           </span><span class="c1"># the mixed scenario</span>
+<span class="gp">$ </span>nix<span class="w"> </span>build<span class="w"> </span>.#screenshots.nas.failing<span class="w">   </span><span class="c1"># or healthy</span>
+<span class="gp">$ </span>nix<span class="w"> </span>build<span class="w"> </span>.#screenshots.all<span class="w">           </span><span class="c1"># every dashboard, mixed</span>
+</code></pre></div>
+<p>Next to <code>&lt;name&gt;.png</code>, <code>&lt;name&gt;.log</code> lists every query the page ran, with
+what came back (frames and rows, no data, or the error), and what the page
+reported.</p>
+<p>The data comes from a scenario (<code>lib.screenshots.scenarios</code>: <code>healthy</code>,
+<code>mixed</code>, <code>failing</code>): label tables that keep a workload's namespace, pod and
+job together across the metrics a query joins, and per-metric specs where a
+metric's name says too little. <code>scenarios.nix</code> documents the format; a repo
+with metrics of its own extends one with <code>lib.recursiveUpdate</code>. A machine's
+own dashboards:</p>
+<div class="highlight"><pre><span></span><code>legacyPackages<span class="o">.</span><span class="ss">screenshots</span> <span class="o">=</span> inputs<span class="o">.</span>homelab-monitoring<span class="o">.</span>lib<span class="o">.</span>screenshots<span class="o">.</span>forDashboards <span class="p">{</span>
+  <span class="k">inherit</span> pkgs<span class="p">;</span>
+  <span class="k">inherit</span> <span class="p">(</span>self<span class="o">.</span>nixosConfigurations<span class="o">.</span>nas<span class="o">.</span>config<span class="o">.</span>homelab<span class="o">.</span>grafana<span class="p">)</span> dashboards<span class="p">;</span>
+  <span class="c1"># A render with the dashboard&#39;s variables set</span>
+  variants<span class="o">.</span><span class="ss">workload-sonarr</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">dashboard</span> <span class="o">=</span> <span class="s2">&quot;workload&quot;</span><span class="p">;</span>
+    variables<span class="o">.</span><span class="ss">workload</span> <span class="o">=</span> <span class="s2">&quot;sonarr&quot;</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
 
 
 
