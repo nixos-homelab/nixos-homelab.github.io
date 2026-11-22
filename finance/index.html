@@ -3508,8 +3508,8 @@ in sync with each other and with external data sources.</p>
 <h2 id="modules">Modules</h2>
 <ul>
 <li><strong>actualbudget</strong>: <a href="https://actualbudget.org">Actual Budget</a>, envelope
-  budgeting. With <code>exporter.budgets</code> set, account and category balances go
-  to Alloy through
+  budgeting. With <code>metrics.enable</code> (off by default, for privacy) and
+  <code>exporter.budgets</code> set, account and category balances go to Alloy through
   <a href="https://github.com/sakowicz/actual-budget-prometheus-exporter">actual-budget-prometheus-exporter</a>.</li>
 <li><strong>actual-flow</strong>: syncs transactions from <a href="https://www.lunchflow.app">Lunchflow</a>
   into Actual Budget accounts on a schedule.</li>

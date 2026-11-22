@@ -3659,6 +3659,23 @@ cluster
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/networking/blob/main/nix/modules/cilium/firewall.nix"><code>nix/modules/cilium/firewall.nix</code></a></p>
 </td>
 </tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.cilium.grafana.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.cilium.grafana.enable"><code>grafana.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>cilium.<wbr>…</code></td>
+<td>Whether the Cluster dashboard has Cilium's panels.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.cilium.grafana.enable</code></p>
+<p>Whether the Cluster dashboard has Cilium's panels.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>cilium<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>cilium<span class="o">.</span>metrics<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+<span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>grafana<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/networking/blob/main/nix/modules/cilium/grafana.nix"><code>nix/modules/cilium/grafana.nix</code></a></p>
+</td>
+</tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.cilium.lbIpBlock4.cidr" tabindex="0">
 <td><a class="nd-name" href="#homelab.cilium.lbIpBlock4.cidr"><code>lbIpBlock4.<wbr>cidr</code></a></td>
 <td>null or string</td>
@@ -3769,6 +3786,22 @@ cluster
 <div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>privacy-vpn<span class="o">.</span>enable
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/networking/blob/main/nix/modules/cilium/default.nix"><code>nix/modules/cilium/default.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.cilium.metrics.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.cilium.metrics.enable"><code>metrics.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>alloy.<wbr>enable</code></td>
+<td>Whether Alloy scrapes the Cilium agent's and operator's metrics, and the …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.cilium.metrics.enable</code></p>
+<p>Whether Alloy scrapes the Cilium agent's and operator's metrics, and the agent serves them.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/networking/blob/main/nix/modules/cilium/metrics.nix"><code>nix/modules/cilium/metrics.nix</code></a></p>
 </td>
 </tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.cilium.network-policies.enable" tabindex="0">

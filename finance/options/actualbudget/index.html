@@ -3526,7 +3526,7 @@
 <p><code>homelab.actualbudget.exporter.budgets</code></p>
 <p>Budgets whose balances <a href="https://github.com/sakowicz/actual-budget-prometheus-exporter">actual-budget-prometheus-exporter</a>
 exports, by the name in their <code>budget</code> label, each the sync ID of the budget (Settings, Advanced settings).
-Without any, or while Alloy is off, no exporter runs. End-to-end encrypted budgets aren't supported.</p>
+Without any, with <code>metrics.enable</code> off or while Alloy is off, no exporter runs. End-to-end encrypted budgets aren't supported.</p>
 <p><strong>Default</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
 </code></pre></div>
@@ -3534,6 +3534,41 @@ Without any, or while Alloy is off, no exporter runs. End-to-end encrypted budge
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="ss">main</span> <span class="o">=</span> <span class="s2">&quot;bba4b622-c8d1-4bdb-84d0-a8ecfb240ca8&quot;</span><span class="p">;</span>
 <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/finance/blob/main/nix/modules/actualbudget/metrics.nix"><code>nix/modules/actualbudget/metrics.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.actualbudget.grafana.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.actualbudget.grafana.enable"><code>grafana.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>…</code></td>
+<td>Whether the Workload dashboard has Actual Budget's rows.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.actualbudget.grafana.enable</code></p>
+<p>Whether the Workload dashboard has Actual Budget's rows.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>actualbudget<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>actualbudget<span class="o">.</span>metrics<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+<span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>grafana<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/finance/blob/main/nix/modules/actualbudget/grafana.nix"><code>nix/modules/actualbudget/grafana.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.actualbudget.metrics.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.actualbudget.metrics.enable"><code>metrics.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>Whether Alloy scrapes Actual Budget's metrics, and runs its exporter …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.actualbudget.metrics.enable</code></p>
+<p>Whether Alloy scrapes Actual Budget's metrics, and runs its exporter sidecar for the budgets in
+<code>exporter.budgets</code>. Off by default for privacy: the metrics are account and category balances, which land in
+Mimir for every Grafana user to query.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">false</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/finance/blob/main/nix/modules/actualbudget/metrics.nix"><code>nix/modules/actualbudget/metrics.nix</code></a></p>
 </td>

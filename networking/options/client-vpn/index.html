@@ -3512,6 +3512,23 @@
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/networking/blob/main/nix/modules/client-vpn/default.nix"><code>nix/modules/client-vpn/default.nix</code></a></p>
 </td>
 </tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.client-vpn.grafana.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.client-vpn.grafana.enable"><code>grafana.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>client-<wbr>…</code></td>
+<td>Whether the Workload dashboard has Client VPN's rows.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.client-vpn.grafana.enable</code></p>
+<p>Whether the Workload dashboard has Client VPN's rows.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>client-vpn<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>client-vpn<span class="o">.</span>metrics<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+<span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>grafana<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/networking/blob/main/nix/modules/client-vpn/grafana.nix"><code>nix/modules/client-vpn/grafana.nix</code></a></p>
+</td>
+</tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.client-vpn.groups" tabindex="0">
 <td><a class="nd-name" href="#homelab.client-vpn.groups"><code>groups</code></a></td>
 <td>attribute set of (submodule)</td>
@@ -3716,6 +3733,22 @@
 <div class="highlight"><pre><span></span><code><span class="p">[</span> <span class="p">]</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/networking/blob/main/nix/modules/client-vpn/default.nix"><code>nix/modules/client-vpn/default.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.client-vpn.metrics.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.client-vpn.metrics.enable"><code>metrics.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>alloy.<wbr>enable</code></td>
+<td>Whether Alloy scrapes the client VPN's peers, and runs a WireGuard …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.client-vpn.metrics.enable</code></p>
+<p>Whether Alloy scrapes the client VPN's peers, and runs a WireGuard exporter as a sidecar of each group.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/networking/blob/main/nix/modules/client-vpn/metrics.nix"><code>nix/modules/client-vpn/metrics.nix</code></a></p>
 </td>
 </tr>
 </tbody>

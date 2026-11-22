@@ -3534,6 +3534,39 @@
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/networking/blob/main/nix/modules/unifi/default.nix"><code>nix/modules/unifi/default.nix</code></a></p>
 </td>
 </tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.unifi.grafana.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.unifi.grafana.enable"><code>grafana.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>unifi.<wbr>…</code></td>
+<td>Whether the Workload dashboard has UniFi's rows.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.unifi.grafana.enable</code></p>
+<p>Whether the Workload dashboard has UniFi's rows.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>unifi<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>unifi<span class="o">.</span>metrics<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+<span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>grafana<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/networking/blob/main/nix/modules/unifi/grafana.nix"><code>nix/modules/unifi/grafana.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.unifi.metrics.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.unifi.metrics.enable"><code>metrics.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>alloy.<wbr>enable</code></td>
+<td>Whether Alloy scrapes the UniFi controller's metrics, and runs unpoller …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.unifi.metrics.enable</code></p>
+<p>Whether Alloy scrapes the UniFi controller's metrics, and runs unpoller as its sidecar.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/networking/blob/main/nix/modules/unifi/metrics.nix"><code>nix/modules/unifi/metrics.nix</code></a></p>
+</td>
+</tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.unifi.reservedIPs" tabindex="0">
 <td><a class="nd-name" href="#homelab.unifi.reservedIPs"><code>reservedIPs</code></a></td>
 <td>list of string</td>
