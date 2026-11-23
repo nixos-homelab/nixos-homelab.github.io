@@ -1122,6 +1122,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../flaresolverr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    flaresolverr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../flood/" class="md-nav__link">
         
   
@@ -3499,6 +3527,23 @@
 </tr>
 </thead>
 <tbody>
+<tr aria-expanded="false" class="nd-option" id="homelab.sonarr.alerts.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.sonarr.alerts.enable"><code>alerts.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>sonarr.<wbr>…</code></td>
+<td>Whether Grafana shows Sonarr's health issues as alerts.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.sonarr.alerts.enable</code></p>
+<p>Whether Grafana shows Sonarr's health issues as alerts.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>sonarr<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>sonarr<span class="o">.</span>metrics<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+<span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>grafana<span class="o">.</span>alerting<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/sonarr/default.nix"><code>nix/modules/sonarr/default.nix</code></a></p>
+</td>
+</tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.sonarr.debug" tabindex="0">
 <td><a class="nd-name" href="#homelab.sonarr.debug"><code>debug</code></a></td>
 <td>boolean</td>
@@ -3537,6 +3582,62 @@
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/sonarr/default.nix"><code>nix/modules/sonarr/default.nix</code></a></p>
 </td>
 </tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.sonarr.grafana.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.sonarr.grafana.enable"><code>grafana.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>sonarr.<wbr>…</code></td>
+<td>Whether the Media and Workload dashboards have Sonarr's panels and row.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.sonarr.grafana.enable</code></p>
+<p>Whether the Media and Workload dashboards have Sonarr's panels and row.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>sonarr<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>sonarr<span class="o">.</span>metrics<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+<span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>grafana<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/sonarr/grafana.nix"><code>nix/modules/sonarr/grafana.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.sonarr.mediaManagement" tabindex="0">
+<td><a class="nd-name" href="#homelab.sonarr.mediaManagement"><code>mediaManagement</code></a></td>
+<td>attribute set of anything</td>
+<td><code>{ }<wbr></code></td>
+<td>Media management settings, as the fields of …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.sonarr.mediaManagement</code></p>
+<p>Media management settings, as the fields of <code>/api/v3/config/mediamanagement</code> (<code>copyUsingHardlinks</code>,
+<code>recycleBin</code>, <code>importExtraFiles</code>, ...). Merged into the current settings; those left out stay as they are.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="ss">extraFileExtensions</span> <span class="o">=</span> <span class="s2">&quot;srt,ass&quot;</span><span class="p">;</span>
+  <span class="ss">importExtraFiles</span> <span class="o">=</span> <span class="no">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/sonarr/default.nix"><code>nix/modules/sonarr/default.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.sonarr.metrics.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.sonarr.metrics.enable"><code>metrics.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>alloy.<wbr>enable</code></td>
+<td>Whether Alloy scrapes Sonarr's metrics, and runs its exportarr sidecar.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.sonarr.metrics.enable</code></p>
+<p>Whether Alloy scrapes Sonarr's metrics, and runs its exportarr sidecar.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/sonarr/metrics.nix"><code>nix/modules/sonarr/metrics.nix</code></a></p>
+</td>
+</tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.sonarr.mountPaths" tabindex="0">
 <td><a class="nd-name" href="#homelab.sonarr.mountPaths"><code>mountPaths</code></a></td>
 <td>list of absolute path</td>
@@ -3549,6 +3650,44 @@
 <p>Paths from the host to mirror into the container</p>
 <p><strong>Default</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">[</span> <span class="p">]</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/sonarr/default.nix"><code>nix/modules/sonarr/default.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.sonarr.naming" tabindex="0">
+<td><a class="nd-name" href="#homelab.sonarr.naming"><code>naming</code></a></td>
+<td>attribute set of anything</td>
+<td><code>{ }<wbr></code></td>
+<td>Naming settings, as the fields of <code>/api/v3/config/naming</code> …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.sonarr.naming</code></p>
+<p>Naming settings, as the fields of <code>/api/v3/config/naming</code> (<code>renameEpisodes</code>, <code>standardEpisodeFormat</code>, ...). Merged into the current settings; those left out stay as they are.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/sonarr/default.nix"><code>nix/modules/sonarr/default.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.sonarr.rootFolders" tabindex="0">
+<td><a class="nd-name" href="#homelab.sonarr.rootFolders"><code>rootFolders</code></a></td>
+<td>list of string</td>
+<td><code>[ ]</code></td>
+<td>Root folders Sonarr keeps its media in, as paths in its container (a …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.sonarr.rootFolders</code></p>
+<p>Root folders Sonarr keeps its media in, as paths in its container (a mount of <code>volumes</code>). The job adds the
+missing ones and never removes one.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span> <span class="p">]</span>
+</code></pre></div>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+  <span class="s2">&quot;/mnt/media/tvshows&quot;</span>
+<span class="p">]</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/sonarr/default.nix"><code>nix/modules/sonarr/default.nix</code></a></p>
 </td>

@@ -1109,6 +1109,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../media/options/flaresolverr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    flaresolverr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../media/options/flood/" class="md-nav__link">
         
   
@@ -3568,6 +3596,10 @@ that are neither images nor flake inputs, such as a release asset.</p>
 <code>lock-images</code> writes. Returns <code>src</code>, the fetch, and for
 <code>homelab.cluster.sourceLocks</code>, <code>key</code> and <code>unlocked</code>: the fetch with an
 empty hash, whose mismatch error names the hash.</p>
+<p>The ref has to come from the flake that holds <code>lockFile</code> (its pins.yaml,
+say), never from an input a consumer can override with <code>follows</code>, such
+as a nixhelm chart's version: a consumer whose input is newer would name
+a key this lock doesn't have, and its evaluation fails.</p>
 <h3 id="arguments_1">Arguments</h3>
 <p><code>lockFile</code> (<code>Path</code>): JSON of <code>name@ref</code> to hash</p>
 <p><code>name</code> (<code>String</code>): what is fetched, with anything besides the ref that changes it</p>

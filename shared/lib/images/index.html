@@ -1109,6 +1109,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../media/options/flaresolverr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    flaresolverr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../media/options/flood/" class="md-nav__link">
         
   
@@ -3661,6 +3689,10 @@ module), locked to a digest and hash in <code>lockFile</code>, which
 <code>lock-images --lock FILE REF...</code> writes. Returns the archives for
 <code>homelab.cluster.images</code> and <code>refFor</code>, which maps each ref to its archive's
 <code>name:tag</code> (the tag suffixed with the digest's first 12 hex digits).</p>
+<p>As with <code>lib.pins.locked</code>, the refs have to come from the flake that holds
+<code>lockFile</code>, or from the flake that ships <code>lockFile</code> with them (k8sss'
+<code>lib.imageLock</code>): refs from an input a consumer can override go stale
+against a lock kept here.</p>
 <h3 id="arguments_1">Arguments</h3>
 <p><code>pkgs</code>: nixpkgs</p>
 <p><code>lockFile</code> (<code>Path</code>): JSON of ref to <code>{ digest, hash }</code></p>

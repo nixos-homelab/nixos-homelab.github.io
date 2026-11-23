@@ -1122,6 +1122,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../flaresolverr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    flaresolverr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../flood/" class="md-nav__link">
         
   
@@ -3553,6 +3581,23 @@
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/sabnzbd/default.nix"><code>nix/modules/sabnzbd/default.nix</code></a></p>
 </td>
 </tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.sabnzbd.grafana.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.sabnzbd.grafana.enable"><code>grafana.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>sabnzbd.<wbr>…</code></td>
+<td>Whether the Media and Workload dashboards have SABnzbd's rows.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.sabnzbd.grafana.enable</code></p>
+<p>Whether the Media and Workload dashboards have SABnzbd's rows.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>sabnzbd<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>sabnzbd<span class="o">.</span>metrics<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+<span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>grafana<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/sabnzbd/grafana.nix"><code>nix/modules/sabnzbd/grafana.nix</code></a></p>
+</td>
+</tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.sabnzbd.integrations.prowlarr.enable" tabindex="0">
 <td><a class="nd-name" href="#homelab.sabnzbd.integrations.prowlarr.enable"><code>integrations.<wbr>prowlarr.<wbr>enable</code></a></td>
 <td>boolean</td>
@@ -3564,7 +3609,7 @@
 <p><code>homelab.sabnzbd.integrations.prowlarr.enable</code></p>
 <p>Whether to integrate SABNzbd with Prowlarr</p>
 <p><strong>Default</strong></p>
-<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>sabnzbd<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>sonarr<span class="o">.</span>enable
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>sabnzbd<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>prowlarr<span class="o">.</span>enable
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/sabnzbd/integration.nix"><code>nix/modules/sabnzbd/integration.nix</code></a></p>
 </td>
@@ -3647,6 +3692,22 @@
 <div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/sabnzbd/integration.nix"><code>nix/modules/sabnzbd/integration.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.sabnzbd.metrics.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.sabnzbd.metrics.enable"><code>metrics.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>alloy.<wbr>enable</code></td>
+<td>Whether Alloy scrapes SABnzbd's metrics, and runs its exportarr sidecar.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.sabnzbd.metrics.enable</code></p>
+<p>Whether Alloy scrapes SABnzbd's metrics, and runs its exportarr sidecar.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/sabnzbd/metrics.nix"><code>nix/modules/sabnzbd/metrics.nix</code></a></p>
 </td>
 </tr>
 </tbody>

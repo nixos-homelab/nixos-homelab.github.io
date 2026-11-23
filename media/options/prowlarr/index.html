@@ -1122,6 +1122,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../flaresolverr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    flaresolverr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../flood/" class="md-nav__link">
         
   
@@ -3537,6 +3565,23 @@
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/prowlarr/default.nix"><code>nix/modules/prowlarr/default.nix</code></a></p>
 </td>
 </tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.prowlarr.grafana.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.prowlarr.grafana.enable"><code>grafana.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>prowlarr.<wbr>…</code></td>
+<td>Whether the Media and Workload dashboards have Prowlarr's rows.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.prowlarr.grafana.enable</code></p>
+<p>Whether the Media and Workload dashboards have Prowlarr's rows.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>prowlarr<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>prowlarr<span class="o">.</span>metrics<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+<span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>grafana<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/prowlarr/grafana.nix"><code>nix/modules/prowlarr/grafana.nix</code></a></p>
+</td>
+</tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.prowlarr.integrations.radarr.enable" tabindex="0">
 <td><a class="nd-name" href="#homelab.prowlarr.integrations.radarr.enable"><code>integrations.<wbr>radarr.<wbr>enable</code></a></td>
 <td>boolean</td>
@@ -3599,6 +3644,22 @@
 <div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/prowlarr/integration.nix"><code>nix/modules/prowlarr/integration.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.prowlarr.metrics.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.prowlarr.metrics.enable"><code>metrics.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>alloy.<wbr>enable</code></td>
+<td>Whether Alloy scrapes Prowlarr's metrics, and runs its exportarr …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.prowlarr.metrics.enable</code></p>
+<p>Whether Alloy scrapes Prowlarr's metrics, and runs its exportarr sidecar.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/prowlarr/metrics.nix"><code>nix/modules/prowlarr/metrics.nix</code></a></p>
 </td>
 </tr>
 </tbody>

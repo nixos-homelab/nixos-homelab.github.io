@@ -1109,6 +1109,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../media/options/flaresolverr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    flaresolverr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../media/options/flood/" class="md-nav__link">
         
   
@@ -3507,6 +3535,22 @@
 <div class="highlight"><pre><span></span><code><span class="no">true</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/loki/default.nix"><code>nix/modules/loki/default.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.loki.grafana.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.loki.grafana.enable"><code>grafana.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>loki.<wbr>…</code></td>
+<td>Whether Grafana's boards show the logs in Loki: a Workload row, the …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.loki.grafana.enable</code></p>
+<p>Whether Grafana's boards show the logs in Loki: a Workload row, the journal on NAS health, every namespace on Cluster and a Home tile.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>loki<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>logs<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/log-views.nix"><code>nix/modules/grafana/log-views.nix</code></a></p>
 </td>
 </tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.loki.metrics.enable" tabindex="0">

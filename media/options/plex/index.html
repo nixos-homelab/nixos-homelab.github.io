@@ -1122,6 +1122,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../flaresolverr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    flaresolverr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../flood/" class="md-nav__link">
         
   
@@ -3556,6 +3584,23 @@
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/plex/default.nix"><code>nix/modules/plex/default.nix</code></a></p>
 </td>
 </tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.plex.grafana.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.plex.grafana.enable"><code>grafana.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>plex.<wbr>…</code></td>
+<td>Whether the Media and Workload dashboards have Plex's rows.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.plex.grafana.enable</code></p>
+<p>Whether the Media and Workload dashboards have Plex's rows.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>plex<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>plex<span class="o">.</span>metrics<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+<span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>grafana<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/plex/grafana.nix"><code>nix/modules/plex/grafana.nix</code></a></p>
+</td>
+</tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.plex.integrations.radarr.enable" tabindex="0">
 <td><a class="nd-name" href="#homelab.plex.integrations.radarr.enable"><code>integrations.<wbr>radarr.<wbr>enable</code></a></td>
 <td>boolean</td>
@@ -3568,6 +3613,56 @@
 <p>Whether to integrate Plex with Radarr</p>
 <p><strong>Default</strong></p>
 <div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>plex<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>radarr<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/plex/integration.nix"><code>nix/modules/plex/integration.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.plex.integrations.radarr.library.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.plex.integrations.radarr.library.enable"><code>integrations.<wbr>radarr.<wbr>library.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Whether to create a library section for the root folders of Radarr …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.plex.integrations.radarr.library.enable</code></p>
+<p>Whether to create a library section for the root folders of Radarr (<code>homelab.radarr.rootFolders</code>) that lie
+in a volume of Plex. It is created only while no section has any of them; sections are never changed or
+removed.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">true</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/plex/integration.nix"><code>nix/modules/plex/integration.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.plex.integrations.radarr.library.language" tabindex="0">
+<td><a class="nd-name" href="#homelab.plex.integrations.radarr.library.language"><code>integrations.<wbr>radarr.<wbr>library.<wbr>language</code></a></td>
+<td>string</td>
+<td><code>&quot;en-<wbr>US&quot;</code></td>
+<td>Language of the library section, as a code like <code>en-US</code>.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.plex.integrations.radarr.library.language</code></p>
+<p>Language of the library section, as a code like <code>en-US</code>.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;en-US&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/plex/integration.nix"><code>nix/modules/plex/integration.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.plex.integrations.radarr.library.name" tabindex="0">
+<td><a class="nd-name" href="#homelab.plex.integrations.radarr.library.name"><code>integrations.<wbr>radarr.<wbr>library.<wbr>name</code></a></td>
+<td>string</td>
+<td><code>&quot;Movies&quot;</code></td>
+<td>Name of the library section.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.plex.integrations.radarr.library.name</code></p>
+<p>Name of the library section.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;Movies&quot;</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/plex/integration.nix"><code>nix/modules/plex/integration.nix</code></a></p>
 </td>
@@ -3604,6 +3699,56 @@
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/plex/integration.nix"><code>nix/modules/plex/integration.nix</code></a></p>
 </td>
 </tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.plex.integrations.sonarr.library.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.plex.integrations.sonarr.library.enable"><code>integrations.<wbr>sonarr.<wbr>library.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Whether to create a library section for the root folders of Sonarr …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.plex.integrations.sonarr.library.enable</code></p>
+<p>Whether to create a library section for the root folders of Sonarr (<code>homelab.sonarr.rootFolders</code>) that lie
+in a volume of Plex. It is created only while no section has any of them; sections are never changed or
+removed.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">true</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/plex/integration.nix"><code>nix/modules/plex/integration.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.plex.integrations.sonarr.library.language" tabindex="0">
+<td><a class="nd-name" href="#homelab.plex.integrations.sonarr.library.language"><code>integrations.<wbr>sonarr.<wbr>library.<wbr>language</code></a></td>
+<td>string</td>
+<td><code>&quot;en-<wbr>US&quot;</code></td>
+<td>Language of the library section, as a code like <code>en-US</code>.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.plex.integrations.sonarr.library.language</code></p>
+<p>Language of the library section, as a code like <code>en-US</code>.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;en-US&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/plex/integration.nix"><code>nix/modules/plex/integration.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.plex.integrations.sonarr.library.name" tabindex="0">
+<td><a class="nd-name" href="#homelab.plex.integrations.sonarr.library.name"><code>integrations.<wbr>sonarr.<wbr>library.<wbr>name</code></a></td>
+<td>string</td>
+<td><code>&quot;TV Shows&quot;</code></td>
+<td>Name of the library section.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.plex.integrations.sonarr.library.name</code></p>
+<p>Name of the library section.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;TV Shows&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/plex/integration.nix"><code>nix/modules/plex/integration.nix</code></a></p>
+</td>
+</tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.plex.integrations.sonarr.settings" tabindex="0">
 <td><a class="nd-name" href="#homelab.plex.integrations.sonarr.settings"><code>integrations.<wbr>sonarr.<wbr>settings</code></a></td>
 <td>attribute set of anything</td>
@@ -3618,6 +3763,22 @@
 <div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/plex/integration.nix"><code>nix/modules/plex/integration.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.plex.metrics.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.plex.metrics.enable"><code>metrics.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>alloy.<wbr>enable</code></td>
+<td>Whether Alloy scrapes Plex's metrics, and runs its …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.plex.metrics.enable</code></p>
+<p>Whether Alloy scrapes Plex's metrics, and runs its prometheus-plex-exporter sidecar.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/media/blob/main/nix/modules/plex/metrics.nix"><code>nix/modules/plex/metrics.nix</code></a></p>
 </td>
 </tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.plex.reservedIPs" tabindex="0">

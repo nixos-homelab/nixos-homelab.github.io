@@ -2,266 +2,270 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://nixos-homelab.github.io/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/development/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/development/options/forgejo/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/development/options/homepage/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/finance/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/finance/options/actualbudget/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/finance/options/ghostfolio/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/finance/options/homepage/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/media/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/media/lib/integration/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
+    </url>
+    <url>
+         <loc>https://nixos-homelab.github.io/media/options/flaresolverr/</loc>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/media/options/flood/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/media/options/homepage/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/media/options/plex/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/media/options/prowlarr/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/media/options/radarr/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/media/options/rtorrent/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/media/options/sabnzbd/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/media/options/sonarr/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/monitoring/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/monitoring/options/alloy/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/monitoring/options/grafana/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/monitoring/options/homepage/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/monitoring/options/kube-state-metrics/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/monitoring/options/loki/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/monitoring/options/mimir/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/monitoring/options/node-exporter/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/monitoring/options/smartctl-exporter/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/monitoring/options/systemd-exporter/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/monitoring/options/zfs-exporter/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/networking/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/networking/cilium/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/networking/options/cilium/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/networking/options/client-vpn/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/networking/options/external-dns/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/networking/options/homepage/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/networking/options/netutils/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/networking/options/privacy-vpn/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/networking/options/routed-ippool/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/networking/options/unifi/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/personal/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/personal/options/homepage/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/personal/options/imap-backup/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/personal/options/immich/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/personal/options/syncthing/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/kubenix/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/lib/checks/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/lib/crd2types/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/lib/crds/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/lib/homepage/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/lib/images/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/lib/ipv4/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/lib/k8s/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/lib/pins/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/lib/setup-secrets/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/options/cert-manager/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/options/cluster/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/options/homepage/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/options/k3s/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/options/k8sss/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/shared/options/workloads/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/storage/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/storage/options/nfs-provisioner/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/storage/options/postgresql/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/storage/options/redis/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
     <url>
          <loc>https://nixos-homelab.github.io/storage/options/smb/</loc>
-         <lastmod>2026-11-22</lastmod>
+         <lastmod>2026-11-23</lastmod>
     </url>
 </urlset>

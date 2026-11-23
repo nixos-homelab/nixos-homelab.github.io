@@ -1109,6 +1109,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../media/options/flaresolverr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    flaresolverr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../media/options/flood/" class="md-nav__link">
         
   
@@ -1522,6 +1550,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alerting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alerting
+      
+    </span>
+  </a>
   
 </li>
       
@@ -3543,6 +3582,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#alerting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alerting
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3594,7 +3644,8 @@ feed it, for both cluster and host-level monitoring.</p>
 <li><strong>grafana</strong>: dashboards, provisioned with datasources for Mimir and Loki.
   <code>homelab.grafana.dashboards.&lt;name&gt;</code> provisions a dashboard (read-only in
   the UI), and <code>homelab.grafana.homeDashboard</code> makes one Grafana's home. The modules' tiles
-  (<code>homelab.grafana.home.tiles</code>) make a Home dashboard, which is the home by default.</li>
+  (<code>homelab.grafana.home.tiles</code>) make a Home dashboard, which is the home by default.
+  <code>homelab.grafana.alerting</code> provisions alert rules and where they notify (see Alerting below).</li>
 <li><strong>mimir</strong>: long-term Prometheus-compatible metrics storage.</li>
 <li><strong>loki</strong>: log storage, one binary on its volume, with <code>homelab.loki.retention</code> (30 days by default). On, it has
   Alloy ship the logs (see Logs below).</li>
@@ -3690,6 +3741,105 @@ own dashboards:</p>
   <span class="p">};</span>
 <span class="p">};</span>
 </code></pre></div>
+<h2 id="alerting">Alerting</h2>
+<p>Alert rules come with the modules they watch, as dashboards do: a module adds a group named after it to
+<code>homelab.grafana.alerting.groups</code>, built with <code>lib.grafana.alert</code>. A rule is an instant query against Mimir (or Loki
+with <code>datasource = "loki"</code>), its last value per series held against a threshold for a while. Thresholds live in rules,
+not on panels.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> inputs<span class="p">,</span> <span class="o">...</span> <span class="p">}:</span>
+<span class="p">{</span>
+  homelab<span class="o">.</span>grafana<span class="o">.</span>alerting<span class="o">.</span>groups<span class="o">.</span>zfs<span class="o">.</span>rules<span class="o">.</span><span class="ss">pool-degraded</span> <span class="o">=</span> inputs<span class="o">.</span>homelab-monitoring<span class="o">.</span>lib<span class="o">.</span>grafana<span class="o">.</span>alert <span class="p">{</span>
+    <span class="ss">title</span> <span class="o">=</span> <span class="s2">&quot;Pool not online&quot;</span><span class="p">;</span>
+    <span class="ss">query</span> <span class="o">=</span> <span class="s s-Multiline">&#39;&#39;max by (zpool) (node_zfs_zpool_state{state!=&quot;online&quot;})&#39;&#39;</span><span class="p">;</span>
+    <span class="ss">above</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="ss">for</span> <span class="o">=</span> <span class="s2">&quot;1m&quot;</span><span class="p">;</span>
+    <span class="ss">severity</span> <span class="o">=</span> <span class="s2">&quot;critical&quot;</span><span class="p">;</span>
+    <span class="ss">summary</span> <span class="o">=</span> <span class="s2">&quot;Pool {{ $labels.zpool }} is not online&quot;</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This flake's modules bring their own, each behind <code>homelab.&lt;module&gt;.alerts.enable</code> (on with the module and
+alerting):</p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Critical</th>
+<th>Warning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zfs-exporter</td>
+<td>pool not ONLINE, over 90 %, ZED data errors</td>
+<td>over 80 %, full within a week, ZED checksum or I/O errors, a vdev leaving ONLINE, no metrics</td>
+</tr>
+<tr>
+<td>smartctl-exporter</td>
+<td>SMART failed</td>
+<td>a disk over 55 °C for 15 minutes, no metrics</td>
+</tr>
+<tr>
+<td>systemd-exporter</td>
+<td></td>
+<td>a unit failed for 5 minutes</td>
+</tr>
+<tr>
+<td>kube-state-metrics</td>
+<td>a node NotReady</td>
+<td>a container stuck waiting or restarting, a workload short of replicas, a failed Job</td>
+</tr>
+<tr>
+<td>alloy</td>
+<td></td>
+<td>a scrape target down, kernel I/O errors and OOM kills in the journal</td>
+</tr>
+</tbody>
+</table>
+<p>The ZED rules read ZED's journal lines (<code>all-syslog.sh</code>, tagged <code>zed</code>) through Loki, so they need ZED logging to
+syslog on the host.</p>
+<p><code>severity</code> routes an alert: <code>critical</code> and <code>warning</code> notify the contact point <code>homelab.grafana.alerting.notify</code>
+names for them, <code>info</code> only shows in the Firing list on Home. Contact points are Grafana integrations of any type;
+their secrets come from Secrets in Grafana's namespace (<code>environmentSecrets</code>), named in the settings as <code>$NAME</code>:</p>
+<div class="highlight"><pre><span></span><code>homelab<span class="o">.</span>grafana<span class="o">.</span><span class="ss">alerting</span> <span class="o">=</span> <span class="p">{</span>
+  contactPoints<span class="o">.</span><span class="ss">phone</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="ss">type</span> <span class="o">=</span> <span class="s2">&quot;webhook&quot;</span><span class="p">;</span>
+      settings<span class="o">.</span><span class="ss">url</span> <span class="o">=</span> <span class="s2">&quot;$NOTIFY_URL&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">];</span>
+  <span class="ss">environmentSecrets</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;notify&quot;</span> <span class="p">];</span>
+  notify<span class="o">.</span><span class="ss">critical</span> <span class="o">=</span> <span class="s2">&quot;phone&quot;</span><span class="p">;</span>
+  notify<span class="o">.</span><span class="ss">warning</span> <span class="o">=</span> <span class="s2">&quot;phone&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Grafana starts without those Secrets. Until a variable is set, the init container leaves out the integrations that
+name it, and the routes to a contact point left without integrations, so those alerts go nowhere. Grafana reads the
+variables only when it starts: the setup-secrets destination writing a Secret restarts it with
+<code>restart = [ "deployment/grafana" ]</code>.</p>
+<p>Grafana's default notification lists every label, query value and link. The module provisions shorter texts,
+<code>homelab.grafana.alerting.messages</code>: <code>title</code> (the alert's name, how many fire, whether they resolved) and <code>message</code>
+(each alert's summary and description, in HTML), for the settings of an integration that takes them:</p>
+<div class="highlight"><pre><span></span><code>contactPoints<span class="o">.</span><span class="ss">phone</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="ss">type</span> <span class="o">=</span> <span class="s2">&quot;pushover&quot;</span><span class="p">;</span>
+    <span class="ss">settings</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="ss">userKey</span> <span class="o">=</span> <span class="s2">&quot;$PUSHOVER_USER_KEY&quot;</span><span class="p">;</span>
+      <span class="ss">apiToken</span> <span class="o">=</span> <span class="s2">&quot;$PUSHOVER_TOKEN&quot;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="o">//</span> config<span class="o">.</span>homelab<span class="o">.</span>grafana<span class="o">.</span>alerting<span class="o">.</span>messages<span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">];</span>
+</code></pre></div>
+<p>With Mimir enabled, the Alerts dashboard shows what fires now and what fired over its time range: counts by
+severity, pending alerts, failing rules and silences, the firing list, a timeline per rule, and the notifications
+sent. Grafana keeps its alert state history as annotations, which only its alerting pages read, so the module adds
+Mimir as a second state history backend: Grafana writes each alert instance that isn't normal as the series
+<code>GRAFANA_ALERTS</code>, with the rule's title as <code>alertname</code>, its labels, and <code>grafana_alertstate</code>.</p>
+<p>Grafana provisions alerting from files at start only and deletes nothing that drops out of them, so an init
+container in its pod compares what this configuration provisions with what Grafana's database says was provisioned
+from files before, and has Grafana delete the difference. Only what carries the module's <code>hl-</code> prefix: rules made in
+the UI stay. A change to the alerting restarts Grafana. <code>lib.alerts.check</code> runs a configuration's PromQL through
+promtool, and <code>lib.logs.queries</code> its LogQL through the pinned Loki.</p>
 
 
 

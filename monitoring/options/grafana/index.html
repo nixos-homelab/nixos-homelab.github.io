@@ -1109,6 +1109,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../media/options/flaresolverr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    flaresolverr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../media/options/flood/" class="md-nav__link">
         
   
@@ -3496,6 +3524,320 @@
 </tr>
 </thead>
 <tbody>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.contactPoints" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.contactPoints"><code>alerting.<wbr>contactPoints</code></a></td>
+<td>attribute set of list of (submodule)</td>
+<td><code>{ }<wbr></code></td>
+<td>Where notifications go: each contact point a list of Grafana …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.contactPoints</code></p>
+<p>Where notifications go: each contact point a list of Grafana integrations (email, webhook, telegram, pushover,
+...). Secrets stay out of here: a setting can name an environment variable as <code>$NAME</code>, which Grafana expands
+from <code>environmentSecrets</code>. An integration naming one that is unset is left out until it is set, and the routes
+to a contact point left without integrations with it.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="ss">phone</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="ss">type</span> <span class="o">=</span> <span class="s2">&quot;webhook&quot;</span><span class="p">;</span>
+      settings<span class="o">.</span><span class="ss">url</span> <span class="o">=</span> <span class="s2">&quot;$NOTIFY_URL&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.contactPoints.&lt;name&gt;.*.disableResolveMessage" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.contactPoints.&lt;name&gt;.*.disableResolveMessage"><code>alerting.<wbr>contactPoints.<wbr>&lt;name&gt;.<wbr>*.<wbr>disableResolveMessage</code></a></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>Whether to leave out the message when an alert resolves.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.contactPoints.&lt;name&gt;.*.disableResolveMessage</code></p>
+<p>Whether to leave out the message when an alert resolves.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">false</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.contactPoints.&lt;name&gt;.*.settings" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.contactPoints.&lt;name&gt;.*.settings"><code>alerting.<wbr>contactPoints.<wbr>&lt;name&gt;.<wbr>*.<wbr>settings</code></a></td>
+<td>attribute set of anything</td>
+<td><code>{ }<wbr></code></td>
+<td>The integration's settings, as Grafana's provisioning takes them.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.contactPoints.&lt;name&gt;.*.settings</code></p>
+<p>The integration's settings, as Grafana's provisioning takes them.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.contactPoints.&lt;name&gt;.*.type" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.contactPoints.&lt;name&gt;.*.type"><code>alerting.<wbr>contactPoints.<wbr>&lt;name&gt;.<wbr>*.<wbr>type</code></a></td>
+<td>string</td>
+<td>—</td>
+<td>The integration's type, as Grafana names it.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.contactPoints.&lt;name&gt;.*.type</code></p>
+<p>The integration's type, as Grafana names it.</p>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.enable"><code>alerting.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>grafana.<wbr>…</code></td>
+<td>Whether to enable Grafana alerting provisioned from Nix.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.enable</code></p>
+<p>Whether to enable Grafana alerting provisioned from Nix.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>grafana<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Example</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">true</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.environmentSecrets" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.environmentSecrets"><code>alerting.<wbr>environmentSecrets</code></a></td>
+<td>list of string</td>
+<td><code>[ ]</code></td>
+<td>Secrets in Grafana's namespace whose keys reach Grafana as environment …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.environmentSecrets</code></p>
+<p>Secrets in Grafana's namespace whose keys reach Grafana as environment variables, for the settings of
+<code>contactPoints</code>. Grafana starts without them, leaving out the integrations they are for, and reads them only
+when it starts: restart it when one is written (<code>restart</code> of homelab-shared's <code>kubeSecretDestination</code>).</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span> <span class="p">]</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.folder" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.folder"><code>alerting.<wbr>folder</code></a></td>
+<td>string</td>
+<td><code>&quot;Homelab&quot;</code></td>
+<td>The Grafana folder the rules are in.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.folder</code></p>
+<p>The Grafana folder the rules are in.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;Homelab&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.groupBy" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.groupBy"><code>alerting.<wbr>groupBy</code></a></td>
+<td>list of string</td>
+<td><code>[ &quot;grafana_folder&quot;…</code></td>
+<td>The labels alerts are grouped into one notification by.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.groupBy</code></p>
+<p>The labels alerts are grouped into one notification by.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+  <span class="s2">&quot;grafana_folder&quot;</span>
+  <span class="s2">&quot;alertname&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.groupInterval" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.groupInterval"><code>alerting.<wbr>groupInterval</code></a></td>
+<td>string</td>
+<td><code>&quot;5m&quot;</code></td>
+<td>How long a group waits before notifying of alerts added to it.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.groupInterval</code></p>
+<p>How long a group waits before notifying of alerts added to it.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;5m&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.groupWait" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.groupWait"><code>alerting.<wbr>groupWait</code></a></td>
+<td>string</td>
+<td><code>&quot;1m&quot;</code></td>
+<td>How long a new group waits for more alerts before its first …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.groupWait</code></p>
+<p>How long a new group waits for more alerts before its first notification.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;1m&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.groups" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.groups"><code>alerting.<wbr>groups</code></a></td>
+<td>attribute set of (submodule)</td>
+<td><code>{ }<wbr></code></td>
+<td>Alert rules by group, evaluated together every <code>interval</code>.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.groups</code></p>
+<p>Alert rules by group, evaluated together every <code>interval</code>. A module adds its own in an <code>alerts.nix</code> next to
+it, one group named after the module; <code>lib.grafana.alert</code> builds a rule. A rule's uid is
+<code>hl-&lt;group&gt;-&lt;name&gt;</code>, at most 40 characters. A rule that drops out of here is deleted from Grafana at its next
+start; rules made in Grafana's UI stay.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.groups.&lt;name&gt;.interval" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.groups.&lt;name&gt;.interval"><code>alerting.<wbr>groups.<wbr>&lt;name&gt;.<wbr>interval</code></a></td>
+<td>string</td>
+<td><code>&quot;1m&quot;</code></td>
+<td>How often the group's rules are evaluated.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.groups.&lt;name&gt;.interval</code></p>
+<p>How often the group's rules are evaluated.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;1m&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.groups.&lt;name&gt;.rules" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.groups.&lt;name&gt;.rules"><code>alerting.<wbr>groups.<wbr>&lt;name&gt;.<wbr>rules</code></a></td>
+<td>attribute set of attribute set of anything</td>
+<td><code>{ }<wbr></code></td>
+<td>The group's rules, as <code>lib.grafana.alert</code> builds them (Grafana's …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.groups.&lt;name&gt;.rules</code></p>
+<p>The group's rules, as <code>lib.grafana.alert</code> builds them (Grafana's provisioning format).</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.messages" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.messages"><code>alerting.<wbr>messages</code></a></td>
+<td>attribute set of string (read-only)</td>
+<td><code>{ message = &quot;{{…</code></td>
+<td>Notification texts for a contact point's settings, from the templates …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.messages</code></p>
+<p>Notification texts for a contact point's settings, from the templates this module provisions: <code>title</code>, a
+short title, and <code>message</code>, the summaries of the alerts in HTML. Pass them as the integration's own
+settings (<code>title</code> and <code>message</code> for pushover, webhook and others).</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="ss">message</span> <span class="o">=</span> <span class="s2">&quot;{{ template </span><span class="se">\&quot;</span><span class="s2">hl.message</span><span class="se">\&quot;</span><span class="s2"> . }}&quot;</span><span class="p">;</span>
+  <span class="ss">title</span> <span class="o">=</span> <span class="s2">&quot;{{ template </span><span class="se">\&quot;</span><span class="s2">hl.title</span><span class="se">\&quot;</span><span class="s2"> . }}&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.notify.critical" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.notify.critical"><code>alerting.<wbr>notify.<wbr>critical</code></a></td>
+<td>null or string</td>
+<td><code>null</code></td>
+<td>The contact point alerts of severity <code>critical</code> go to; null to notify …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.notify.critical</code></p>
+<p>The contact point alerts of severity <code>critical</code> go to; null to notify nobody.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.notify.warning" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.notify.warning"><code>alerting.<wbr>notify.<wbr>warning</code></a></td>
+<td>null or string</td>
+<td><code>null</code></td>
+<td>The contact point alerts of severity <code>warning</code> go to; null to notify …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.notify.warning</code></p>
+<p>The contact point alerts of severity <code>warning</code> go to; null to notify nobody.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.repeatInterval.critical" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.repeatInterval.critical"><code>alerting.<wbr>repeatInterval.<wbr>critical</code></a></td>
+<td>string</td>
+<td><code>&quot;4h&quot;</code></td>
+<td>How often a firing critical alert is notified again.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.repeatInterval.critical</code></p>
+<p>How often a firing critical alert is notified again.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;4h&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.alerting.repeatInterval.warning" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.alerting.repeatInterval.warning"><code>alerting.<wbr>repeatInterval.<wbr>warning</code></a></td>
+<td>string</td>
+<td><code>&quot;12h&quot;</code></td>
+<td>How often a firing warning is notified again.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.alerting.repeatInterval.warning</code></p>
+<p>How often a firing warning is notified again.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;12h&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/alerting.nix"><code>nix/modules/grafana/alerting.nix</code></a></p>
+</td>
+</tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.grafana.apiServerAccess" tabindex="0">
 <td><a class="nd-name" href="#homelab.grafana.apiServerAccess"><code>apiServerAccess</code></a></td>
 <td>boolean</td>
@@ -3646,6 +3988,23 @@ workload is picked; one without shows for every workload. Queries filter on <cod
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/drilldown.nix"><code>nix/modules/grafana/drilldown.nix</code></a></p>
 </td>
 </tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.drilldown.variables" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.drilldown.variables"><code>drilldown.<wbr>variables</code></a></td>
+<td>attribute set of attribute set of anything</td>
+<td><code>{ }<wbr></code></td>
+<td>Variables of the Workload dashboard besides <code>workload</code>, by name, which …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.drilldown.variables</code></p>
+<p>Variables of the Workload dashboard besides <code>workload</code>, by name, which its rows filter on: from
+<code>lib.grafana.levelVariable</code> and the like. Modules whose rows filter on the same variable define it alike.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/drilldown.nix"><code>nix/modules/grafana/drilldown.nix</code></a></p>
+</td>
+</tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.grafana.enable" tabindex="0">
 <td><a class="nd-name" href="#homelab.grafana.enable"><code>enable</code></a></td>
 <td>boolean</td>
@@ -3665,96 +4024,604 @@ workload is picked; one without shows for every workload. Queries filter on <cod
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/default.nix"><code>nix/modules/grafana/default.nix</code></a></p>
 </td>
 </tr>
-<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.tiles" tabindex="0">
-<td><a class="nd-name" href="#homelab.grafana.home.tiles"><code>home.<wbr>tiles</code></a></td>
-<td>attribute set of (submodule)</td>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.annotations" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.annotations"><code>home.<wbr>annotations</code></a></td>
+<td>attribute set of attribute set of anything</td>
 <td><code>{ }<wbr></code></td>
-<td>Tiles of the Home dashboard, from the modules' grafana.nix: a panel …</td>
+<td>Moments the Home dashboard's time series mark, from …</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
-<p><code>homelab.grafana.home.tiles</code></p>
-<p>Tiles of the Home dashboard, from the modules' grafana.nix: a panel each, packed onto the grid by <code>order</code>. A
-tile's panel links to the dashboard with more, in its own <code>links</code>.</p>
+<p><code>homelab.grafana.home.annotations</code></p>
+<p>Moments the Home dashboard's time series mark, from <code>lib.grafana.annotation</code>, by name.</p>
 <p><strong>Default</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
 </td>
 </tr>
-<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.tiles.&lt;name&gt;.group" tabindex="0">
-<td><a class="nd-name" href="#homelab.grafana.home.tiles.&lt;name&gt;.group"><code>home.<wbr>tiles.<wbr>&lt;name&gt;.<wbr>group</code></a></td>
-<td>string</td>
-<td>—</td>
-<td>The part of the homelab it's about (NAS, Workloads, Media, ...), for its …</td>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.areas" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.areas"><code>home.<wbr>areas</code></a></td>
+<td>attribute set of (submodule)</td>
+<td><code>{ }<wbr></code></td>
+<td>The parts of the homelab that the graphs of CPU, memory and traffic …</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
-<p><code>homelab.grafana.home.tiles.&lt;name&gt;.group</code></p>
-<p>The part of the homelab it's about (NAS, Workloads, Media, ...), for its description.</p>
-<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
-</td>
-</tr>
-<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.tiles.&lt;name&gt;.h" tabindex="0">
-<td><a class="nd-name" href="#homelab.grafana.home.tiles.&lt;name&gt;.h"><code>home.<wbr>tiles.<wbr>&lt;name&gt;.<wbr>h</code></a></td>
-<td>positive integer, meaning &gt;0</td>
-<td><code>4</code></td>
-<td>Its height in grid rows, of 30 pixels.</td>
-</tr>
-<tr class="nd-card" hidden="hidden">
-<td colspan="4">
-<p><code>homelab.grafana.home.tiles.&lt;name&gt;.h</code></p>
-<p>Its height in grid rows, of 30 pixels.</p>
+<p><code>homelab.grafana.home.areas</code></p>
+<p>The parts of the homelab that the graphs of CPU, memory and traffic split the containers into, by the
+namespaces each module adds to its area (a repository's modules share one: media, personal, ...). A namespace
+in no area counts as <code>other</code>.</p>
 <p><strong>Default</strong></p>
-<div class="highlight"><pre><span></span><code><span class="mi">4</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
 </td>
 </tr>
-<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.tiles.&lt;name&gt;.order" tabindex="0">
-<td><a class="nd-name" href="#homelab.grafana.home.tiles.&lt;name&gt;.order"><code>home.<wbr>tiles.<wbr>&lt;name&gt;.<wbr>order</code></a></td>
-<td>signed integer</td>
-<td><code>500</code></td>
-<td>Where it goes, lower first, rows and tiles alike.</td>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.areas.&lt;name&gt;.color" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.areas.&lt;name&gt;.color"><code>home.<wbr>areas.<wbr>&lt;name&gt;.<wbr>color</code></a></td>
+<td>null or string</td>
+<td><code>null</code></td>
+<td>Its colour in the graphs; null picks one from a palette by the area's …</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
-<p><code>homelab.grafana.home.tiles.&lt;name&gt;.order</code></p>
-<p>Where it goes, lower first, rows and tiles alike.</p>
+<p><code>homelab.grafana.home.areas.&lt;name&gt;.color</code></p>
+<p>Its colour in the graphs; null picks one from a palette by the area's name.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.areas.&lt;name&gt;.namespaces" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.areas.&lt;name&gt;.namespaces"><code>home.<wbr>areas.<wbr>&lt;name&gt;.<wbr>namespaces</code></a></td>
+<td>list of string</td>
+<td><code>[ ]</code></td>
+<td>The namespaces of the area's workloads.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.areas.&lt;name&gt;.namespaces</code></p>
+<p>The namespaces of the area's workloads.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span> <span class="p">]</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs"><code>home.<wbr>graphs</code></a></td>
+<td>attribute set of (submodule)</td>
+<td><code>{ }<wbr></code></td>
+<td>The panels below the health, packed onto the grid by <code>order</code> (each in …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs</code></p>
+<p>The panels below the health, packed onto the grid by <code>order</code> (each in the highest free spot, then widened into free
+columns to its right), each shown while it has series. Several modules
+can feed one graph: one defines it (title, unit, ...), and each adds its <code>series</code>. A series' legend is its name
+unless its query says otherwise.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.custom" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.custom"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>custom</code></a></td>
+<td>attribute set of anything</td>
+<td><code>{ }<wbr></code></td>
+<td>The plugin's fieldConfig.defaults.custom, over the graph's own.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.custom</code></p>
+<p>The plugin's fieldConfig.defaults.custom, over the graph's own.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.decimals" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.decimals"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>decimals</code></a></td>
+<td>null or signed integer</td>
+<td><code>null</code></td>
+<td>Decimals shown.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.decimals</code></p>
+<p>Decimals shown.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.description" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.description"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>description</code></a></td>
+<td>string</td>
+<td>—</td>
+<td>What the panel shows and how it's computed.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.description</code></p>
+<p>What the panel shows and how it's computed.</p>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.h" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.h"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>h</code></a></td>
+<td>positive integer, meaning &gt;0</td>
+<td><code>8</code></td>
+<td>Its height in grid rows, of 30 pixels.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.h</code></p>
+<p>Its height in grid rows, of 30 pixels.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="mi">8</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.legend" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.legend"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>legend</code></a></td>
+<td>null or string or attribute set of anything</td>
+<td><code>null</code></td>
+<td>Its legend: an attrset of <code>lib.grafana.legends</code>, or its name.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.legend</code></p>
+<p>Its legend: an attrset of <code>lib.grafana.legends</code>, or its name.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.links" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.links"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>links</code></a></td>
+<td>list of attribute set of string</td>
+<td><code>[ ]</code></td>
+<td>Links in the panel's header, to the dashboard with more: …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.links</code></p>
+<p>Links in the panel's header, to the dashboard with more: [ { title; url; } ].</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span> <span class="p">]</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.max" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.max"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>max</code></a></td>
+<td>null or signed integer or floating point number</td>
+<td><code>null</code></td>
+<td>The axis' or gauge's maximum.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.max</code></p>
+<p>The axis' or gauge's maximum.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.min" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.min"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>min</code></a></td>
+<td>null or signed integer or floating point number</td>
+<td><code>null</code></td>
+<td>The axis' or gauge's minimum.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.min</code></p>
+<p>The axis' or gauge's minimum.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.options" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.options"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>options</code></a></td>
+<td>attribute set of anything</td>
+<td><code>{ }<wbr></code></td>
+<td>The plugin's options.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.options</code></p>
+<p>The plugin's options.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.order" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.order"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>order</code></a></td>
+<td>signed integer</td>
+<td><code>500</code></td>
+<td>Where it goes, lower first.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.order</code></p>
+<p>Where it goes, lower first.</p>
 <p><strong>Default</strong></p>
 <div class="highlight"><pre><span></span><code><span class="mi">500</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
 </td>
 </tr>
-<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.tiles.&lt;name&gt;.panel" tabindex="0">
-<td><a class="nd-name" href="#homelab.grafana.home.tiles.&lt;name&gt;.panel"><code>home.<wbr>tiles.<wbr>&lt;name&gt;.<wbr>panel</code></a></td>
-<td>attribute set of anything</td>
-<td><code>{ }<wbr></code></td>
-<td>The panel, from <code>lib.grafana</code>.</td>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.overrides" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.overrides"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>overrides</code></a></td>
+<td>list of attribute set of anything</td>
+<td><code>[ ]</code></td>
+<td>Field overrides besides the series' own.</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
-<p><code>homelab.grafana.home.tiles.&lt;name&gt;.panel</code></p>
-<p>The panel, from <code>lib.grafana</code>.</p>
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.overrides</code></p>
+<p>Field overrides besides the series' own.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span> <span class="p">]</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.queryOptions" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.queryOptions"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>queryOptions</code></a></td>
+<td>attribute set of anything</td>
+<td><code>{ }<wbr></code></td>
+<td>QueryOptionsSpec: maxDataPoints, interval, ...</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.queryOptions</code></p>
+<p>QueryOptionsSpec: maxDataPoints, interval, ...</p>
 <p><strong>Default</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
 </td>
 </tr>
-<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.tiles.&lt;name&gt;.w" tabindex="0">
-<td><a class="nd-name" href="#homelab.grafana.home.tiles.&lt;name&gt;.w"><code>home.<wbr>tiles.<wbr>&lt;name&gt;.<wbr>w</code></a></td>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.series" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.series"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>series</code></a></td>
+<td>attribute set of (submodule)</td>
+<td><code>{ }<wbr></code></td>
+<td>The series, by name: its query, and how it looks.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.series</code></p>
+<p>The series, by name: its query, and how it looks.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.series.&lt;name&gt;.below" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.series.&lt;name&gt;.below"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>series.<wbr>&lt;name&gt;.<wbr>below</code></a></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>Whether it's drawn below the zero line (sent against received, written …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.series.&lt;name&gt;.below</code></p>
+<p>Whether it's drawn below the zero line (sent against received, written against read).</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">false</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.series.&lt;name&gt;.color" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.series.&lt;name&gt;.color"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>series.<wbr>&lt;name&gt;.<wbr>color</code></a></td>
+<td>null or string</td>
+<td><code>null</code></td>
+<td>Its colour, for a query whose legend is the series' name.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.series.&lt;name&gt;.color</code></p>
+<p>Its colour, for a query whose legend is the series' name.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.series.&lt;name&gt;.order" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.series.&lt;name&gt;.order"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>series.<wbr>&lt;name&gt;.<wbr>order</code></a></td>
+<td>signed integer</td>
+<td><code>500</code></td>
+<td>Where it goes among the graph's series (stacking, legend), lower first.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.series.&lt;name&gt;.order</code></p>
+<p>Where it goes among the graph's series (stacking, legend), lower first.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="mi">500</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.series.&lt;name&gt;.overrides" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.series.&lt;name&gt;.overrides"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>series.<wbr>&lt;name&gt;.<wbr>overrides</code></a></td>
+<td>list of attribute set of anything</td>
+<td><code>[ ]</code></td>
+<td>Field overrides of its own.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.series.&lt;name&gt;.overrides</code></p>
+<p>Field overrides of its own.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span> <span class="p">]</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.series.&lt;name&gt;.query" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.series.&lt;name&gt;.query"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>series.<wbr>&lt;name&gt;.<wbr>query</code></a></td>
+<td>attribute set of anything</td>
+<td><code>{ }<wbr></code></td>
+<td>The query, from <code>lib.grafana.prom</code> or <code>lib.grafana.loki</code>, its legend the …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.series.&lt;name&gt;.query</code></p>
+<p>The query, from <code>lib.grafana.prom</code> or <code>lib.grafana.loki</code>, its legend the series' name.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.stack" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.stack"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>stack</code></a></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>Whether a time series stacks its series, to show what a total is made …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.stack</code></p>
+<p>Whether a time series stacks its series, to show what a total is made of.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">false</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.thresholds" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.thresholds"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>thresholds</code></a></td>
+<td>null or (list of attribute set of anything)</td>
+<td><code>null</code></td>
+<td>Threshold steps, as <code>lib.grafana.panel</code> takes them; null is neutral.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.thresholds</code></p>
+<p>Threshold steps, as <code>lib.grafana.panel</code> takes them; null is neutral.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.title" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.title"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>title</code></a></td>
+<td>string</td>
+<td>—</td>
+<td>The panel's title.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.title</code></p>
+<p>The panel's title.</p>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.type" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.type"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>type</code></a></td>
+<td>string</td>
+<td><code>&quot;timeseries&quot;</code></td>
+<td>The panel plugin: timeseries, bargauge, piechart, ...</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.type</code></p>
+<p>The panel plugin: timeseries, bargauge, piechart, ...</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;timeseries&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.unit" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.unit"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>unit</code></a></td>
+<td>null or string</td>
+<td><code>null</code></td>
+<td>The values' unit.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.unit</code></p>
+<p>The values' unit.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.graphs.&lt;name&gt;.w" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.graphs.&lt;name&gt;.w"><code>home.<wbr>graphs.<wbr>&lt;name&gt;.<wbr>w</code></a></td>
 <td>integer between 1 and 24 (both inclusive)</td>
-<td><code>4</code></td>
+<td><code>8</code></td>
 <td>Its width in grid columns, of 24.</td>
 </tr>
 <tr class="nd-card" hidden="hidden">
 <td colspan="4">
-<p><code>homelab.grafana.home.tiles.&lt;name&gt;.w</code></p>
+<p><code>homelab.grafana.home.graphs.&lt;name&gt;.w</code></p>
 <p>Its width in grid columns, of 24.</p>
 <p><strong>Default</strong></p>
-<div class="highlight"><pre><span></span><code><span class="mi">4</span>
+<div class="highlight"><pre><span></span><code><span class="mi">8</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.health" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.health"><code>home.<wbr>health</code></a></td>
+<td>attribute set of (submodule)</td>
+<td><code>{ }<wbr></code></td>
+<td>The kinds of things whose health the Home dashboard shows, a row each: …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.health</code></p>
+<p>The kinds of things whose health the Home dashboard shows, a row each: how many are healthy of all of them,
+over time and right now. <code>good</code> and <code>all</code> are PromQL giving one series each (<code>count(zfs_pool_health == 0)</code>,
+<code>count(zfs_pool_health)</code>).</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.health.&lt;name&gt;.all" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.health.&lt;name&gt;.all"><code>home.<wbr>health.<wbr>&lt;name&gt;.<wbr>all</code></a></td>
+<td>string</td>
+<td>—</td>
+<td>How many there are, as one series.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.health.&lt;name&gt;.all</code></p>
+<p>How many there are, as one series.</p>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.health.&lt;name&gt;.crit" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.health.&lt;name&gt;.crit"><code>home.<wbr>health.<wbr>&lt;name&gt;.<wbr>crit</code></a></td>
+<td>integer or floating point number between 0 and 1 (both inclusive)</td>
+<td><code>0.<wbr>9</code></td>
+<td>The healthy share below which the row turns red; below 100 % it is …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.health.&lt;name&gt;.crit</code></p>
+<p>The healthy share below which the row turns red; below 100 % it is orange.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="mf">0.9</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.health.&lt;name&gt;.description" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.health.&lt;name&gt;.description"><code>home.<wbr>health.<wbr>&lt;name&gt;.<wbr>description</code></a></td>
+<td>string</td>
+<td>—</td>
+<td>What healthy means for it, for the panel's description.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.health.&lt;name&gt;.description</code></p>
+<p>What healthy means for it, for the panel's description.</p>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.health.&lt;name&gt;.good" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.health.&lt;name&gt;.good"><code>home.<wbr>health.<wbr>&lt;name&gt;.<wbr>good</code></a></td>
+<td>string</td>
+<td>—</td>
+<td>How many are healthy, as one series.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.health.&lt;name&gt;.good</code></p>
+<p>How many are healthy, as one series.</p>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.health.&lt;name&gt;.order" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.health.&lt;name&gt;.order"><code>home.<wbr>health.<wbr>&lt;name&gt;.<wbr>order</code></a></td>
+<td>signed integer</td>
+<td><code>500</code></td>
+<td>Where the row goes, lower first.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.health.&lt;name&gt;.order</code></p>
+<p>Where the row goes, lower first.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="mi">500</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.health.&lt;name&gt;.title" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.health.&lt;name&gt;.title"><code>home.<wbr>health.<wbr>&lt;name&gt;.<wbr>title</code></a></td>
+<td>string</td>
+<td><code>&quot;‹name›&quot;</code></td>
+<td>The row's name.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.health.&lt;name&gt;.title</code></p>
+<p>The row's name.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;‹name›&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.tiles" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.tiles"><code>home.<wbr>tiles</code></a></td>
+<td>attribute set of anything</td>
+<td><code>{ }<wbr></code></td>
+<td>Deprecated and ignored: the single-value tiles of the old Home …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.tiles</code></p>
+<p>Deprecated and ignored: the single-value tiles of the old Home dashboard. Modules move to <code>health</code> and <code>graphs</code>;
+the option goes once none sets it.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.grafana.home.variables" tabindex="0">
+<td><a class="nd-name" href="#homelab.grafana.home.variables"><code>home.<wbr>variables</code></a></td>
+<td>attribute set of attribute set of anything</td>
+<td><code>{ }<wbr></code></td>
+<td>Variables the panels use, by name, from <code>lib.grafana.debugSwitch</code> and …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.grafana.home.variables</code></p>
+<p>Variables the panels use, by name, from <code>lib.grafana.debugSwitch</code> and the like: modules whose panels filter on
+the same variable define it alike.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/grafana/home.nix"><code>nix/modules/grafana/home.nix</code></a></p>
 </td>

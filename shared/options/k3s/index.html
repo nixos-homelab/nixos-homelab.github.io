@@ -1109,6 +1109,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../media/options/flaresolverr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    flaresolverr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../media/options/flood/" class="md-nav__link">
         
   
@@ -3527,6 +3555,39 @@ networking's Cilium.</p>
 <div class="highlight"><pre><span></span><code><span class="no">true</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/shared/blob/main/nix/modules/k3s/default.nix"><code>nix/modules/k3s/default.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.k3s.grafana.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.k3s.grafana.enable"><code>grafana.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>k3s.<wbr>…</code></td>
+<td>Whether the Cluster dashboard has CoreDNS's panels, and k3s' journal …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.k3s.grafana.enable</code></p>
+<p>Whether the Cluster dashboard has CoreDNS's panels, and k3s' journal while <code>homelab.loki.grafana.enable</code> is on.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>k3s<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>k3s<span class="o">.</span>metrics<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+<span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>grafana<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/shared/blob/main/nix/modules/k3s/grafana.nix"><code>nix/modules/k3s/grafana.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.k3s.metrics.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.k3s.metrics.enable"><code>metrics.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>alloy.<wbr>enable</code></td>
+<td>Whether Alloy scrapes the metrics of the CoreDNS k3s runs.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.k3s.metrics.enable</code></p>
+<p>Whether Alloy scrapes the metrics of the CoreDNS k3s runs.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/shared/blob/main/nix/modules/k3s/metrics.nix"><code>nix/modules/k3s/metrics.nix</code></a></p>
 </td>
 </tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.k3s.zstdImages" tabindex="0">

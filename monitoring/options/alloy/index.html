@@ -1109,6 +1109,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../media/options/flaresolverr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    flaresolverr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../media/options/flood/" class="md-nav__link">
         
   
@@ -3474,6 +3502,22 @@
 </tr>
 </thead>
 <tbody>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.alerts.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.alerts.enable"><code>alerts.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>alloy.<wbr>…</code></td>
+<td>Whether Grafana alerts on Alloy's scrape targets, and on kernel errors …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.alerts.enable</code></p>
+<p>Whether Grafana alerts on Alloy's scrape targets, and on kernel errors in the journal while Alloy ships it.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>enable <span class="o">&amp;&amp;</span> config<span class="o">.</span>homelab<span class="o">.</span>grafana<span class="o">.</span>alerting<span class="o">.</span>enable
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/alerts.nix"><code>nix/modules/alloy/alerts.nix</code></a></p>
+</td>
+</tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.alloy.allowEgress" tabindex="0">
 <td><a class="nd-name" href="#homelab.alloy.allowEgress"><code>allowEgress</code></a></td>
 <td>list of string</td>
@@ -3522,6 +3566,23 @@
 the names in <code>levels</code>.</p>
 <p><strong>Default</strong></p>
 <div class="highlight"><pre><span></span><code><span class="s2">&quot;info&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.demoteNoise" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.demoteNoise"><code>logs.<wbr>demoteNoise</code></a></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Whether the messages the sources' <code>demote</code> name get their lower level …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.demoteNoise</code></p>
+<p>Whether the messages the sources' <code>demote</code> name get their lower level (debug, mostly): the default of every
+demotion's <code>enable</code>. Off, every message keeps the level it came with.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="no">true</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
 </td>
@@ -3794,6 +3855,69 @@ get a generic format by the look of each message, and the level of their priorit
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
 </td>
 </tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.journal.&lt;name&gt;.demote" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.journal.&lt;name&gt;.demote"><code>logs.<wbr>journal.<wbr>&lt;name&gt;.<wbr>demote</code></a></td>
+<td>attribute set of (submodule)</td>
+<td><code>{ }<wbr></code></td>
+<td>Messages of this source that say nothing worth their level, by name: a …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.journal.&lt;name&gt;.demote</code></p>
+<p>Messages of this source that say nothing worth their level, by name: a health check, a heartbeat, a line whose
+content is all in fields. They get <code>level</code> in place of the one they came with, while <code>enable</code>, which follows
+<code>homelab.alloy.logs.demoteNoise</code>, is on.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.journal.&lt;name&gt;.demote.&lt;name&gt;.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.journal.&lt;name&gt;.demote.&lt;name&gt;.enable"><code>logs.<wbr>journal.<wbr>&lt;name&gt;.<wbr>demote.<wbr>&lt;name&gt;.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>alloy.<wbr>…</code></td>
+<td>Whether these messages get <code>level</code>.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.journal.&lt;name&gt;.demote.&lt;name&gt;.enable</code></p>
+<p>Whether these messages get <code>level</code>.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>logs<span class="o">.</span>demoteNoise
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.journal.&lt;name&gt;.demote.&lt;name&gt;.expression" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.journal.&lt;name&gt;.demote.&lt;name&gt;.expression"><code>logs.<wbr>journal.<wbr>&lt;name&gt;.<wbr>demote.<wbr>&lt;name&gt;.<wbr>expression</code></a></td>
+<td>string</td>
+<td>—</td>
+<td>An RE2 regular expression the whole message matches, after parsing and …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.journal.&lt;name&gt;.demote.&lt;name&gt;.expression</code></p>
+<p>An RE2 regular expression the whole message matches, after parsing and redaction.</p>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.journal.&lt;name&gt;.demote.&lt;name&gt;.level" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.journal.&lt;name&gt;.demote.&lt;name&gt;.level"><code>logs.<wbr>journal.<wbr>&lt;name&gt;.<wbr>demote.<wbr>&lt;name&gt;.<wbr>level</code></a></td>
+<td>string</td>
+<td><code>&quot;debug&quot;</code></td>
+<td>The level they get: one of the names in <code>homelab.alloy.logs.levels</code>.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.journal.&lt;name&gt;.demote.&lt;name&gt;.level</code></p>
+<p>The level they get: one of the names in <code>homelab.alloy.logs.levels</code>.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;debug&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.journal.&lt;name&gt;.examples" tabindex="0">
 <td><a class="nd-name" href="#homelab.alloy.logs.journal.&lt;name&gt;.examples"><code>logs.<wbr>journal.<wbr>&lt;name&gt;.<wbr>examples</code></a></td>
 <td>list of (submodule)</td>
@@ -4059,6 +4183,69 @@ generic format by the look of each line, and no multiline records.</p>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
 </td>
 </tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.demote" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.demote"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>demote</code></a></td>
+<td>attribute set of (submodule)</td>
+<td><code>{ }<wbr></code></td>
+<td>Messages of this source that say nothing worth their level, by name: a …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods.&lt;name&gt;.demote</code></p>
+<p>Messages of this source that say nothing worth their level, by name: a health check, a heartbeat, a line whose
+content is all in fields. They get <code>level</code> in place of the one they came with, while <code>enable</code>, which follows
+<code>homelab.alloy.logs.demoteNoise</code>, is on.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">}</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.demote.&lt;name&gt;.enable" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.demote.&lt;name&gt;.enable"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>demote.<wbr>&lt;name&gt;.<wbr>enable</code></a></td>
+<td>boolean</td>
+<td><code>config.<wbr>homelab.<wbr>alloy.<wbr>…</code></td>
+<td>Whether these messages get <code>level</code>.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods.&lt;name&gt;.demote.&lt;name&gt;.enable</code></p>
+<p>Whether these messages get <code>level</code>.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code>config<span class="o">.</span>homelab<span class="o">.</span>alloy<span class="o">.</span>logs<span class="o">.</span>demoteNoise
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.demote.&lt;name&gt;.expression" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.demote.&lt;name&gt;.expression"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>demote.<wbr>&lt;name&gt;.<wbr>expression</code></a></td>
+<td>string</td>
+<td>—</td>
+<td>An RE2 regular expression the whole message matches, after parsing and …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods.&lt;name&gt;.demote.&lt;name&gt;.expression</code></p>
+<p>An RE2 regular expression the whole message matches, after parsing and redaction.</p>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.demote.&lt;name&gt;.level" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.demote.&lt;name&gt;.level"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>demote.<wbr>&lt;name&gt;.<wbr>level</code></a></td>
+<td>string</td>
+<td><code>&quot;debug&quot;</code></td>
+<td>The level they get: one of the names in <code>homelab.alloy.logs.levels</code>.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.pods.&lt;name&gt;.demote.&lt;name&gt;.level</code></p>
+<p>The level they get: one of the names in <code>homelab.alloy.logs.levels</code>.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;debug&quot;</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
 <tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.pods.&lt;name&gt;.examples" tabindex="0">
 <td><a class="nd-name" href="#homelab.alloy.logs.pods.&lt;name&gt;.examples"><code>logs.<wbr>pods.<wbr>&lt;name&gt;.<wbr>examples</code></a></td>
 <td>list of (submodule)</td>
@@ -4198,6 +4385,45 @@ generic format by the look of each line, and no multiline records.</p>
 <p>The <code>service_name</code> label, null for the pod's <code>app.kubernetes.io/name</code> or its container.</p>
 <p><strong>Default</strong></p>
 <div class="highlight"><pre><span></span><code><span class="no">null</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.redact.expressions" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.redact.expressions"><code>logs.<wbr>redact.<wbr>expressions</code></a></td>
+<td>list of string</td>
+<td><code>[ &quot;(?i)[?&amp;](?:api|api_?k…</code></td>
+<td>Regular expressions (RE2) for secrets in log lines, of pods and the …</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.redact.expressions</code></p>
+<p>Regular expressions (RE2) for secrets in log lines, of pods and the journal alike: each capture group is
+replaced with <code>replacement</code> before the line is parsed. The defaults catch API keys, tokens and passwords in
+URL queries (<code>?apikey=...</code>, the way the *Arr apps log their requests, and <code>&amp;api=...</code> in RSS feed URLs as
+SABnzbd logs them) and in <code>X-Api-Key</code> and <code>X-Plex-Token</code>
+headers.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+  <span class="s2">&quot;(?i)[?&amp;](?:api|api_?key|api_?token|access_token|token|x-plex-token|passkey|password|pass)=([^&amp;</span><span class="se">\\</span><span class="s2">s</span><span class="se">\&quot;</span><span class="s2">&#39;]+)&quot;</span>
+  <span class="s2">&quot;(?i)</span><span class="se">\\</span><span class="s2">bx-(?:api-key|plex-token): *([^</span><span class="se">\\</span><span class="s2">s</span><span class="se">\&quot;</span><span class="s2">&#39;]+)&quot;</span>
+<span class="p">]</span>
+</code></pre></div>
+<p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
+</td>
+</tr>
+<tr aria-expanded="false" class="nd-option" id="homelab.alloy.logs.redact.replacement" tabindex="0">
+<td><a class="nd-name" href="#homelab.alloy.logs.redact.replacement"><code>logs.<wbr>redact.<wbr>replacement</code></a></td>
+<td>string</td>
+<td><code>&quot;(removed)&quot;</code></td>
+<td>What a secret becomes.</td>
+</tr>
+<tr class="nd-card" hidden="hidden">
+<td colspan="4">
+<p><code>homelab.alloy.logs.redact.replacement</code></p>
+<p>What a secret becomes.</p>
+<p><strong>Default</strong></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;(removed)&quot;</span>
 </code></pre></div>
 <p><strong>Declared in</strong> <a href="https://github.com/nixos-homelab/monitoring/blob/main/nix/modules/alloy/logs.nix"><code>nix/modules/alloy/logs.nix</code></a></p>
 </td>
